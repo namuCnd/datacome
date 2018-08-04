@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/security/domain
+END
+UsersDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/security/domain/UsersDetails.java
+END
+AuthenticationMethod.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/security/domain/AuthenticationMethod.java
+END
+Authentication.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/security/domain/Authentication.java
+END
+AuthenticationReq.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/security/domain/AuthenticationReq.java
+END
+AuthenticationParam.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/security/domain/AuthenticationParam.java
+END
+AuthenticationResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/security/domain/AuthenticationResult.java
+END
+ManagerDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/security/domain/ManagerDetails.java
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/univeramall_2018/!svn/ver/1684/base_univeramall_2018/src/main/java/com/univeramall/manager/domain
+END
+ManagerParam.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/manager/domain/ManagerParam.java
+END
+Manager.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/univeramall_2018/!svn/ver/1684/base_univeramall_2018/src/main/java/com/univeramall/manager/domain/Manager.java
+END
+ManagerRoleParam.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/manager/domain/ManagerRoleParam.java
+END
+MenuRoleParam.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/univeramall_2018/!svn/ver/14/base_univeramall_2018/src/main/java/com/univeramall/manager/domain/MenuRoleParam.java
+END
+RoleParam.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/manager/domain/RoleParam.java
+END
+Role.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/univeramall_2018/!svn/ver/139/base_univeramall_2018/src/main/java/com/univeramall/manager/domain/Role.java
+END
+MenuRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/univeramall_2018/!svn/ver/139/base_univeramall_2018/src/main/java/com/univeramall/manager/domain/MenuRole.java
+END
+ManagerRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/univeramall_2018/!svn/ver/139/base_univeramall_2018/src/main/java/com/univeramall/manager/domain/ManagerRole.java
+END

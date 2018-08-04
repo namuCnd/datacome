@@ -1,0 +1,26 @@
+package com.univeramall.security.domain;
+
+import java.io.Serializable;
+
+import com.univeramall.generic.domain.CrudResult;
+
+/**
+ * 본인인증 result domain
+ * @author Administrator
+ *
+ */
+public class AuthenticationResult extends CrudResult<Authentication> implements Serializable {
+
+	private static final long serialVersionUID = 4619519650570944632L;
+	
+	private String idx;
+
+	public String getIdx() {
+		return idx;
+	}
+
+	public void setIdx(String idx) {
+		this.idx = idx;
+	}
+
+}

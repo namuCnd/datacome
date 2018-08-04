@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		">
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+
+	<!-- Autowired Annotation -->
+	<context:annotation-config />
+
+	<!-- Sets Annotation Range -->
+	<context:component-scan base-package="com.namucnd">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+	
+	<!-- Transaction -->
+	<tx:annotation-driven/>
+
+	<mvc:interceptors>
+		<!-- locale Change Interceptor (url?lang=en) -->
+		<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="locale"/>
+		</bean>
+		<!-- Theme Change Interceptor (url?theme=default) -->
+		<bean id="themeChangeInterceptor" class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+			<property name="paramName" value="theme" />
+		</bean>
+		
+		<bean id="deviceResolverHandlerInterceptor" class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<!-- 예외처리하여 불필요한 리소스 로딩을 막는다. 단, web.xml에서 필터를 통해 	제외되므로, 사실 아래 코드는 필요 없다. -->
+			<!-- <mvc:exclude-mapping path="/resources/**" /> -->
+			<bean class="com.namucnd.interceptor.CommonInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+</beans>

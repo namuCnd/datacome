@@ -1,0 +1,48 @@
+package com.univeramall.manager.dao.impl;
+
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.univeramall.generic.dao.impl.CrudDaoImpl;
+import com.univeramall.manager.dao.RoleDao;
+import com.univeramall.manager.domain.Role;
+import com.univeramall.manager.domain.RoleParam;
+
+/**
+ * <pre>
+ * Manager Dao Impl
+ * </pre>
+ * @FileName ManagerDaoImpl.java
+ * @Package com.univeramall.manager.dao.impl
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2015. 9. 23.
+ * 
+ */
+@Repository
+public class RoleDaoImpl extends CrudDaoImpl<RoleParam, Role, Role, Role>implements RoleDao {
+
+	@Autowired
+	public RoleDaoImpl(SqlSessionTemplate sqlSessionTemplate) {
+		super(sqlSessionTemplate);
+		this.setNamespace("role");
+	}
+
+	/**
+	 * <pre>
+	 * Role 기본 hierarchy 구조
+	 * Spring security roleHierarchy에서 사용
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2015. 9. 24.
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Role> readRoleList() throws Exception {
+		return sqlSessionTemplate.selectList(this.getNamespace() + ".readRoleList");
+	}
+
+}

@@ -1,0 +1,34 @@
+package com.univeramall.manager.service;
+
+import com.univeramall.generic.service.CrudService;
+import com.univeramall.manager.dao.ManagerDao;
+import com.univeramall.manager.domain.Manager;
+import com.univeramall.manager.domain.ManagerParam;
+
+/**
+ * <pre>
+ * 관리자 Service
+ * </pre>
+ * 
+ * @FileName ManagerService.java
+ * @Package com.univeramall.manager.service
+ * @Organization
+ * @author Sorcerer.Picoo
+ * @since 2015. 9. 23.
+ * 
+ */
+public interface ManagerService extends CrudService<ManagerParam, Manager, Manager, Manager, ManagerDao> {
+
+	/**
+	 * <pre>
+	 * 로그인 정보 select
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 14.
+	 * @param manager
+	 * @return
+	 * @throws Exception
+	 */
+	public Manager readSignin(Manager manager) throws Exception;
+
+}

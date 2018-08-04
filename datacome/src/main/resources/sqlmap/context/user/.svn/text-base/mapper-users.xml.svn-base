@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+
+	<resultMap id="UsersResult" type="com.univeramall.user.domain.Users" autoMapping="true">
+		<id property="user_id" column="user_id" />
+		<association property="usersGroup" javaType="com.univeramall.user.domain.UsersGroup" autoMapping="true" />
+		<association property="agent" javaType="com.univeramall.agent.domain.Agent" autoMapping="true" />
+		<association property="up" javaType="com.univeramall.up.domain.Up" autoMapping="true" />
+	</resultMap>
+	
+	<!-- 회원정보 -->
+	<select id="readOne" parameterType="com.univeramall.user.domain.Users" resultMap="UsersResult">
+		SELECT 
+			MU.USER_ID,
+			MU.GROUP_ID,
+			MU.USER_PW,
+			MU.USER_NAME,
+			MU.USER_GENDER,
+			MU.USER_CELLULAR,
+			MU.USER_PHONE,
+			MU.USER_EMAIL,
+			MU.USER_ZIPCD,
+			MU.USER_BASE_ADDR,
+			MU.USER_DETAIL_ADDR,
+			MU.USER_SMS_YN,
+			MU.USER_EMAIL_YN,
+			MU.USER_PROVISION_YN,
+			MU.USER_PRIVACY_YN,
+			MU.USER_CERTI_YN,
+			MU.USER_CERTI_NO,
+			NVL(MU.USER_MILEAGE, 0) AS USER_MILEAGE,
+			MU.USER_WITHDRAW_YN,
+			MU.USER_WITHDRAW_CD,
+			MU.USER_WITHDRAW_DESC,
+			MU.USER_LAST_LOGIN,
+			MU.USER_JOIN_DIVISION,
+			MU.USER_JOIN_ROUTE,
+			MU.USER_WITHDRAW_DATE,
+			MU.USER_DORMANT_YN,
+			MU.USER_DORMANT_DATE,
+			MU.RECOMMENDER_USER_ID,
+			MU.USER_SOCIALNO,
+			MU.USER_CERT_YN,
+			MU.USER_CERT_NO,
+			MU.USER_JOIN_DATE,
+			MU.USER_PW_DATE,
+			MU.USER_BREAK_YN,
+			MU.USER_BIRTHDAY,
+			MU.FILE_ID,
+			MU.USER_CITY,
+			MU.USER_GU,
+			MU.USER_OLD_YN,
+			MU.USER_CERT_TYPE,
+			NVL(MU.USER_POINT, 0) AS USER_POINT,
+			MU.USER_UP_YN,
+			MU.UP_IDX,
+			MU.AGENT_IDX,
+			MU.UP_UPDATE_YN,
+			MU.AGENT_UPDATE_YN,
+			MU.CREATE_DATE,
+			MU.CREATE_USER,
+			MU.UPDATE_DATE,
+			MU.UPDATE_USER,
+			MU.WPAY_USER_KEY,
+			MG.GROUP_NAME,
+			MG.GROUP_DESC,
+			MG.GROUP_FILEID,
+			MG.GROUP_CONDITION,
+			MG.GROUP_MILEAGE,
+			MG.GROUP_BENEFIT,
+			FN_GET_AGE(MU.USER_BIRTHDAY) AS USER_AGE_CODE,
+			A.거래처코드 AS AGENT_IDX, 
+			A.거래처명 AS AGENT_NAME, 
+			A.ZIP_SEQ AS AGENT_ZIPCD,
+			A.도로명주소1 AS AGENT_BASE_ADDR,
+			A.도로명주소2 AS AGENT_DETAIL_ADDR, 
+			B.전화번호 AS AGENT_PHONE, 
+			A.지역코드 AS AGENT_AREA,
+			A.대표자명 AS AGENT_DELEGATE,
+			'XXX-XX-XXXXX' AS AGENT_BIZNO,
+			'성동-제XX호' AS AGENT_SALESNO,
+			CA.AGENT_MID,
+			CA.AGENT_SIGNKEY,
+			C.설계사명 AS UP_NAME,
+			C.전화번호 AS UP_PHONE, 
+			C.휴대번호 AS UP_CELLULAR
+		FROM
+			XXS_MB_USER MU
+		LEFT JOIN XXS_MB_GROUP MG ON MU.GROUP_ID = MG.GROUP_ID
+		LEFT JOIN XXI_거래처@UCSTOERP A ON MU.AGENT_IDX = A.거래처코드
+		LEFT JOIN XXI_판매점@UCSTOERP B ON A.거래처코드 = B.거래처코드
+		LEFT JOIN XXS_CS_AGENT CA ON A.거래처코드 = CA.AGENT_IDX
+		LEFT JOIN XXI_설계사@UCSTOERP C ON MU.UP_IDX = C.일련번호
+		WHERE MU.USER_ID  = #{user_id}
+	</select>
+
+	<!-- 중복아이디 검사 -->
+	<select id="readIdListCnt" parameterType="com.univeramall.user.domain.Users" resultType="Integer">
+		SELECT
+			COUNT(1) AS COUNT
+		FROM
+			XXS_MB_USER MU
+		WHERE
+			USER_ID = #{user_id}
+	</select>
+	
+	<insert id="add" parameterType="com.univeramall.user.domain.Users">
+		INSERT INTO XXS_MB_USER (
+			USER_ID,
+			GROUP_ID,
+			USER_PW,
+			USER_NAME,
+			USER_GENDER,
+			USER_CELLULAR,
+			USER_PHONE,
+			USER_EMAIL,
+			USER_ZIPCD,
+			USER_BASE_ADDR,
+			USER_DETAIL_ADDR,
+			USER_SMS_YN,
+			USER_EMAIL_YN,
+			USER_PROVISION_YN,
+			USER_PRIVACY_YN,
+			USER_JOIN_ROUTE,
+			USER_CERT_YN,
+			USER_CERT_TYPE,
+			USER_CERT_NO,
+			USER_JOIN_DATE,
+			USER_BIRTHDAY,
+			USER_CITY,
+			USER_GU,
+			USER_UP_YN,
+			UP_IDX,
+			AGENT_IDX,
+			UP_UPDATE_YN,
+			AGENT_UPDATE_YN,
+			CREATE_DATE,
+			CREATE_USER
+		) VALUES (
+			#{user_id,				jdbcType=VARCHAR},
+			'U10001',
+			#{user_pw,				jdbcType=VARCHAR},
+			#{user_name,			jdbcType=VARCHAR},
+			#{user_gender,			jdbcType=VARCHAR},
+			#{user_cellular,		jdbcType=VARCHAR},
+			#{user_phone,			jdbcType=VARCHAR},
+			#{user_email,			jdbcType=VARCHAR},
+			#{user_zipcd,			jdbcType=VARCHAR},
+			#{user_base_addr,		jdbcType=VARCHAR},
+			#{user_detail_addr,		jdbcType=VARCHAR},
+			#{user_sms_yn,			jdbcType=VARCHAR},
+			#{user_email_yn,		jdbcType=VARCHAR},
+			'Y',
+			'Y',
+			#{user_join_route,		jdbcType=VARCHAR},
+			#{user_cert_yn,			jdbcType=VARCHAR},
+			#{user_cert_type,		jdbcType=VARCHAR},
+			#{user_cert_no,			jdbcType=VARCHAR},
+			SYSDATE,
+			#{user_birthday,		jdbcType=VARCHAR},
+			#{user_city,			jdbcType=VARCHAR},
+			#{user_gu,				jdbcType=VARCHAR},
+			#{user_up_yn,			jdbcType=VARCHAR},
+			#{up_idx,				jdbcType=VARCHAR},
+			#{agent_idx,			jdbcType=VARCHAR},
+			#{up_update_yn,			jdbcType=VARCHAR},
+			#{agent_update_yn,		jdbcType=VARCHAR},
+			SYSDATE,
+			#{user_id,				jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<update id="edit" parameterType="com.univeramall.user.domain.Users">
+		UPDATE XXS_MB_USER
+		SET 
+			<if test='certYn and certYn == "Y" and user_cellular != ""'>
+			USER_CELLULAR			= #{user_cellular,		jdbcType=VARCHAR},
+			</if>
+			USER_PHONE				= #{user_phone,			jdbcType=VARCHAR},
+			USER_EMAIL				= #{user_email,			jdbcType=VARCHAR},
+			USER_ZIPCD				= #{user_zipcd,			jdbcType=VARCHAR},
+			USER_BASE_ADDR			= #{user_base_addr,		jdbcType=VARCHAR},
+			USER_DETAIL_ADDR		= #{user_detail_addr,	jdbcType=VARCHAR},
+			USER_SMS_YN				= #{user_sms_yn,		jdbcType=VARCHAR},
+			USER_EMAIL_YN			= #{user_email_yn,		jdbcType=VARCHAR},
+			<if test="user_cert_yn and user_cert_yn != ''">
+			USER_NAME				= #{user_name,			jdbcType=VARCHAR},
+			USER_GENDER				= #{user_gender,		jdbcType=VARCHAR},
+			USER_CERT_YN			= #{user_cert_yn,		jdbcType=VARCHAR},
+			USER_CERT_TYPE			= #{user_cert_type,		jdbcType=VARCHAR},
+			USER_CERT_NO			= #{user_cert_no,		jdbcType=VARCHAR},
+			USER_BIRTHDAY			= #{user_birthday,		jdbcType=VARCHAR},
+			</if>
+			USER_JOIN_DATE			= SYSDATE,
+			USER_CITY				= #{user_city,			jdbcType=VARCHAR},
+			USER_GU					= #{user_gu,			jdbcType=VARCHAR},
+			USER_UP_YN				= #{user_up_yn,			jdbcType=VARCHAR},
+			UP_IDX					= #{up_idx,				jdbcType=VARCHAR},
+			AGENT_IDX				= #{agent_idx,			jdbcType=VARCHAR},
+			UP_UPDATE_YN			= #{up_update_yn,		jdbcType=VARCHAR},
+			AGENT_UPDATE_YN			= #{agent_update_yn,	jdbcType=VARCHAR},
+			UPDATE_DATE				= SYSDATE,
+			UPDATE_USER				= #{user_id,			jdbcType=VARCHAR}
+		WHERE
+			USER_ID = #{user_id}
+	</update>
+
+	<update id="editUp" parameterType="com.univeramall.user.domain.Users">
+		UPDATE XXS_MB_USER
+		SET 
+			USER_UP_YN				= #{user_up_yn,			jdbcType=VARCHAR},
+			UP_IDX					= #{up_idx,				jdbcType=VARCHAR},
+			AGENT_IDX				= #{agent_idx,			jdbcType=VARCHAR},
+			UP_UPDATE_YN			= #{up_update_yn,		jdbcType=VARCHAR},
+			AGENT_UPDATE_YN			= #{agent_update_yn,	jdbcType=VARCHAR}
+		WHERE
+			USER_ID = #{user_id}
+	</update>
+
+	<update id="editPassword" parameterType="com.univeramall.user.domain.EditPassword">
+		UPDATE XXS_MB_USER MU
+		SET
+			MU.USER_PW   = #{user_pw_new , jdbcType=VARCHAR},
+			MU.UPDATE_DATE = SYSDATE,
+			MU.UPDATE_USER = #{user_id , jdbcType=VARCHAR},
+			MU.USER_PW_DATE = SYSDATE
+		WHERE MU.USER_ID = #{user_id}
+	</update>
+
+	<update id="editLastLogin" parameterType="com.univeramall.user.domain.Users">
+		UPDATE XXS_MB_USER MU
+		   SET USER_LAST_LOGIN = SYSDATE
+		 WHERE USER_ID = #{user_id}
+	</update>
+	
+	<!-- 중복아이디 검사 -->
+	<select id="readHealingLeafCnt" parameterType="com.univeramall.user.domain.Users" resultType="Integer">
+		SELECT 
+			SUM(NVL(OG.ODGDS_LEAF_AMOUNT,0)) as ODGDS_LEAF_AMOUNT
+		FROM XXS_OR_ORDER_INFO_M OOI
+		LEFT JOIN  XXS_OR_GOODS OG ON OOI.ORDER_ID = OG.ORDER_ID
+		WHERE 
+			<if test="userId and userId != ''" >
+				OOI.USER_ID = #{userId} AND 
+			</if>	
+				OOI.ORDER_TYPE = 2 
+		<!-- 결제완료된 -->
+	</select>
+	
+	<select id="readSendFlag" parameterType="com.univeramall.user.domain.Users" resultType="com.univeramall.user.domain.Users">
+		SELECT
+			MU.USER_ID,
+			MU.GROUP_ID,
+			MU.USER_SMS_YN,
+			MU.USER_EMAIL_YN,
+			MU.USER_PW_DATE,
+			MU.USER_BREAK_YN,
+			MU.USER_BIRTHDAY,
+			MU.FILE_ID,
+			MU.USER_CITY,
+			MU.USER_GU,
+			MU.USER_OLD_YN,
+			MU.USER_CERT_TYPE,
+			MU.USER_POINT,
+			MU.USER_UP_YN,
+			MU.UP_IDX,
+			MU.AGENT_IDX,
+			MU.UP_UPDATE_YN,
+			MU.AGENT_UPDATE_YN,
+			MU.CREATE_DATE,
+			MU.CREATE_USER,
+			MU.UPDATE_DATE,
+			MU.UPDATE_USER
+		FROM
+			XXS_MB_USER MU
+		WHERE
+			USER_ID = #{user_id}
+	</select>
+	
+	<update id="editUserAddress" parameterType="com.univeramall.user.domain.Users">
+		UPDATE XXS_MB_USER
+		SET 
+			USER_CELLULAR			= #{user_cellular,		jdbcType=VARCHAR},
+			USER_PHONE				= #{user_phone,			jdbcType=VARCHAR},
+			USER_EMAIL				= #{user_email,			jdbcType=VARCHAR},
+			USER_ZIPCD				= #{user_zipcd,			jdbcType=VARCHAR},
+			USER_BASE_ADDR			= #{user_base_addr,		jdbcType=VARCHAR},
+			USER_DETAIL_ADDR		= #{user_detail_addr,	jdbcType=VARCHAR},
+			UPDATE_DATE				= SYSDATE,                                   
+			UPDATE_USER				= #{user_id,			jdbcType=VARCHAR}     
+		WHERE
+			USER_ID = #{user_id}
+	</update>
+	
+	<!-- 회원통합대상 여부 판단 -->
+	<select id="readNeedForIntegration" parameterType="com.univeramall.user.domain.Users" resultType="Integer">
+		SELECT
+			COUNT(1)
+		FROM
+			XXS_MB_USER MU
+		WHERE
+			MU.USER_CERT_NO = #{user_cert_no}
+			AND MU.USER_WITHDRAW_YN = 'N'
+			AND MU.USER_BREAK_YN = 'N'
+			AND MU.USER_DORMANT_YN = 'N'
+	</select>
+
+	<select id="readIntegrationList" parameterType="com.univeramall.user.domain.Users" resultMap="UsersResult">
+		SELECT
+			MU.USER_ID,
+			MU.GROUP_ID,
+			MU.USER_PW,
+			MU.USER_NAME,
+			MU.USER_GENDER,
+			MU.USER_CELLULAR,
+			MU.USER_PHONE,
+			MU.USER_EMAIL,
+			MU.USER_ZIPCD,
+			MU.USER_BASE_ADDR,
+			MU.USER_DETAIL_ADDR,
+			MU.USER_SMS_YN,
+			MU.USER_EMAIL_YN,
+			MU.USER_PROVISION_YN,
+			MU.USER_PRIVACY_YN,
+			MU.USER_CERTI_YN,
+			MU.USER_CERTI_NO,
+			MU.USER_MILEAGE,
+			MU.USER_WITHDRAW_YN,
+			MU.USER_WITHDRAW_CD,
+			MU.USER_WITHDRAW_DESC,
+			MU.USER_LAST_LOGIN,
+			MU.USER_JOIN_DIVISION,
+			MU.USER_JOIN_ROUTE,
+			MU.USER_WITHDRAW_DATE,
+			MU.USER_DORMANT_YN,
+			MU.USER_DORMANT_DATE,
+			MU.RECOMMENDER_USER_ID,
+			MU.USER_SOCIALNO,
+			MU.USER_CERT_YN,
+			MU.USER_CERT_NO,
+			MU.USER_JOIN_DATE,
+			MU.USER_PW_DATE,
+			MU.USER_BREAK_YN,
+			MU.USER_BIRTHDAY,
+			MU.FILE_ID,
+			MU.USER_CITY,
+			MU.USER_GU,
+			MU.USER_OLD_YN,
+			MU.USER_CERT_TYPE,
+			MU.USER_POINT,
+			MU.USER_UP_YN,
+			MU.UP_IDX,
+			MU.AGENT_IDX,
+			MU.UP_UPDATE_YN,
+			MU.AGENT_UPDATE_YN,
+			MU.CREATE_DATE,
+			MU.CREATE_USER,
+			MU.UPDATE_DATE,
+			MU.UPDATE_USER
+		FROM
+			XXS_MB_USER MU
+		WHERE
+			MU.USER_CERT_NO = (
+				SELECT USER_CERT_NO FROM XXS_MB_USER WHERE USER_ID = #{user_id}
+			)
+			AND MU.USER_WITHDRAW_YN = 'N'
+			AND MU.USER_BREAK_YN = 'N'
+			AND MU.USER_DORMANT_YN = 'N'
+	</select>
+	
+	<update id="editCert" parameterType="com.univeramall.user.domain.Users">
+		UPDATE XXS_MB_USER
+		SET 
+			USER_NAME				= #{user_name,			jdbcType=VARCHAR},
+			USER_CELLULAR			= #{user_cellular,		jdbcType=VARCHAR},
+			USER_GENDER				= #{user_gender,		jdbcType=VARCHAR},
+			USER_CERT_YN			= #{user_cert_yn,		jdbcType=VARCHAR},
+			USER_CERT_TYPE			= #{user_cert_type,		jdbcType=VARCHAR},
+			USER_CERT_NO			= #{user_cert_no,		jdbcType=VARCHAR},
+			USER_BIRTHDAY			= #{user_birthday,		jdbcType=VARCHAR}
+		WHERE
+			USER_ID = #{user_id}
+	</update>
+
+	<update id="editWpayKey" parameterType="com.univeramall.user.domain.Users">
+		UPDATE XXS_MB_USER
+		SET 
+			WPAY_USER_KEY = #{wpay_user_key,	jdbcType=VARCHAR}
+		WHERE
+			USER_ID = #{user_id}
+	</update>
+</mapper>

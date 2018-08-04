@@ -1,0 +1,35 @@
+package com.univeramall.manager.dao;
+
+import java.util.List;
+
+import com.univeramall.generic.dao.CrudDao;
+import com.univeramall.manager.domain.Role;
+import com.univeramall.manager.domain.RoleParam;
+
+/**
+ * <pre>
+ * Role Dao
+ * </pre>
+ * 
+ * @FileName RoleDao.java
+ * @Package com.univeramall.manager.dao
+ * @Organization
+ * @author Sorcerer.Picoo
+ * @since 2015. 9. 23.
+ * 
+ */
+public interface RoleDao extends CrudDao<RoleParam, Role, Role, Role> {
+	
+	/**
+	 * <pre>
+	 * Role 기본 hierarchy 구조
+	 * Spring security roleHierarchy에서 사용
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2015. 9. 24.
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Role> readRoleList() throws Exception;
+
+}

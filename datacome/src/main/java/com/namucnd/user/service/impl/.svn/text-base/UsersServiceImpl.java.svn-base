@@ -1,0 +1,313 @@
+package com.univeramall.user.service.impl;
+
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.univeramall.generic.service.impl.CrudServiceImpl;
+import com.univeramall.mileage.domain.Mileage;
+import com.univeramall.mileage.service.MileageService;
+import com.univeramall.user.dao.UsersDao;
+import com.univeramall.user.domain.EditPassword;
+import com.univeramall.user.domain.Users;
+import com.univeramall.user.domain.UsersParam;
+import com.univeramall.user.service.UsersService;
+import com.univeramall.utils.SecurityUtils;
+import com.univeramall.withdraw.domain.Withdraw;
+import com.univeramall.withdraw.service.WithdrawService;
+
+/**
+ * <pre>
+ * Users service
+ * </pre>
+ * @FileName UsersServiceImpl.java
+ * @Package com.univeramall.user.service.impl
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2018. 2. 26.
+ * 
+ */
+@Service
+public class UsersServiceImpl extends CrudServiceImpl<UsersParam, Users, Users, Users, UsersDao> implements UsersService {
+	
+	// log사용을 위해 선언
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	@Autowired
+	public UsersServiceImpl(UsersDao dao) {
+		super(dao);
+	}
+
+	@Autowired
+	private WithdrawService withdrawService;
+	
+	@Autowired
+	private MileageService mileageService;
+	
+	/**
+	 * <pre>
+	 * 사용자 추가
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 17.
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	@Transactional
+	public Integer add(Users users) throws Exception {
+		// 비밀번호 암호화
+		users.setUser_pw(SecurityUtils.encodeBCrypt(users.getUser_pw(), null));
+		// user_up_yn처리
+		users.setUser_up_yn((StringUtils.isNotEmpty(users.getUp_idx())) ? "Y": "N");
+		// up_update_yn
+		users.setUp_update_yn((StringUtils.isNotEmpty(users.getUp_idx())) ? "Y": "N");
+		// agent_update_yn
+		users.setAgent_update_yn((StringUtils.isNotEmpty(users.getAgent_idx())) ? "Y": "N");
+		
+		/**
+		 * TODO UCS 반영
+		 */
+		
+		
+		/**
+		 * 회원가입
+		 */
+		dao.add(users);
+		
+		/**
+		 * 마일리지 지급
+		 */
+		Mileage mileage = new Mileage();
+		mileage.setUser_id(users.getUser_id());
+		mileage.setMile_type("0");
+		mileage.setMile_desc("회원가입 축하 마일리지");
+		mileage.setMile_plus(1000);
+		mileage.setMile_display_yn("Y");
+		mileageService.add(mileage);
+		
+		return 1;
+	}
+
+	/**
+	 * <pre>
+	 * 사용자 수정
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 17.
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	@Transactional
+	public Integer edit(Users users) throws Exception {
+		// user_up_yn처리
+		users.setUser_up_yn((StringUtils.isNotEmpty(users.getUp_idx())) ? "Y": "N");
+		// up_update_yn
+		users.setUp_update_yn("Y");
+		// agent_update_yn
+		users.setAgent_update_yn("Y");
+		
+		/**
+		 * TODO UCS 반영
+		 */
+		
+		return dao.edit(users);
+	}
+
+	/**
+	 * <pre>
+	 * 중복 아이디 개수
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 20.
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer readIdListCnt(Users users) throws Exception {
+		return dao.readIdListCnt(users);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * UP 변경
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 20.
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	@Transactional
+	public Integer editUp(Users users) throws Exception {
+		// user_up_yn처리
+		users.setUser_up_yn((StringUtils.isNotEmpty(users.getUp_idx())) ? "Y": "N");
+		// up_update_yn
+		users.setUp_update_yn("Y");
+		// agent_update_yn
+		users.setAgent_update_yn("Y");
+
+		/**
+		 * TODO UCS 반영
+		 */
+		
+		return dao.editUp(users);
+	}
+	
+	/**
+	 * <pre>
+	 * 비밀번호 변경
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 20.
+	 * @param editPassword
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer editPassword(EditPassword editPassword) throws Exception {
+		/**
+		 * 1. 비밀번호 암호화
+		 */
+		editPassword.setUser_pw_new(SecurityUtils.encodeBCrypt(editPassword.getUser_pw_new(), null));
+		return dao.editPassword(editPassword);
+	}
+	
+	/**
+	 * <pre>
+	 * 최근 로그인 일자 반영
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 20.
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer editLastLogin(Users users) {
+		return dao.editLastLogin(users);
+	}
+	
+	/**
+	 * <pre>
+	 * 힐링잎 개수
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 22.
+	 * @param usersParam
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer readHealingLeafCnt(UsersParam usersParam) {
+		return dao.readHealingLeafCnt(usersParam);
+	}
+
+	/**
+	 * <pre>
+	 * 이메일 SMS 수신여부
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 22.
+	 * @param users
+	 * @return
+	 */
+	public Users readSendFlag(Users users) {
+		return dao.readSendFlag(users);
+	}
+	
+	/**
+	 * <pre>
+	 * 사용자 기본 주소 변경
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 22.
+	 * @param users
+	 * @return
+	 */
+	public Integer editUserAddress(Users users) {
+		return dao.editUserAddress(users);
+	}
+	
+	/**
+	 * <pre>
+	 * 회원통합 대상자 여부 판단
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 12.
+	 * @param users
+	 * @return
+	 */
+	public Integer readNeedForIntegration(Users users) {
+		return dao.readNeedForIntegration(users);
+	}
+	
+	/**
+	 * <pre>
+	 * 통합대상자 리스트
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 13.
+	 * @param users
+	 * @return
+	 */
+	public List<Users> readIntegrationList(Users users) {
+		return dao.readIntegrationList(users);
+	}
+	
+	/**
+	 * <pre>
+	 * 회원통합
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 13.
+	 * @param users
+	 * @return
+	 * @throws Exception 
+	 */
+	@Transactional
+	public Integer editIntegration(Users users) throws Exception {
+		List<Users> list = this.readIntegrationList(users);
+		
+		for(Users data: list) {
+			if (StringUtils.equals(data.getUser_id(), users.getUser_id())) continue;
+
+			Withdraw withdraw = new Withdraw();
+			withdraw.setUser_id(data.getUser_id());
+			withdraw.setUser_withdraw_cd("99");
+			withdraw.setUser_withdraw_desc("회원통합");
+			withdrawService.remove(withdraw);
+		}
+		return 1;
+	}
+	
+	/**
+	 * <pre>
+	 * 본인인증 유도
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 5. 8.
+	 * @param users
+	 * @return
+	 */
+	public Integer editCert(Users users) {
+		return dao.editCert(users);
+	}
+	
+	/**
+	 * <pre>
+	 * 유니베라 페이 키 갱신
+	 * </pre>
+	 * @author jinu
+	 * @since 2018. 7. 5.
+	 * @param users
+	 * @return
+	 */
+	public Integer editWpayKey(Users users) {
+		return dao.editWpayKey(users);
+	}
+}

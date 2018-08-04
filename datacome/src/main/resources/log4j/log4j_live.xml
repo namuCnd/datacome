@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://www.mmbase.org/download/releases/MMBase-1_7_4/dtd/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- console -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss.SSS}] %-5p %C{1}.%M(%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- daily file -->
+	<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${web.root}/../../logs/${web.logDir}/log.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss.SSS}] %-5p %C{1}.%M(%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- log level -->
+	<logger name="org.springframework.security" additivity="false">
+		<level value="WARN" />
+	</logger>
+
+	<root>
+		<!-- 1. debug: 모든내용 표시, 2. info, 3. warn, 4. error: 에러만 표시, 5. fatal -->
+		<priority value="debug"/>
+		<!-- priority value="error"/-->
+		<appender-ref ref="file" />
+	</root>
+
+</log4j:configuration>

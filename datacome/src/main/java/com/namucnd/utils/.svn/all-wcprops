@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/univeramall_2018/!svn/ver/1749/base_univeramall_2018/src/main/java/com/univeramall/utils
+END
+SequenceUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/utils/SequenceUtils.java
+END
+AES256Cipher.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/utils/AES256Cipher.java
+END
+KakaoUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/utils/KakaoUtils.java
+END
+PagerUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/utils/PagerUtils.java
+END
+CompareUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/utils/CompareUtils.java
+END
+ConversionUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/utils/ConversionUtils.java
+END
+CustomLog4jConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/utils/CustomLog4jConfig.java
+END
+JsonUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/univeramall_2018/!svn/ver/1749/base_univeramall_2018/src/main/java/com/univeramall/utils/JsonUtil.java
+END
+SecurityUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/univeramall_2018/!svn/ver/422/base_univeramall_2018/src/main/java/com/univeramall/utils/SecurityUtils.java
+END

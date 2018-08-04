@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="usersMgmt">
+
+	<resultMap id="UsersResult" type="com.univeramall.user.domain.Users" autoMapping="true">
+		<id property="user_id" column="user_id" />
+		<association property="usersGroup" javaType="com.univeramall.user.domain.UsersGroup" autoMapping="true"/>
+		<association property="agent" javaType="com.univeramall.agent.domain.Agent" autoMapping="true" />
+		<association property="up" javaType="com.univeramall.up.domain.Up" autoMapping="true" />
+	</resultMap>
+
+	<!-- search -->
+	<sql id="readUsersListSearch">
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<!-- 탈퇴회원 휴면회원 강제 제거 -->
+			USER_WITHDRAW_YN = 'N'
+			AND USER_DORMANT_YN = 'N'
+			<!-- 회원등급 -->
+			<if test="groupIdx != null">
+				<foreach item="id" index="index" collection="groupIdx" open=" AND MG.GROUP_ID IN (" separator="," close=")">
+						#{id}
+				</foreach>
+			</if>
+			<!-- 가입경로 -->
+			<if test="userJoinRoute != null">
+				<foreach item="id" index="index" collection="userJoinRoute" open=" AND MU.USER_JOIN_ROUTE IN (" separator="," close=")">
+						#{id}
+				</foreach>
+			</if>
+			<!-- 가입일 -->
+			<if test="minUserJoinDate and minUserJoinDate != ''">
+				 AND MU.USER_JOIN_DATE >= #{minUserJoinDate}
+			</if>
+			<if test="maxUserJoinDate and maxUserJoinDate != ''">
+				 AND MU.USER_JOIN_DATE &lt;= #{maxUserJoinDate}+1
+			</if>
+			<!-- 최근접속일 -->
+			<if test="minUserLastLogin and minUserLastLogin != ''">
+				AND MU.USER_LAST_LOGIN >= #{minUserLastLogin}
+			</if>
+			<if test="maxUserLastLogin and maxUserLastLogin != ''">
+				AND MU.USER_LAST_LOGIN &lt;= #{maxUserLastLogin}+1
+			</if>
+			<!-- 검색어 -->
+			<if test="searchName and searchName != '' and searchValue and searchValue != ''">
+				<if test='searchName == "user_id" '>
+					AND MU.USER_ID LIKE '%' || #{searchValue} || '%'
+				</if>
+				<if test='searchName == "user_name" '>
+					AND MU.USER_NAME LIKE '%' || #{searchValue} || '%'
+				</if>
+				<if test='searchName == "user_cellular" '>
+					AND MU.USER_CELLULAR LIKE '%' || #{searchValue} || '%'
+				</if>
+				<if test='searchName == "user_phone" '>
+					AND MU.USER_PHONE LIKE '%' || #{searchValue} || '%'
+				</if>
+				<if test='searchName == "user_email" '>
+					AND MU.USER_EMAIL LIKE '%' || #{searchValue} || '%'
+				</if>
+				<if test='searchName == "withdrawname" '>
+					AND MU.USER_NAME LIKE '%' || #{searchValue} || '%'
+				</if>
+				<if test='searchName == "withdrawid" '>
+					AND MU.USER_ID LIKE '%' || #{searchValue} || '%'
+				</if>
+				<if test='searchName == "withdrawsesc" '>
+					AND MU.USER_WITHDRAW_DESC LIKE '%' || #{searchValue} || '%'
+				</if>
+				<if test='searchName == "all"'>
+						AND (MU.USER_ID LIKE '%' || #{searchValue} || '%'
+						OR MU.USER_NAME LIKE '%' || #{searchValue} || '%'
+						OR MU.USER_CELLULAR LIKE '%' || #{searchValue} || '%'
+						OR MU.USER_PHONE LIKE '%' || #{searchValue} || '%'
+						OR MU.USER_EMAIL LIKE '%' || #{searchValue} || '%') 
+				</if>
+			</if>
+			<!-- UP지정구분 -->
+			<if test="userUpYn and userUpYn != ''">
+				AND MU.USER_UP_YN = #{userUpYn}
+			</if>
+			
+			<!-- 메일수신 -->
+			<if test="userEmailYn and userEmailYn != ''">
+				AND MU.USER_EMAIL_YN = #{userEmailYn}
+			</if>
+			<!-- SMS수신 -->
+			<if test="userSmsYn and userSmsYn != ''">
+				AND MU.USER_SMS_YN = #{userSmsYn}
+			</if>
+			<!-- 마일리지 -->
+			<if test="minUserMileage and minUserMileage != ''">
+				<!-- 시작 마일리지 -->
+				 AND MU.USER_MILEAGE >= #{minUserMileage}
+			</if>
+			<if test="maxUserMileage and maxUserMileage != ''">
+				<!-- 종료 마일리지 -->
+				 AND MU.USER_MILEAGE &lt;= #{maxUserMileage}
+			</if>
+			<!-- 포인트 -->
+			<if test="minUserPoint and minUserPoint != ''">
+				<!-- 시작 마일리지 -->
+				 AND MU.USER_POINT >= #{minUserPoint}
+			</if>
+			<if test="maxUserPoint and maxUserPoint != ''">
+				<!-- 종료 마일리지 -->
+				 AND MU.USER_POINT &lt;= #{maxUserPoint}
+			</if>
+			<!-- 나이 -->
+			<if test="minUserAge and minUserAge != ''">
+				AND FLOOR(MONTHS_BETWEEN(SYSDATE,TO_DATE(MU.USER_BIRTHDAY, 'YYYYMMDD'))/12) >= #{minUserAge}
+			</if>
+			<if test="maxUserAge and maxUserAge != ''">
+				AND FLOOR(MONTHS_BETWEEN(SYSDATE,TO_DATE(MU.USER_BIRTHDAY, 'YYYYMMDD'))/12) &lt;= #{maxUserAge}
+			</if>
+			<!-- 성별 -->
+			<if test="userGender and userGender != ''">
+				AND MU.USER_GENDER = #{userGender}
+			</if>
+			<!-- 주문건수 -->
+			<if test="( minOrderCount and minOrderCount != '') or ( maxOrderCount and maxOrderCount != '')">
+				AND MU.USER_ID IN (
+					SELECT
+						USER_ID
+					FROM (
+						SELECT 
+							USER_ID, COUNT(*) AS RESULT 
+						FROM XXS_OR_ORDER_INFO_M
+						WHERE
+							ORDER_TYPE = '2' 
+							AND DLV_ONLINE_STATE = '15'
+						GROUP BY USER_ID
+					)
+					WHERE
+						<trim prefixOverrides="AND |OR ">
+						<if test="minOrderCount and minOrderCount != ''">
+						AND RESULT >= #{minOrderCount}
+						</if>
+						<if test="maxOrderCount and maxOrderCount != ''">
+						AND RESULT &lt;= #{maxOrderCount}
+						</if>
+						</trim>
+				)
+			</if>
+			<!-- 주문금액 -->
+			<if test="( minOrderAmount and minOrderAmount != '') or ( maxOrderAmount and maxOrderAmount != '')">
+				AND MU.USER_ID IN (
+					SELECT
+						USER_ID
+					FROM (
+						SELECT 
+							USER_ID, SUM(ORDER_PRICE) AS RESULT 
+						FROM XXS_OR_ORDER_INFO_M
+						WHERE
+							ORDER_TYPE = '2' 
+							AND DLV_ONLINE_STATE = '15'
+						GROUP BY USER_ID
+					)
+					WHERE
+						<trim prefixOverrides="AND |OR ">
+						<if test="minOrderAmount and minOrderAmount != ''">
+						AND RESULT >= #{minOrderAmount}
+						</if>
+						<if test="maxOrderAmount and maxOrderAmount != ''">
+						AND RESULT &lt;= #{maxOrderAmount}
+						</if>
+						</trim>
+				)
+			</if>
+			<!-- 장기 미 로그인 -->
+			<if test="notLoginDay and notLoginDay != ''">
+				AND USER_LAST_LOGIN &lt;= SYSDATE - #{notLoginDay}
+			</if>
+			<!-- 휴면전환예정회원 -->
+			<if test="preDormantDay and preDormantDay != ''">
+				AND USER_LAST_LOGIN &lt;= SYSDATE - 365 + #{preDormantDay}
+			</if>
+			<!-- 장바구니 상품 -->
+			<if test="cartGoodsIdxs != null">
+				AND MU.USER_ID IN (
+					SELECT USER_ID FROM XXS_MB_CART MC
+					INNER JOIN XXS_GD_GOODS_OPTION GO ON GO.OPTION_IDX = MC.OPTION_IDX
+					WHERE 
+					<foreach item="id" index="index" collection="cartGoodsIdxs" open=" GO.GOODS_IDX IN (" separator="," close=")">
+						#{id}
+					</foreach>
+					AND MC.USE_YN = 'Y'
+				)
+			</if>
+			<!-- 장바구니 카테고리 상품 -->
+			<if test="cartGroupIdxs != null">
+				AND MU.USER_ID IN (
+					SELECT USER_ID FROM XXS_MB_CART MC
+					INNER JOIN XXS_GD_GOODS_OPTION GO ON GO.OPTION_IDX = MC.OPTION_IDX
+					WHERE GO.GOODS_IDX IN (
+						SELECT GOODS_IDX
+						FROM XXS_GD_GROUP_GOODS
+						WHERE 
+						<foreach item="id" index="index" collection="cartGroupIdxs" open=" GROUP_IDX IN (" separator="," close=")">
+							#{id}
+						</foreach>
+					)
+					AND MC.USE_YN = 'Y'
+				)
+			</if>
+			<!-- 찜한 상품 -->
+			<if test="wishGoodsIdxs != null">
+				AND MU.USER_ID IN (
+					SELECT USER_ID FROM XXS_MB_WISHLIST MW
+					INNER JOIN XXS_GD_GOODS_OPTION GO ON GO.OPTION_IDX = MW.OPTION_IDX
+					WHERE 
+					<foreach item="id" index="index" collection="wishGoodsIdxs" open=" GO.GOODS_IDX IN (" separator="," close=")">
+						#{id}
+					</foreach>
+					AND MW.USE_YN = 'Y'
+				)
+			</if>
+			<!-- 찜한 카테고리 상품 -->
+			<if test="wishGroupIdxs != null">
+				AND MU.USER_ID IN (
+					SELECT USER_ID FROM XXS_MB_WISHLIST MW
+					INNER JOIN XXS_GD_GOODS_OPTION GO ON GO.OPTION_IDX = MW.OPTION_IDX
+					WHERE GO.GOODS_IDX IN (
+						SELECT GOODS_IDX
+						FROM XXS_GD_GROUP_GOODS
+						WHERE 
+						<foreach item="id" index="index" collection="wishGroupIdxs" open=" GROUP_IDX IN (" separator="," close=")">
+							#{id}
+						</foreach>
+					)
+					AND MW.USE_YN = 'Y'
+				)
+			</if>
+			<!-- 기간별 구매 회원 -->
+			<if test="(minOrderDate and minOrderDate != '') or (maxOrderDate and maxOrderDate != '')">
+				AND MU.USER_ID IN ( 
+					SELECT USER_ID FROM XXS_OR_ORDER_INFO_M
+					WHERE
+						ORDER_TYPE = '2' 
+						AND DLV_ONLINE_STATE = '15'
+						<trim prefixOverrides="AND |OR ">
+						<if test="minOrderDate and minOrderDate != ''">
+						AND ORDER_DATE >= #{minOrderDate}
+						</if>
+						<if test="maxOrderDate and maxOrderDate != ''">
+						AND ORDER_DATE &lt;= #{maxOrderDate}+1
+						</if>
+						</trim>
+				)
+			</if>
+			<!-- 담당UP명 -->
+			<if test="upName and upName != ''">
+				AND MU.UP_IDX IN ( 
+					select 일련번호 from XXI_설계사@UCSTOERP WHERE 설계사명 LIKE '%'||#{upName}||'%'
+				)
+			</if>
+			<if test='excelDown == "CHECK"'>
+				AND MU.USER_ID IN
+					<foreach item="id" index="index" collection="ids" open=" (" separator="," close=")">
+						#{id}
+					</foreach>
+			</if>
+			
+		</trim>
+	</sql>
+
+	<!-- order by -->
+	<sql id="readUsersListOrder">
+		<if test='(orderName != "order_count") and (orderName != "order_amount")'>
+		<trim prefix="order by">
+		<choose>			
+			<!-- 아래의 정렬조건은 확인후 다시 적용해야함 -->
+			<when test='orderName == "create_date"'> <!-- 회원가입일 -->
+				MU.CREATE_DATE
+			</when>
+			<when test='orderName == "user_last_login"'> <!-- 최근접속일시 -->
+				USER_LAST_LOGIN
+			</when>			
+			<when test='orderName == "group_id"'> <!-- 회원등급 -->
+				GROUP_ID
+			</when>
+			<otherwise>
+				MU.CREATE_DATE
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="direction == 'ASC'">
+				ASC
+			</when>
+			<otherwise>
+				DESC
+			</otherwise>
+		</choose>
+		</trim>
+		</if>
+	</sql>
+
+	<!-- order by -->
+	<sql id="readListCountOrder">
+		<trim prefix="order by">
+		<choose>
+			<when test='orderName == "order_count"'> <!-- 총구매횟수 -->
+				ORDER_COUNT DESC
+			</when>
+			<when test='orderName == "order_amount"'> <!-- 총구매금액 -->
+				ORDER_AMOUNT DESC
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+		</trim>
+	</sql>
+
+	<!-- user list count -->
+	<select id="readUserCnt" parameterType="com.univeramall.user.domain.UsersParam" resultType="com.univeramall.user.domain.Users">
+		SELECT
+		(
+			SELECT COUNT(*) FROM XXS_MB_USER
+			WHERE
+			    USER_JOIN_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD'), 'YYYYMMDD') AND TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD'), 'YYYYMMDD')+1
+		) JOIN_COUNT,
+		(
+			SELECT COUNT(*) FROM XXS_MB_USER
+			WHERE
+			    USER_DORMANT_YN = 'Y'
+			    AND USER_DORMANT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD'), 'YYYYMMDD') AND TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD'), 'YYYYMMDD')+1
+		) DORMANT_COUNT,
+		(
+			SELECT COUNT(*) FROM XXS_MB_USER
+			WHERE
+			    USER_WITHDRAW_YN = 'Y'
+			    AND USER_WITHDRAW_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD'), 'YYYYMMDD') AND TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD'), 'YYYYMMDD')+1
+		) WITHDRAW_COUNT
+		FROM DUAL
+	</select>
+
+	<!-- user list count -->
+	<select id="readListCnt" parameterType="com.univeramall.user.domain.UsersParam" resultType="Long">
+		SELECT
+		COUNT(1) AS RECORDS
+		FROM XXS_MB_USER MU
+		INNER JOIN XXS_MB_GROUP MG ON MU.GROUP_ID = MG.GROUP_ID
+		<include refid="readUsersListSearch" />
+	</select>
+
+	<!-- user paginated list -->
+	<select id="readList" parameterType="com.univeramall.user.domain.UsersParam" resultMap="UsersResult">
+		SELECT
+			USER_ID,
+			GROUP_ID,
+			USER_PW,
+			USER_NAME,
+			USER_BIRTHDAY,
+			USER_GENDER,
+			USER_CELLULAR,
+			USER_PHONE,
+			USER_EMAIL,
+			USER_ZIPCD,
+			USER_BASE_ADDR,
+			USER_DETAIL_ADDR,
+			USER_SMS_YN,
+			USER_EMAIL_YN,
+			USER_PROVISION_YN,
+			USER_PRIVACY_YN,
+			USER_CERT_YN,
+			USER_CERT_TYPE,
+			USER_CERT_NO,
+			NVL(USER_MILEAGE, 0) USER_MILEAGE,
+			NVL(USER_POINT, 0) USER_POINT,
+			USER_WITHDRAW_YN,
+			USER_WITHDRAW_CD,
+			USER_WITHDRAW_DESC,
+			USER_JOIN_DATE,
+			USER_LAST_LOGIN,
+			USER_WITHDRAW_DATE,
+			USER_JOIN_ROUTE,
+			USER_CITY,
+			USER_GU,
+			USER_OLD_YN,
+			USER_UP_YN,
+			UP_IDX,
+			AGENT_IDX,
+			UP_UPDATE_YN,
+			AGENT_UPDATE_YN,
+			<choose>
+			<when test='(orderName == "order_count") or (orderName == "order_amount")'>
+			ORDER_COUNT,
+			ORDER_AMOUNT,
+			</when>
+			<otherwise>
+			(SELECT COUNT(1) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = LIST.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_COUNT,
+			(SELECT NVL(SUM (ORDER_PRICE),0) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = LIST.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_AMOUNT,
+			</otherwise>
+			</choose>
+			CREATE_DATE,
+			CREATE_USER,
+			UPDATE_DATE,
+			UPDATE_USER,
+			GROUP_NAME,
+			FN_GET_AGE(LIST.USER_BIRTHDAY) AS USER_AGE_CODE
+		FROM (
+			SELECT
+				ROWNUM AS IDX,
+				USER_ID,
+				GROUP_ID,
+				USER_PW,
+				USER_NAME,
+				USER_BIRTHDAY,
+				USER_GENDER,
+				USER_CELLULAR,
+				USER_PHONE,
+				USER_EMAIL,
+				USER_ZIPCD,
+				USER_BASE_ADDR,
+				USER_DETAIL_ADDR,
+				USER_SMS_YN,
+				USER_EMAIL_YN,
+				USER_PROVISION_YN,
+				USER_PRIVACY_YN,
+				USER_CERT_YN,
+				USER_CERT_TYPE,
+				USER_CERT_NO,
+				USER_MILEAGE,
+				USER_POINT,
+				USER_WITHDRAW_YN,
+				USER_WITHDRAW_CD,
+				USER_WITHDRAW_DESC,
+				USER_JOIN_DATE,
+				USER_LAST_LOGIN,
+				USER_WITHDRAW_DATE,
+				USER_JOIN_ROUTE,
+				USER_CITY,
+				USER_GU,
+				USER_OLD_YN,
+				USER_UP_YN,
+				UP_IDX,
+				AGENT_IDX,
+				UP_UPDATE_YN,
+				AGENT_UPDATE_YN,
+				<if test='(orderName == "order_count") or (orderName == "order_amount")'>
+				ORDER_COUNT,
+				ORDER_AMOUNT,
+				</if>
+				CREATE_DATE,
+				CREATE_USER,
+				UPDATE_DATE,
+				UPDATE_USER,
+				GROUP_NAME
+			FROM (
+				SELECT
+					USER_ID,
+					GROUP_ID,
+					USER_PW,
+					USER_NAME,
+					USER_BIRTHDAY,
+					USER_GENDER,
+					USER_CELLULAR,
+					USER_PHONE,
+					USER_EMAIL,
+					USER_ZIPCD,
+					USER_BASE_ADDR,
+					USER_DETAIL_ADDR,
+					USER_SMS_YN,
+					USER_EMAIL_YN,
+					USER_PROVISION_YN,
+					USER_PRIVACY_YN,
+					USER_CERT_YN,
+					USER_CERT_TYPE,
+					USER_CERT_NO,
+					USER_MILEAGE,
+					USER_POINT,
+					USER_WITHDRAW_YN,
+					USER_WITHDRAW_CD,
+					USER_WITHDRAW_DESC,
+					USER_JOIN_DATE,
+					USER_LAST_LOGIN,
+					USER_WITHDRAW_DATE,
+					USER_JOIN_ROUTE,
+					USER_CITY,
+					USER_GU,
+					USER_OLD_YN,
+					USER_UP_YN,
+					UP_IDX,
+					AGENT_IDX,
+					UP_UPDATE_YN,
+					AGENT_UPDATE_YN,
+					<if test='(orderName == "order_count") or (orderName == "order_amount")'>
+					ORDER_COUNT,
+					ORDER_AMOUNT,
+					</if>
+					CREATE_DATE,
+					CREATE_USER,
+					UPDATE_DATE,
+					UPDATE_USER,
+					GROUP_NAME
+				FROM (
+					SELECT
+						MU.USER_ID,
+						MU.GROUP_ID,
+						MU.USER_PW,
+						MU.USER_NAME,
+						MU.USER_BIRTHDAY,
+						MU.USER_GENDER,
+						MU.USER_CELLULAR,
+						MU.USER_PHONE,
+						MU.USER_EMAIL,
+						MU.USER_ZIPCD,
+						MU.USER_BASE_ADDR,
+						MU.USER_DETAIL_ADDR,
+						MU.USER_SMS_YN,
+						MU.USER_EMAIL_YN,
+						MU.USER_PROVISION_YN,
+						MU.USER_PRIVACY_YN,
+						MU.USER_CERT_YN,
+						MU.USER_CERT_TYPE,
+						MU.USER_CERT_NO,
+						MU.USER_MILEAGE,
+						MU.USER_POINT,
+						MU.USER_WITHDRAW_YN,
+						MU.USER_WITHDRAW_CD,
+						MU.USER_WITHDRAW_DESC,
+						MU.USER_JOIN_DATE,
+						MU.USER_LAST_LOGIN,
+						MU.USER_WITHDRAW_DATE,
+						MU.USER_JOIN_ROUTE,
+						MU.USER_CITY,
+						MU.USER_GU,
+						MU.USER_OLD_YN,
+						MU.USER_UP_YN,
+						MU.UP_IDX,
+						MU.AGENT_IDX,
+						MU.UP_UPDATE_YN,
+						MU.AGENT_UPDATE_YN,
+						<if test='(orderName == "order_count") or (orderName == "order_amount")'>
+						(SELECT COUNT(1) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = LIST.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_COUNT,
+						(SELECT NVL(SUM (ORDER_PRICE),0) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = LIST.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_AMOUNT,
+						</if>
+						MU.CREATE_DATE,
+						MU.CREATE_USER,
+						MU.UPDATE_DATE,
+						MU.UPDATE_USER,
+						MG.GROUP_NAME
+					FROM XXS_MB_USER MU
+					LEFT JOIN XXS_MB_GROUP MG ON MU.GROUP_ID = MG.GROUP_ID
+					<include refid="readUsersListSearch" />
+					<include refid="readUsersListOrder" />
+				)
+				<include refid="readListCountOrder" />
+			) LIST
+			WHERE ROWNUM &lt;= #{lastResult}
+		) LIST
+		WHERE LIST.IDX > #{firstResult}
+	</select>
+
+	<!-- user all list -->
+	<select id="readAllList" parameterType="com.univeramall.user.domain.UsersParam" resultMap="UsersResult">
+		SELECT
+			ROWNUM AS IDX,
+			USER_ID,
+			GROUP_ID,
+			USER_PW,
+			USER_NAME,
+			USER_BIRTHDAY,
+			USER_GENDER,
+			USER_CELLULAR,
+			USER_PHONE,
+			USER_EMAIL,
+			USER_ZIPCD,
+			USER_BASE_ADDR,
+			USER_DETAIL_ADDR,
+			USER_SMS_YN,
+			USER_EMAIL_YN,
+			USER_PROVISION_YN,
+			USER_PRIVACY_YN,
+			USER_CERT_YN,
+			USER_CERT_TYPE,
+			USER_CERT_NO,
+			NVL(USER_MILEAGE, 0) USER_MILEAGE,
+			NVL(USER_POINT, 0) USER_POINT,
+			USER_WITHDRAW_YN,
+			USER_WITHDRAW_CD,
+			USER_WITHDRAW_DESC,
+			USER_JOIN_DATE,
+			USER_LAST_LOGIN,
+			USER_WITHDRAW_DATE,
+			USER_JOIN_ROUTE,
+			USER_CITY,
+			USER_GU,
+			USER_OLD_YN,
+			USER_UP_YN,
+			UP_IDX,
+			AGENT_IDX,
+			UP_UPDATE_YN,
+			AGENT_UPDATE_YN,
+			<choose>
+			<when test='(orderName == "order_count") or (orderName == "order_amount")'>
+			ORDER_COUNT,
+			ORDER_AMOUNT,
+			</when>
+			<otherwise>
+			(SELECT COUNT(1) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = LIST.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_COUNT,
+			(SELECT NVL(SUM (ORDER_PRICE),0) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = LIST.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_AMOUNT,
+			</otherwise>
+			</choose>
+			CREATE_DATE,
+			CREATE_USER,
+			UPDATE_DATE,
+			UPDATE_USER,
+			GROUP_NAME,
+			FN_GET_AGE(LIST.USER_BIRTHDAY) AS USER_AGE_CODE
+		FROM (
+			SELECT
+				MU.USER_ID,
+				MU.GROUP_ID,
+				MU.USER_PW,
+				MU.USER_NAME,
+				MU.USER_BIRTHDAY,
+				MU.USER_GENDER,
+				MU.USER_CELLULAR,
+				MU.USER_PHONE,
+				MU.USER_EMAIL,
+				MU.USER_ZIPCD,
+				MU.USER_BASE_ADDR,
+				MU.USER_DETAIL_ADDR,
+				MU.USER_SMS_YN,
+				MU.USER_EMAIL_YN,
+				MU.USER_PROVISION_YN,
+				MU.USER_PRIVACY_YN,
+				MU.USER_CERT_YN,
+				MU.USER_CERT_TYPE,
+				MU.USER_CERT_NO,
+				MU.USER_MILEAGE,
+				MU.USER_POINT,
+				MU.USER_WITHDRAW_YN,
+				MU.USER_WITHDRAW_CD,
+				MU.USER_WITHDRAW_DESC,
+				MU.USER_JOIN_DATE,
+				MU.USER_LAST_LOGIN,
+				MU.USER_WITHDRAW_DATE,
+				MU.USER_JOIN_ROUTE,
+				MU.USER_CITY,
+				MU.USER_GU,
+				MU.USER_OLD_YN,
+				MU.USER_UP_YN,
+				MU.UP_IDX,
+				MU.AGENT_IDX,
+				MU.UP_UPDATE_YN,
+				MU.AGENT_UPDATE_YN,
+				<if test='(orderName == "order_count") or (orderName == "order_amount")'>
+				(SELECT COUNT(1) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = LIST.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_COUNT,
+				(SELECT NVL(SUM (ORDER_PRICE),0) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = LIST.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_AMOUNT,
+				</if>
+				MU.CREATE_DATE,
+				MU.CREATE_USER,
+				MU.UPDATE_DATE,
+				MU.UPDATE_USER,
+				MG.GROUP_NAME
+			FROM XXS_MB_USER MU
+			LEFT JOIN XXS_MB_GROUP MG ON MU.GROUP_ID = MG.GROUP_ID
+			<include refid="readUsersListSearch" />
+			<include refid="readUsersListOrder" />
+		) LIST
+		<include refid="readListCountOrder" />
+	</select>
+
+	<!-- master one -->
+	<select id="readOne" parameterType="com.univeramall.user.domain.Users" resultMap="UsersResult">
+		SELECT
+			MU.USER_ID,
+			MU.GROUP_ID,
+			MU.USER_PW,
+			MU.USER_NAME,
+			MU.USER_BIRTHDAY,
+			MU.USER_GENDER,
+			MU.USER_CELLULAR,
+			MU.USER_PHONE,
+			MU.USER_EMAIL,
+			MU.USER_ZIPCD,
+			MU.USER_BASE_ADDR,
+			MU.USER_DETAIL_ADDR,
+			MU.USER_SMS_YN,
+			MU.USER_EMAIL_YN,
+			MU.USER_PROVISION_YN,
+			MU.USER_PRIVACY_YN,
+			MU.USER_CERT_YN,
+			MU.USER_CERT_TYPE,
+			MU.USER_CERT_NO,
+			MU.USER_MILEAGE,
+			MU.USER_POINT,
+			MU.USER_WITHDRAW_YN,
+			MU.USER_WITHDRAW_CD,
+			MU.USER_WITHDRAW_DESC,
+			MU.USER_JOIN_DATE,
+			MU.USER_LAST_LOGIN,
+			MU.USER_WITHDRAW_DATE,
+			MU.USER_JOIN_ROUTE,
+			MU.USER_CITY,
+			MU.USER_GU,
+			MU.USER_OLD_YN,
+			MU.USER_UP_YN,
+			MU.UP_IDX,
+			MU.AGENT_IDX,
+			MU.UP_UPDATE_YN,
+			MU.AGENT_UPDATE_YN,
+			(SELECT COUNT(1) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = MU.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_COUNT,
+			(SELECT NVL(SUM (ORDER_PRICE),0) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = MU.USER_ID AND ORDER_TYPE = '2' AND DLV_ONLINE_STATE = '15') ORDER_AMOUNT,
+			(SELECT COUNT(1) FROM XXS_OR_ORDER_INFO_M WHERE USER_ID = MU.USER_ID AND ORDER_TYPE = '3' AND DLV_ONLINE_STATE = '10') REFUND_COUNT, 
+			(
+				SELECT 
+					SUM(NVL(OG.ODGDS_LEAF_AMOUNT,0)) as ODGDS_LEAF_AMOUNT
+				FROM XXS_OR_ORDER_INFO_M OOI LEFT JOIN  XXS_OR_GOODS OG ON OOI.ORDER_ID = OG.ORDER_ID
+				WHERE 
+					OOI.USER_ID = MU.USER_ID AND OOI.ORDER_TYPE = 2
+			) AS HEAL_LEAF_AMOUNT,
+			MU.CREATE_DATE,
+			MU.CREATE_USER,
+			MU.UPDATE_DATE,
+			MU.UPDATE_USER,
+			MG.GROUP_NAME,
+			MG.GROUP_NAME,
+			MG.GROUP_DESC,
+			MG.GROUP_FILEID,
+			MG.GROUP_CONDITION,
+			MG.GROUP_MILEAGE,
+			MG.GROUP_BENEFIT,
+			FN_GET_AGE(MU.USER_BIRTHDAY) AS USER_AGE_CODE,
+			A.거래처코드 AS AGENT_IDX, 
+			A.거래처명 AS AGENT_NAME, 
+			A.ZIP_SEQ AS AGENT_ZIPCD,
+			A.도로명주소1 AS AGENT_BASE_ADDR,
+			A.도로명주소2 AS AGENT_DETAIL_ADDR, 
+			B.전화번호 AS AGENT_PHONE, 
+			A.지역코드 AS AGENT_AREA,
+			A.대표자명 AS AGENT_DELEGATE,
+			'XXX-XX-XXXXX' AS AGENT_BIZNO,
+			'성동-제XX호' AS AGENT_SALESNO,
+			CA.AGENT_MID,
+			CA.AGENT_SIGNKEY,
+			C.설계사명 AS UP_NAME,
+			C.전화번호 AS UP_PHONE, 
+			C.휴대번호 AS UP_CELLULAR
+		FROM XXS_MB_USER MU
+		LEFT JOIN XXS_MB_GROUP MG ON MU.GROUP_ID = MG.GROUP_ID
+		LEFT JOIN XXI_거래처@UCSTOERP A ON MU.AGENT_IDX = A.거래처코드
+		LEFT JOIN XXI_판매점@UCSTOERP B ON A.거래처코드 = B.거래처코드
+		LEFT JOIN XXS_CS_AGENT CA ON A.거래처코드 = CA.AGENT_IDX
+		LEFT JOIN XXI_설계사@UCSTOERP C ON MU.UP_IDX = C.일련번호
+		WHERE
+			MU.USER_ID  = #{user_id}
+	</select>
+
+
+	<update id="editGrade" parameterType="com.univeramall.user.domain.UsersParam">
+		UPDATE XXS_MB_USER MU
+		SET
+			GROUP_ID = #{groupId, jdbcType=VARCHAR}
+		WHERE
+			USER_ID IN 
+			<foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+					#{id}
+			</foreach>
+	</update>
+</mapper>

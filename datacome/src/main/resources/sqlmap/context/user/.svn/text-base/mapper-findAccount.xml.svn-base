@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="findAccount">
+
+	<!-- search -->
+	<sql id="readFindAccountListSearch">
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<!-- 이름 -->
+			<if test="userId and userId != ''">
+				 AND USER_ID = #{userId}
+			</if>
+			<if test="userName and userName != ''">
+				 AND USER_NAME = #{userName}
+			</if>
+			<!-- 휴대폰 -->
+			<if test="userCellular and userCellular != ''">
+				 AND USER_CELLULAR = #{userCellular}
+			</if>
+			<!-- 이메일 -->
+			<if test="userEmail and userEmail != ''">
+				 AND USER_EMAIL = #{userEmail}
+			</if>
+			<!-- 이메일 -->
+			<if test="userCertNo and userCertNo != ''">
+				 AND USER_CERT_NO = #{userCertNo}
+			</if>
+		</trim>
+	</sql>
+
+	<!-- user all list -->
+	<select id="readAllList" parameterType="com.univeramall.user.domain.FindAccountParam" resultType="com.univeramall.user.domain.FindAccount">
+		SELECT
+			MU.USER_ID,
+			MU.USER_CELLULAR,
+			MU.USER_EMAIL,
+			MU.USER_CERT_YN,
+			MU.USER_CERT_TYPE,
+			MU.USER_CERT_NO,
+			MU.USER_DORMANT_YN,
+			MU.USER_DORMANT_DATE,
+			MU.USER_WITHDRAW_YN,
+			MU.USER_LAST_LOGIN,
+			MU.USER_WITHDRAW_DATE,
+			MU.USER_JOIN_ROUTE,
+			MU.USER_JOIN_DATE,
+			MU.USER_CITY,
+			MU.USER_GU,
+			MU.USER_OLD_YN,
+			MU.USER_UP_YN,
+			MU.UP_IDX,
+			MU.AGENT_IDX,
+			MU.UP_UPDATE_YN,
+			MU.AGENT_UPDATE_YN
+		FROM XXS_MB_USER MU
+		<include refid="readFindAccountListSearch" />
+	</select>
+
+	<!-- master one -->
+	<select id="readOne" parameterType="com.univeramall.user.domain.FindAccountParam" resultType="com.univeramall.user.domain.EditPassword">
+		SELECT
+			MU.USER_ID,
+			MU.USER_CELLULAR,
+			MU.USER_EMAIL,
+			MU.USER_CERT_YN,
+			MU.USER_CERT_TYPE,
+			MU.USER_CERT_NO,
+			MU.USER_DORMANT_YN,
+			MU.USER_DORMANT_DATE,
+			MU.USER_WITHDRAW_YN,
+			MU.USER_LAST_LOGIN,
+			MU.USER_WITHDRAW_DATE,
+			MU.USER_JOIN_ROUTE,
+			MU.USER_CITY,
+			MU.USER_GU,
+			MU.USER_OLD_YN,
+			MU.USER_UP_YN,
+			MU.UP_IDX,
+			MU.AGENT_IDX,
+			MU.UP_UPDATE_YN,
+			MU.AGENT_UPDATE_YN
+		FROM XXS_MB_USER MU
+		<include refid="readFindAccountListSearch" />
+	</select>
+
+</mapper>

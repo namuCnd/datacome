@@ -1,0 +1,135 @@
+package com.univeramall.security.service;
+
+import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.univeramall.manager.dao.ManagerDao;
+import com.univeramall.manager.domain.Manager;
+import com.univeramall.manager.domain.ManagerRole;
+import com.univeramall.security.domain.ManagerDetails;
+
+public class CustomizedManagerDetailsService implements UserDetailsService {
+	
+	// log사용을 위해 선언
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	private ManagerDao managerDao;
+
+	public void setManagerDao(ManagerDao managerDao) {
+		this.managerDao = managerDao;
+	}
+
+
+	/**
+	 * <pre>
+	 * 로긴 처리부분 
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2015. 9. 22.
+	 * @param username
+	 * @return
+	 * @throws UsernameNotFoundException
+	 */
+	@Override	
+	public ManagerDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+		// 세션에 담을 객체
+		ManagerDetails managerDetails = new ManagerDetails();
+		// Select 결과를 담을 객체
+		Manager manager = new Manager();
+		manager.setMngr_id(username);
+		String hostIP = "";
+		String hostName = "";
+
+		try {
+			// query select
+			manager = readManagerOne(manager);
+			
+			//[JW] ip info 를 수집하기 위해 추가함
+			InetAddress address = InetAddress.getLocalHost(); 
+		    hostIP = address.getHostAddress() ;
+		    hostName = address.getHostName();
+		    System.out.println( "[JWLOG] Connected Client IP: " + hostIP + "\n" + "Name: " + hostName);
+		    manager.setMngr_ip(hostIP);
+		    
+		    managerDao.loginInfoEdit(manager);
+		    
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		// 사용자가 존재할 시 로그인처리
+		if(manager == null) throw new UsernameNotFoundException(username);
+		
+		//사용자 로그인 실패 등록
+		insertMngrFail(manager);
+		
+		// 권한 (Role list 생성)
+		List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
+		
+		// select해 온 권한 리스트를 권한객체에 담는다.
+		for(ManagerRole role : manager.getManagerRoleList()) {
+			list.add(new SimpleGrantedAuthority("ROLE_"+role.getRole_id()));
+		}
+		
+		managerDetails.setUsername(manager.getMngr_id());
+		managerDetails.setPassword(manager.getMngr_pw());
+		managerDetails.setAuthorities(list);
+		managerDetails.setManager(manager);
+		
+		/* 자꾸 에러나서 짱나서 일단 주석처리
+		//사용자 로그인 5회 실패 시간 체크		
+		String strFaillTimeoverResult = managerDao.readFailTimeoverManager(manager);
+		// 사용자 로그인 실패 횟수. 
+		int intFaillResult = managerDao.readFailManager(manager);
+		
+		if(intFaillResult >= 5 && strFaillTimeoverResult == null){ //5회 이하, 타임오버 X
+			throw new LockedException("failTimeover");
+		}else if(intFaillResult >= 5 && "N".equals(strFaillTimeoverResult)){ //5회 이하, 타임오버 이하
+			throw new LockedException("failTimeover");
+		}else if(intFaillResult >= 5 && "Y".equals(strFaillTimeoverResult)){ //5회 이하, 타임오버 이상			
+			managerDao.deleteManagerFailLogin(manager);
+		}*/
+		
+		return managerDetails;
+	}
+
+	/**
+	 * <pre>
+	 * 관리자 정보 select
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2015. 9. 23.
+	 * @param manager
+	 * @return
+	 * @throws Exception
+	 */
+	public Manager readManagerOne(Manager manager) throws Exception{
+		return managerDao.readSignin(manager);
+	}
+	
+	/**
+	 * <pre>
+	 * 관리자 로그인 실패
+	 * </pre>
+	 * 
+	 * @author tsmin
+	 * @since 2017. 10. 20
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
+	private Integer insertMngrFail(Manager manager) {
+
+		return managerDao.insertMngrFail(manager);
+	}
+}

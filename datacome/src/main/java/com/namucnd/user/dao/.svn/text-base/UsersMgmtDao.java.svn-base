@@ -1,0 +1,42 @@
+package com.univeramall.user.dao;
+
+import com.univeramall.generic.dao.CrudDao;
+import com.univeramall.user.domain.Users;
+import com.univeramall.user.domain.UsersParam;
+
+/**
+ * <pre>
+ * Users dao
+ * </pre>
+ * @FileName UsersDao.java
+ * @Package com.univeramall.user.dao
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2018. 2. 26.
+ * 
+ */
+public interface UsersMgmtDao extends CrudDao<UsersParam, Users, Users, Users> {
+
+
+	/**
+	 * <pre>
+	 * 회원카운트 조회
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 25.
+	 * @param usersParam
+	 * @return
+	 */
+	public Users readUserCnt(UsersParam usersParam);
+	
+	/**
+	 * <pre>
+	 * 등급변경
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 25.
+	 * @param usersParam
+	 * @return
+	 */
+	public Integer editGrade(UsersParam usersParam);
+}

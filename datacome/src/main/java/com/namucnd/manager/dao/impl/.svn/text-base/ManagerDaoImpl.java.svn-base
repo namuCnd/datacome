@@ -1,0 +1,74 @@
+package com.univeramall.manager.dao.impl;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.univeramall.generic.dao.impl.CrudDaoImpl;
+import com.univeramall.manager.dao.ManagerDao;
+import com.univeramall.manager.domain.Manager;
+import com.univeramall.manager.domain.ManagerParam;
+
+/**
+ * <pre>
+ * Manager Dao Impl
+ * </pre>
+ * @FileName ManagerDaoImpl.java
+ * @Package com.univeramall.manager.dao.impl
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2015. 9. 23.
+ * 
+ */
+@Repository
+public class ManagerDaoImpl extends CrudDaoImpl<ManagerParam, Manager, Manager, Manager>implements ManagerDao {
+
+	@Autowired
+	public ManagerDaoImpl(SqlSessionTemplate sqlSessionTemplate) {
+		super(sqlSessionTemplate);
+		this.setNamespace("manager");
+	}
+	
+	/**
+	 * <pre>
+	 * 로그인 정보 select
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 14.
+	 * @param manager
+	 * @return
+	 * @throws Exception
+	 */
+	public Manager readSignin(Manager manager) throws Exception {
+		return sqlSessionTemplate.selectOne(this.getNamespace() + ".readSignin", manager);
+	}
+
+	public Integer loginInfoEdit(Manager manager){
+		return sqlSessionTemplate.update(this.getNamespace() + ".logininfoedit", manager);
+	}
+	
+	public Integer insertMngrLog(Manager manager){
+		return sqlSessionTemplate.insert(this.getNamespace() + ".insertMngrLog", manager);
+	}
+	
+	public Integer insertMngrFail(Manager manager){
+		return sqlSessionTemplate.insert(this.getNamespace() + ".insertMngrFail", manager);
+	}
+	
+	public Integer readFailManager(Manager manager){
+		return sqlSessionTemplate.selectOne(this.getNamespace() + ".readFailManager", manager);
+	}
+	
+	public String readFailTimeoverManager(Manager manager){
+		return sqlSessionTemplate.selectOne(this.getNamespace() + ".readFailTimeoverManager", manager);
+	}
+	
+	public Integer deleteManagerFailLogin(Manager manager){
+		return sqlSessionTemplate.selectOne(this.getNamespace() + ".deleteManagerFailLogin", manager);
+	}
+	
+	public Integer deleteLoginFail(){
+		return sqlSessionTemplate.selectOne(this.getNamespace() + ".deleteLoginFail");
+	}
+	
+}

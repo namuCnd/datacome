@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/common/converter
+END
+StringToFloatConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/common/converter/StringToFloatConverter.java
+END
+StringToShortConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/common/converter/StringToShortConverter.java
+END
+StringToIntegerConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/common/converter/StringToIntegerConverter.java
+END
+StringToLongConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/common/converter/StringToLongConverter.java
+END
+StringToDoubleConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/common/converter/StringToDoubleConverter.java
+END

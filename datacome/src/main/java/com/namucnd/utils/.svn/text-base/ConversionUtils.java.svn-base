@@ -1,0 +1,161 @@
+package com.univeramall.utils;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import com.univeramall.code.domain.Code;
+import com.univeramall.code.domain.CodeResult;
+
+/**
+ * <pre>
+ * 코드 변환 utility
+ * </pre>
+ * @FileName ConversionUtils.java
+ * @Package com.univeramall.utils
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2014. 1. 12. 
+ */
+public class ConversionUtils extends StringEscapeUtils {
+
+	/**
+	 * <pre>
+	 * 코드 변환 
+	 * </pre>
+	 * @Constructor
+	 * @author Sorcerer.Picoo
+	 * @since 2013. 10. 12. 
+	 */
+	public ConversionUtils() {
+
+	}
+
+	public static String getCodeName(List<CodeResult> codeList, String value) {
+		String output = null;
+
+		if (StringUtils.isEmpty(value)) return output;
+
+		try {
+			for (CodeResult codeResult : codeList) {
+				Code code = codeResult.getDetail();
+				
+				if (StringUtils.equals(code.getCode_value(), value)) {
+					output = code.getCode_name();
+				}
+			}
+		} catch (Exception e) {
+			return output;
+		}
+		return output;
+	}
+	
+	public static boolean isExists(String[] ar, String value) {
+		if (StringUtils.isEmpty(value)) return false;
+		
+		try {
+			for (String v : ar) {
+				
+				if (StringUtils.equals(v, value)) {
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return false;
+	}
+	
+
+	
+	public static int getAgeDate(Date birthday) {
+
+	    Calendar birth = new GregorianCalendar();
+	    Calendar today = new GregorianCalendar();
+
+	    birth.setTime(birthday);
+	    today.setTime(new Date());
+
+	    int factor = 0;
+	    if (
+	    		today.get(Calendar.MONTH) < birth.get(Calendar.MONTH)
+	    		||
+	    		(
+	    			today.get(Calendar.MONTH) == birth.get(Calendar.MONTH)
+	    			&&
+	    			today.get(Calendar.DAY_OF_YEAR) < birth.get(Calendar.DAY_OF_YEAR)
+	    		)
+	    ) {
+	        factor = -1;
+	    }
+	    return today.get(Calendar.YEAR) - birth.get(Calendar.YEAR) + factor;
+	}
+	public static int getAge(String birthday) {
+
+		int year = 0;
+		int month = 0;
+		int date = 0;
+		
+		if( StringUtils.length(birthday) == 8 )
+		{
+			year = Integer.parseInt(birthday.substring(0, 4));
+			month = Integer.parseInt(birthday.substring(4, 6))-1;
+			date = Integer.parseInt(birthday.substring(6, 8));
+		} else {
+			return 0;
+		}
+		Calendar birth = new GregorianCalendar();
+		birth.set(year, month, date);
+		
+	    return getAgeDate(birth.getTime());
+	}
+
+	public static String escapeNonHtml(String input) {
+		//ESCAPE_ECMASCRIPT.translate(input);
+
+		return input;
+	}
+
+	public static String unescapeNonHtml(String input) {
+		//ESCAPE_ECMASCRIPT.translate(input);
+
+		return input;
+	}
+	
+	public static String strCut(String str, int len, String appendStr) {
+		 // String 을 byte 길이 만큼 자르기.
+
+		    int retLength = 0;
+		    int tempSize = 0;
+		    int asc;
+		    if(str == null || "".equals(str) || "null".equals(str)){
+		        str = "";
+		    }
+
+		    int length = str.length();
+
+		    for (int i = 1; i <= length; i++) {
+		        asc = (int) str.charAt(i - 1);
+		        if (asc > 127) {
+		            if (len >= tempSize + 2) {
+		                tempSize += 2;
+		                retLength++;
+		            } else {
+		                return str.substring(0, retLength) + appendStr;
+		            }
+		        } else {
+		            if (len > tempSize) {
+		                tempSize++;
+		                retLength++;
+		            }
+		        }
+		    }
+
+		    return str.substring(0, retLength);
+		}
+
+}

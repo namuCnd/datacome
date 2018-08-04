@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/univeramall_2018/!svn/ver/139/base_univeramall_2018/src/main/java/com/univeramall/manager/service
+END
+MenuRoleService.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/univeramall_2018/!svn/ver/139/base_univeramall_2018/src/main/java/com/univeramall/manager/service/MenuRoleService.java
+END
+RoleService.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/univeramall_2018/!svn/ver/139/base_univeramall_2018/src/main/java/com/univeramall/manager/service/RoleService.java
+END
+ManagerService.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/univeramall_2018/!svn/ver/139/base_univeramall_2018/src/main/java/com/univeramall/manager/service/ManagerService.java
+END
+ManagerRoleService.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/univeramall_2018/!svn/ver/139/base_univeramall_2018/src/main/java/com/univeramall/manager/service/ManagerRoleService.java
+END

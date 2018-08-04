@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/univeramall_2018/!svn/ver/1819/base_univeramall_2018/src/main/java/com/univeramall/user/domain
+END
+ValidFindId.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/univeramall_2018/!svn/ver/321/base_univeramall_2018/src/main/java/com/univeramall/user/domain/ValidFindId.java
+END
+MypageSignin.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/univeramall_2018/!svn/ver/655/base_univeramall_2018/src/main/java/com/univeramall/user/domain/MypageSignin.java
+END
+ValidFindPw.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/univeramall_2018/!svn/ver/321/base_univeramall_2018/src/main/java/com/univeramall/user/domain/ValidFindPw.java
+END
+FindAccountParam.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/univeramall_2018/!svn/ver/771/base_univeramall_2018/src/main/java/com/univeramall/user/domain/FindAccountParam.java
+END
+Users.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/univeramall_2018/!svn/ver/2205/base_univeramall_2018/src/main/java/com/univeramall/user/domain/Users.java
+END
+UsersGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/univeramall_2018/!svn/ver/208/base_univeramall_2018/src/main/java/com/univeramall/user/domain/UsersGroup.java
+END
+UsersParam.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/univeramall_2018/!svn/ver/1819/base_univeramall_2018/src/main/java/com/univeramall/user/domain/UsersParam.java
+END
+EditPassword.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/univeramall_2018/!svn/ver/726/base_univeramall_2018/src/main/java/com/univeramall/user/domain/EditPassword.java
+END
+FindAccount.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/univeramall_2018/!svn/ver/321/base_univeramall_2018/src/main/java/com/univeramall/user/domain/FindAccount.java
+END
+UsersMain.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/univeramall_2018/!svn/ver/2/base_univeramall_2018/src/main/java/com/univeramall/user/domain/UsersMain.java
+END

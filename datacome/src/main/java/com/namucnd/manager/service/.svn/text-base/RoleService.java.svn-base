@@ -1,0 +1,21 @@
+package com.univeramall.manager.service;
+
+import com.univeramall.generic.service.CrudService;
+import com.univeramall.manager.dao.RoleDao;
+import com.univeramall.manager.domain.Role;
+import com.univeramall.manager.domain.RoleParam;
+
+/**
+ * <pre>
+ * Role Service
+ * </pre>
+ * @FileName RoleService.java
+ * @Package com.univeramall.manager.service
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2015. 9. 23.
+ * 
+ */
+public interface RoleService extends CrudService<RoleParam, Role, Role, Role, RoleDao> {
+
+}

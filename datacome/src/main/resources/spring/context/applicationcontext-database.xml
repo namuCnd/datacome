@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		">
+ 
+	<!-- Read Properties -->
+	<util:properties id="globals" location="classpath:config/globals.properties" />
+	<util:properties id="datasource" location="classpath:config/datasource.properties" />
+
+	<!-- DataSource Configuration -->
+	<bean id="dataSource_local" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="#{datasource['datasource.local.driverClass']}"/>
+		<property name="url" value="#{datasource['datasource.local.jdbcUrl']}"/>
+		<property name="username" value="#{datasource['datasource.local.user']}"/>
+		<property name="password" value="#{datasource['datasource.local.password']}"/>
+	</bean>
+	<bean id="dataSource_dev" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="#{datasource['datasource.dev.driverClass']}"/>
+		<property name="url" value="#{datasource['datasource.dev.jdbcUrl']}"/>
+		<property name="username" value="#{datasource['datasource.dev.user']}"/>
+		<property name="password" value="#{datasource['datasource.dev.password']}"/>
+	</bean>
+	<!-- <bean id="dataSource_live" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="#{datasource['datasource.live.driverClass']}"/>
+		<property name="url" value="#{datasource['datasource.live.jdbcUrl']}"/>
+		<property name="username" value="#{datasource['datasource.live.user']}"/>
+		<property name="password" value="#{datasource['datasource.live.password']}"/>
+	</bean> -->
+
+	<!--// DataSource Configuration -->
+
+	<!-- Mybatis -->
+	<!-- Mybatis SessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_#{globals['svr.id']}" />
+		<property name="configLocation" value="classpath:sqlmap/config/sqlmap-config.xml" />
+		<property name="mapperLocations" value="classpath*:sqlmap/context/**/mapper-*.xml"/>
+	</bean>
+	
+	<!-- Myatis sessionTemplate (sqlSession) -->
+	<!-- destroy-method=clearCache 강제종료시 생기는 에러 제거
+		Invocation of destroy method 'close' failed on ... -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- // Mybatis -->
+	
+	<!-- Activates @Transactional for DefaultImageDatabase -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- Transaction Manager -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_#{globals['svr.id']}"/>
+	</bean>
+
+</beans>

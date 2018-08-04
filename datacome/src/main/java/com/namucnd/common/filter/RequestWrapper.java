@@ -1,0 +1,89 @@
+/**
+ * 
+ */
+package com.namucnd.common.filter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+
+import org.springframework.web.util.HtmlUtils;
+
+/**
+ * @prjectName : 삼성물산 gfom
+ * @Package : com.samsungcnt.gfom.common.filter
+ * @FileName : RequestWrapper.java
+ * @Class : RequestWrapper
+ * @since : 2012. 4. 2.
+ * @author : jungjinman
+ * @Description : http://greatwebguy.com/programming/java/simple-cross-site-scripting-xss-servlet-filter/
+ * @Modification Information
+ * 
+ *               <pre>
+ * << 개정이력(Modification Information) >>
+ *   
+ *   수정일      수정자           수정내용
+ *  -------    --------    ---------------------------
+ *  2012. 4. 2.		jungjinman       신규개발
+ * 
+ * @Copyright (C) 삼성물산(주) All right reserved.
+ * 
+ *               <pre>
+ */
+public class RequestWrapper extends HttpServletRequestWrapper {
+
+	/**
+	 * @Constructor
+	 * @Date : 2012. 4. 2.
+	 * @Author : jungjinman
+	 * @param request
+	 * @Description :
+	 * 
+	 */
+	public RequestWrapper(HttpServletRequest request) {
+		super(request);
+	}
+
+	public String[] getParameterValues(String parameter) {
+		String[] values = super.getParameterValues(parameter);
+		if (values == null) {
+			return null;
+		}
+		int count = values.length;
+		String[] encodedValues = new String[count];
+		for (int i = 0; i < count; i++) {
+			encodedValues[i] = cleanXSS(values[i]);
+		}
+		return encodedValues;
+	}
+
+	public String getParameter(String parameter) {
+		String value = super.getParameter(parameter);
+		if (value == null) {
+			return null;
+		}
+		return cleanXSS(value);
+	}
+
+	public String getHeader(String name) {
+		String value = super.getHeader(name);
+		if (value == null)
+			return null;
+		return cleanXSS(value);
+	}
+
+	private String cleanXSS(String value) {
+		// You'll need to remove the spaces from the html entities below
+		/*
+		value = value.replaceAll("<", "& lt;").replaceAll(">", "& gt;");
+		value = value.replaceAll("\\(", "& #40;").replaceAll("\\)", "& #41;");
+		value = value.replaceAll("'", "& #39;");
+		value = value.replaceAll("eval\\((.*)\\)", "");
+		value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']",
+				"\"\"");
+		value = value.replaceAll("script", "");
+		*/
+		value = HtmlUtils.htmlEscape(value);
+		return value;
+	}
+
+}

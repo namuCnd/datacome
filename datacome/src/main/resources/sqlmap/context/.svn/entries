@@ -1,0 +1,220 @@
+10
+
+dir
+2007
+https://210.183.92.239:80/svn/univeramall_2018/base_univeramall_2018/src/main/resources/sqlmap/context
+https://210.183.92.239:80/svn/univeramall_2018
+
+
+
+2018-06-12T08:54:38.888851Z
+1983
+ahab_02
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5cff9849-1e2e-d24f-b819-63e33b4ca8f9
+
+admin_rating
+dir
+
+agent
+dir
+
+agentEvent
+dir
+
+agentEventReq
+dir
+
+appinf
+dir
+
+banner
+dir
+
+batch
+dir
+
+batchlog
+dir
+
+bizcounsel
+dir
+
+brand
+dir
+
+cart
+dir
+
+cert
+dir
+
+certification
+dir
+
+chars
+dir
+
+code
+dir
+
+counsel
+dir
+
+coupon
+dir
+
+couponissue
+dir
+
+couponissuegoods
+dir
+
+couponissueuser
+dir
+
+customercoupon
+dir
+
+customercouponoption
+dir
+
+deliverycompany
+dir
+
+detail
+dir
+
+dormant
+dir
+
+email
+dir
+
+event
+dir
+
+faq
+dir
+
+files
+dir
+
+gdreview
+dir
+
+goods
+dir
+
+goodsgroup
+dir
+
+grade
+dir
+
+heal
+dir
+
+icon
+dir
+
+inventory
+dir
+
+manager
+dir
+
+menu
+dir
+
+mileage
+dir
+
+mileagegoods
+dir
+
+mypage
+dir
+
+notice
+dir
+
+order
+dir
+
+orgoods
+dir
+
+point
+dir
+
+policy
+dir
+
+popup
+dir
+
+push
+dir
+
+qna
+dir
+
+sample
+dir
+
+security
+dir
+
+sequence
+dir
+
+setting
+dir
+
+sms
+dir
+
+sns
+dir
+
+statistics
+dir
+
+template
+dir
+
+up
+dir
+
+uporder
+dir
+
+user
+dir
+
+usercomment
+dir
+
+wishlist
+dir
+
+withdraw
+dir
+
+zipcode
+dir
+

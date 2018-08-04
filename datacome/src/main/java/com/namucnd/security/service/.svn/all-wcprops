@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/univeramall_2018/!svn/ver/1864/base_univeramall_2018/src/main/java/com/univeramall/security/service
+END
+CustomizedUserDetailsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/univeramall_2018/!svn/ver/1719/base_univeramall_2018/src/main/java/com/univeramall/security/service/CustomizedUserDetailsService.java
+END
+CustomizedManagerDetailsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/univeramall_2018/!svn/ver/138/base_univeramall_2018/src/main/java/com/univeramall/security/service/CustomizedManagerDetailsService.java
+END
+HierarchyStringFactoryBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/univeramall_2018/!svn/ver/14/base_univeramall_2018/src/main/java/com/univeramall/security/service/HierarchyStringFactoryBean.java
+END
+CustomizedFilterSecurityMetadataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/univeramall_2018/!svn/ver/1864/base_univeramall_2018/src/main/java/com/univeramall/security/service/CustomizedFilterSecurityMetadataSource.java
+END

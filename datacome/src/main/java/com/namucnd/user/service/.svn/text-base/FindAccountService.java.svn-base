@@ -1,0 +1,32 @@
+package com.univeramall.user.service;
+
+import com.univeramall.generic.service.CrudService;
+import com.univeramall.user.dao.FindAccountDao;
+import com.univeramall.user.domain.EditPassword;
+import com.univeramall.user.domain.FindAccount;
+import com.univeramall.user.domain.FindAccountParam;
+
+/**
+ * <pre>
+ * 아이디/비밀번호 찾기Service
+ * </pre>
+ * @FileName FindAccountService.java
+ * @Package com.univeramall.user.service
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2018. 3. 15.
+ * 
+ */
+public interface FindAccountService extends CrudService<FindAccountParam, FindAccount, FindAccount, FindAccount, FindAccountDao> {
+
+	/**
+	 * <pre>
+	 * 비밀번호 찾기
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 16.
+	 * @param findAccountParam
+	 * @return
+	 */
+	public EditPassword readOne(FindAccountParam findAccountParam);
+}

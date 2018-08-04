@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		">
+
+	<!-- Session Locale Resolver -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+
+	<!-- Theme Resolver -->
+	<bean id="themeResolver" class="org.springframework.web.servlet.theme.SessionThemeResolver">
+		<property name="defaultThemeName" value="default" />
+	</bean>
+
+	<!-- Multipart Resolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="200000000"/>
+	</bean>
+	<!-- // Multipart Resolver -->
+	
+
+	<!-- 1. Tiles View -->
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+		<property name="order" value="2"/>
+	</bean>
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="3"/>
+	</bean>
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath*:tiles/config/tiles-*.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 2. JSP View -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/tiles/views" />
+		<property name="suffix" value="" />
+		<property name="order" value="4"/>
+	</bean>
+
+	<!-- 3. XML View -->
+	<bean id="xmlView" class="org.springframework.web.servlet.view.xml.MarshallingView">
+		<property name="marshaller" ref="xmlMarshaller"/>
+		<property name="contentType" value="application/xml;charset=UTF-8" />
+	</bean>
+	<bean id="xmlMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+		<property name="autodetectAnnotations" value="true"/>
+		<!-- Prevent Double under-bar -->
+		<property name="streamDriver">
+			<bean class="com.thoughtworks.xstream.io.xml.XppDriver">
+				<constructor-arg>
+					<bean class="com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder">
+						<constructor-arg index="0" value="_-"/>
+						<constructor-arg index="1" value="_"/>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</property>
+		<!-- xstream.setMode(XStream.NO_REFERENCES) -->
+		<property name="mode">
+			<util:constant static-field="com.thoughtworks.xstream.XStream.NO_REFERENCES"/>
+		</property>
+	</bean>
+
+	<!-- 4. Json View -->
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<property name="objectMapper">
+		
+			<!-- sets datetime format  -->
+			<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+				<property name="targetObject">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper"/>
+				</property>
+				<property name="targetMethod" value="disable"/>
+				<property name="arguments" value="WRITE_DATES_AS_TIMESTAMPS"/>
+			</bean>
+		</property>
+		<property name="contentType" value="text/plain"/>
+	</bean>
+
+	<!-- 5. Exception Resolver -->
+	<!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="uncaughtException"/>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">/error/common</prop>
+			</props>
+		</property>
+	</bean> -->
+
+</beans>

@@ -1,0 +1,5 @@
+package com.univeramall.user.domain;
+
+public interface ValidFindId {
+
+}

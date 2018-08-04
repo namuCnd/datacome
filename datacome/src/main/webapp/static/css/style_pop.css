@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+/* reset */
+html{overflow-y:scroll;}
+html, body { margin:0; padding:0; }
+body { font-family: 'Nanum Gothic', '나눔고딕', 'dotum', '돋움', Arial; font-size:12px; line-height:normal; color:#777; letter-spacing:-0.5px;}
+div, p, ul, ol, li, dl, dt, dd, form, fieldset, button, blockquote, table, th, td, h1, h2, h3, h4, h5, h6 { margin:0; padding:0; }
+form, input, select, textarea { font-family: 'Nanum Gothic', '나눔고딕', '돋움',dotum, Arial; font-size: 13px; color:#8c8c8c; }
+table { width: 100%; border-collapse:collapse; }
+table .hide { text-indent:-9999px; overflow:hidden; display:none; }
+ul, li { list-style:none; }
+button {  border:0; margin:0; padding:0; cursor:pointer; outline-style:none; }
+img { border:0; }
+address, em { font-style:normal; }
+fieldset { border:none; }
+textarea { resize:none; }
+caption, legend { visibility: hidden; font-size: 0; width: 0; height: 0; }
+a { color:#8c8c8c; text-decoration:none; cursor:pointer; }
+a:hover { text-decoration:none; cursor:pointer; }
+.blind { margin:0; padding:0; width:0; height:0; line-height:0; visibility:hidden; }
+
+.sectionTit, .sectionTit02 { margin-bottom: 10px; padding-left: 10px; background: url('../images/bul_dot03.gif') no-repeat left 5px;  font-size: 13px; color: #333; }
+
+#popWrap { position: relative; padding: 20px; }
+.popTit { margin-bottom: 20px; font-size: 15px; color: #333; }
+.popCon:after { display: block; clear: both; content: ''; }
+.popBtnArea { position: relative; }
+.popBtnArea .btnWrap { position: absolute; right: 0; bottom: 5px; }
+
+
+#popWrap .bottom{ position:fixed; left:0; bottom:0; width:100%; margin-top:10px; padding:10px 6px; background-color:#c2c2c2; color:#fff; }
+#popWrap .bottom button{ position:absolute; right:20px; bottom:11px; padding:2px 3px; font-size:12px;}
+ 
+/* 유니베라팝업 
+.univeraPopup{ position:fixed; top:80px; left:50%; width:500px; margin-left:-250px; padding:10px; background-color:#fff; border-radius: 20px; z-index:103; }
+*/
+.adPopup{ width:100%; height:100%; z-index:103; }
+.adPopup .popInner{ position:absolute; top:80px; left:50%; width:500px; margin-left:-250px; padding:10px; background-color:#fff; border-radius: 20px; z-index:103; }
+
+.adPopup .bottom{ position:absolute; left:0; bottom:20px; width:100%; padding:10px 6px; }
+.adPopup .bottom button{ position:absolute; right:20px; bottom:11px;  padding:2px 3px; font-size:12px;}
+.adPopup2 .popInner{ border:1px solid #eee;}
+
+#popWrap .turn {padding-bottom:30px;}
+.adPopup .turn { overflow-y:auto; height:75%; padding-top: 20px; margin-top: 20px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;}
+
+.dimm{background: #000; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: .6; filter: alpha(opacity="60"); display:none; z-index:101; }
+
+
+
+.ad2Popup .popInner{ width:500px;  padding:10px; background-color:#fff; border-radius: 20px; z-index:103; border:1px solid #eee; }
+.ad2Popup .bottom{ margin-top:200px; padding:10px 6px; }
+.ad2Popup .bottom button{ float:right; padding:2px 3px; font-size:12px;}
+
+

@@ -1,0 +1,40 @@
+package com.univeramall.security.domain;
+
+import com.univeramall.user.domain.Users;
+
+/**
+ * 본인인증 Domain
+ * @author Administrator
+ *
+ */
+public class AuthenticationMethod extends Users {
+
+	private static final long serialVersionUID = -1957108925840753417L;
+
+	String reqSeq;
+
+	String method;
+	
+	public String getReqSeq() {
+		return reqSeq;
+	}
+
+	public void setReqSeq(String reqSeq) {
+		this.reqSeq = reqSeq;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	@Override
+	public String toString() {
+		return "AuthenticationMethod [method=" + method + super.toString() + "]";
+	}
+
+	
+}

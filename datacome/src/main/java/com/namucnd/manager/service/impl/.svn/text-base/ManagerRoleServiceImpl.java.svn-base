@@ -1,0 +1,59 @@
+package com.univeramall.manager.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.univeramall.generic.service.impl.CrudServiceImpl;
+import com.univeramall.manager.dao.ManagerRoleDao;
+import com.univeramall.manager.domain.Manager;
+import com.univeramall.manager.domain.ManagerRole;
+import com.univeramall.manager.domain.ManagerRoleParam;
+import com.univeramall.manager.service.ManagerRoleService;
+
+/**
+ * <pre>
+ * Manager Role Service implementation
+ * </pre>
+ * @FileName ManagerRoleServiceImpl.java
+ * @Package com.univeramall.manager.service.impl
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2015. 9. 23.
+ * 
+ */
+@Service
+public class ManagerRoleServiceImpl extends CrudServiceImpl<ManagerRoleParam, ManagerRole, ManagerRole, ManagerRole, ManagerRoleDao>
+		implements ManagerRoleService {
+
+	@Autowired
+	public ManagerRoleServiceImpl(ManagerRoleDao dao) {
+		super(dao);
+	}
+
+	/**
+	 * <pre>
+	 * 관리자 role 추가 (list input)
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 19.
+	 * @param manager
+	 * @return
+	 */
+	public Integer addList(Manager manager) {
+		return dao.addList(manager);
+	}
+	
+	/**
+	 * <pre>
+	 * 관리자 role 삭제
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 19.
+	 * @param manager
+	 * @return
+	 */
+	public Integer removeList(Manager manager) {
+		return dao.removeList(manager);
+	}
+	
+}

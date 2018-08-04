@@ -1,0 +1,43 @@
+package com.univeramall.manager.service;
+
+import com.univeramall.generic.service.CrudService;
+import com.univeramall.manager.dao.ManagerRoleDao;
+import com.univeramall.manager.domain.Manager;
+import com.univeramall.manager.domain.ManagerRole;
+import com.univeramall.manager.domain.ManagerRoleParam;
+
+/**
+ * <pre>
+ * Manager Role Service
+ * </pre>
+ * @FileName ManagerRoleService.java
+ * @Package com.univeramall.manager.service
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2015. 9. 23.
+ * 
+ */
+public interface ManagerRoleService extends CrudService<ManagerRoleParam, ManagerRole, ManagerRole, ManagerRole, ManagerRoleDao> {
+
+	/**
+	 * <pre>
+	 * 관리자 role 추가 (list input)
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 19.
+	 * @param manager
+	 * @return
+	 */
+	public Integer addList(Manager manager);
+	
+	/**
+	 * <pre>
+	 * 관리자 role 삭제
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 19.
+	 * @param manager
+	 * @return
+	 */
+	public Integer removeList(Manager manager);
+}

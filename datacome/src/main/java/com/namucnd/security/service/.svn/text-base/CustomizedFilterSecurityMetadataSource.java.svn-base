@@ -1,0 +1,163 @@
+package com.univeramall.security.service;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.SecurityConfig;
+import org.springframework.security.web.FilterInvocation;
+import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
+
+import com.univeramall.manager.dao.MenuRoleDao;
+import com.univeramall.manager.dao.RoleDao;
+import com.univeramall.manager.domain.MenuRole;
+import com.univeramall.manager.domain.MenuRoleParam;
+import com.univeramall.manager.domain.Role;
+
+/**
+ * <pre>
+ * 관리자 권한처리 
+ * 메뉴별 권한을 불러와서 현재 접속된 페이지(url)의 권한을 security에 전달.
+ * </pre>
+ * @FileName CustomizedFilterSecurityMetadataSource.java
+ * @Package com.univeramall.security.service
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2018. 1. 10.
+ * 
+ */
+public class CustomizedFilterSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
+
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	private MenuRoleDao menuRoleDao;
+
+	private RoleDao roleDao;
+
+	/**
+	 * <pre>
+	 * autowired가 먹지 않아서 security.xml에 수동등록
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 1. 11.
+	 * @param menuRoleService
+	 */
+	public void setMenuRoleDao(MenuRoleDao menuRoleDao) {
+		this.menuRoleDao = menuRoleDao;
+	}
+
+	/**
+	 * <pre>
+	 * 현재 접속된 URL에서 사용가능한 Role List를 security에 전달
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 1. 11.
+	 * @param object
+	 * @return
+	 * @throws IllegalArgumentException
+	 */
+	@Override
+	public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
+		
+		/**
+		 * 1. 현재 접속되어 있는 URL 조회
+		 */
+		FilterInvocation fi = (FilterInvocation) object;
+		String url = fi.getRequestUrl();
+		List<ConfigAttribute> attributes = new ArrayList<ConfigAttribute>();
+		
+		List<MenuRole> menuRoleList = null;
+		/**
+		 * 2. URL 정리 (파일명과 파일확장자 제거)
+		 * /test/readList.do --> /test 여기까지만 사용.
+		 */
+		MenuRoleParam menuRoleParam = new MenuRoleParam();
+		
+		/**
+		 * /root string을 붙여야 함.
+		 * XXS_AD_MENU 최상위 노드가 root인데
+		 * 실제 URL에는 /root가 들어가지 않기 때문에 URL과 메뉴ID 구조를 맞추기 위해 root를 붙임. 
+		 */
+		menuRoleParam.setReqestUrl("/root" + StringUtils.substring(url, 0, StringUtils.lastIndexOf(url, "/")));
+		
+		/**
+		 * 3. 해당 URL에서 사용가능한 ROLE 검색
+		 */
+		// url이 비어있을 경우 검사하지 않음
+		if (StringUtils.isEmpty(menuRoleParam.getReqestUrl())) return attributes;
+		
+		try {
+			menuRoleList = menuRoleDao.readAllList(menuRoleParam);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		/**
+		 * 4. 조회된 ROLE을 Spring attribute에 담음.
+		 */
+		if(menuRoleList!=null) {
+			for(MenuRole menuRole: menuRoleList) {
+				/**
+				 * Spring security설정상 모든 role앞에 role_를 붙이는 것이 디폴트임
+				 * (필요시 spring security 설정 수정을 통해 제거 가능)
+				 */
+				attributes.add(new SecurityConfig("ROLE_"+menuRole.getRole_id()));
+			}
+		} else {
+			/**
+			 * 4.1. Admin일 경우 강제 권한 부여
+			 */
+				attributes.add(new SecurityConfig("ROLE_ADMIN"));
+		}
+		
+		/**
+		 * 5. 모든 사용자에게 권한을 줘야 하는 경우 
+		 */
+		/**
+		 * 4.1. 특정디렉토리 권한 강제 부여
+		 */
+		if(StringUtils.contains(menuRoleParam.getReqestUrl(), "/common")
+				||StringUtils.contains(menuRoleParam.getReqestUrl(), "/inventory/groupmgmt/group")) {
+			try {
+				List<Role> roleList = roleDao.readRoleList();
+				
+				for(Role role: roleList) {
+					attributes.add(new SecurityConfig("ROLE_"+role.getRole_id()));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		/**
+		 * 5. 현재 URL에 접속가능한 권한을 리턴
+		 */
+		return attributes;
+	}
+
+	@Override
+	public boolean supports(Class<?> clazz) {
+		return FilterInvocation.class.isAssignableFrom(clazz);
+	}
+
+	@Override
+	public Collection<ConfigAttribute> getAllConfigAttributes() {
+		return null;
+	}
+
+	public RoleDao getRoleDao() {
+		return roleDao;
+	}
+
+	public void setRoleDao(RoleDao roleDao) {
+		this.roleDao = roleDao;
+	}
+
+}

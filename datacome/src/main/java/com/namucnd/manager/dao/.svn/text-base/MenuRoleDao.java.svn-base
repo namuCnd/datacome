@@ -1,0 +1,68 @@
+package com.univeramall.manager.dao;
+
+import java.util.List;
+
+import com.univeramall.generic.dao.CrudDao;
+import com.univeramall.manager.domain.Manager;
+import com.univeramall.manager.domain.ManagerRole;
+import com.univeramall.manager.domain.MenuRole;
+import com.univeramall.manager.domain.MenuRoleParam;
+import com.univeramall.manager.domain.Role;
+import com.univeramall.menu.domain.Menu;
+
+/**
+ * <pre>
+ * Menu Role Dao
+ * </pre>
+ * @FileName MenuRoleDao.java
+ * @Package com.univeramall.menu.dao
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2015. 9. 23.
+ * 
+ */
+public interface MenuRoleDao extends CrudDao<MenuRoleParam, MenuRole, MenuRole, MenuRole> {
+
+	/**
+	 * <pre>
+	 * 메뉴기반 권한 정보
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 21.
+	 * @param menuRoleParam
+	 * @return
+	 */
+	public List<MenuRole> readRoleByMenuList (MenuRole menuRole);
+
+	/**
+	 * <pre>
+	 * 메뉴별 권한 추가 (list input)
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 19.
+	 * @param manager
+	 * @return
+	 */
+	public Integer addList(Role role);
+	
+	/**
+	 * <pre>
+	 * 메뉴별 권한 삭제
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 19.
+	 * @param manager
+	 * @return
+	 */
+	public Integer removeList(Role role);
+	
+	public Integer add(MenuRole menuRole);
+	
+	public Integer remove(MenuRole menuRole);
+
+	public Integer removeMngRole(MenuRole menuRole);
+
+	public List<ManagerRole> roleIdCheck(ManagerRole managerRole);
+	
+	public Integer addMngRole(ManagerRole managerRole);
+}

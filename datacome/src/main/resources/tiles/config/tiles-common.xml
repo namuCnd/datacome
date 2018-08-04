@@ -1,0 +1,15 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- default layout -->	
+	<definition name="default" template="/WEB-INF/tiles/layout/default/default.jsp">
+		<put-attribute name="default.head" value="/WEB-INF/tiles/layout/default/head.jsp" />
+	</definition>	
+	<!-- // default page layout -->
+
+	<!-- 기본  layout (마일리지, 이벤트, .. <div id="container"> 부분에 class가 없는 페이지) -->
+	<definition name="**.default" extends="default">
+		<put-attribute name="default.body" value="/WEB-INF/tiles/views{1}.jsp" cascade="true"/>
+	</definition>
+	
+</tiles-definitions>

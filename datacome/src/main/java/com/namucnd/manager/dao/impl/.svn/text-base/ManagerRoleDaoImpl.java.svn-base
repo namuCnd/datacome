@@ -1,0 +1,59 @@
+package com.univeramall.manager.dao.impl;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.univeramall.generic.dao.impl.CrudDaoImpl;
+import com.univeramall.manager.dao.ManagerRoleDao;
+import com.univeramall.manager.domain.Manager;
+import com.univeramall.manager.domain.ManagerRole;
+import com.univeramall.manager.domain.ManagerRoleParam;
+
+/**
+ * <pre>
+ * Manager Role Dao implementation
+ * </pre>
+ * @FileName ManagerRoleDaoImpl.java
+ * @Package com.univeramall.manager.dao.impl
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2015. 9. 23.
+ * 
+ */
+@Repository
+public class ManagerRoleDaoImpl extends CrudDaoImpl<ManagerRoleParam, ManagerRole, ManagerRole, ManagerRole>implements ManagerRoleDao {
+
+	@Autowired
+	public ManagerRoleDaoImpl(SqlSessionTemplate sqlSessionTemplate) {
+		super(sqlSessionTemplate);
+		this.setNamespace("managerRole");
+	}
+
+	/**
+	 * <pre>
+	 * 관리자 role 추가 (list input)
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 19.
+	 * @param manager
+	 * @return
+	 */
+	public Integer addList(Manager manager) {
+		return sqlSessionTemplate.insert(this.getNamespace() + ".addList", manager);
+	}
+	
+	/**
+	 * <pre>
+	 * 관리자 role 삭제
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 2. 19.
+	 * @param manager
+	 * @return
+	 */
+	public Integer removeList(Manager manager) {
+		return sqlSessionTemplate.delete(this.getNamespace() + ".removeList", manager);
+	}
+
+}

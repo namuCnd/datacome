@@ -1,0 +1,182 @@
+package com.univeramall.user.dao.impl;
+
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.univeramall.generic.dao.impl.CrudDaoImpl;
+import com.univeramall.user.dao.UsersDao;
+import com.univeramall.user.domain.EditPassword;
+import com.univeramall.user.domain.Users;
+import com.univeramall.user.domain.UsersParam;
+
+/**
+ * <pre>
+ * Users dao
+ * </pre>
+ * @FileName UsersDaoImpl.java
+ * @Package com.univeramall.user.dao.impl
+ * @Organization 
+ * @author Sorcerer.Picoo
+ * @since 2018. 2. 26.
+ * 
+ */
+@Repository
+public class UsersDaoImpl extends CrudDaoImpl<UsersParam, Users, Users, Users> implements UsersDao {
+
+	@Autowired
+	public UsersDaoImpl(SqlSessionTemplate sqlSessionTemplate) {
+		super(sqlSessionTemplate);
+		this.setNamespace("users");
+	}
+
+	/**
+	 * <pre>
+	 * 중복 아이디 개수
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 20.
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer readIdListCnt(Users users) throws Exception {
+		return sqlSessionTemplate.selectOne(this.getNamespace() + ".readIdListCnt", users);
+	}
+	
+	/**
+	 * <pre>
+	 * UP 변경
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 20.
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer editUp(Users users) throws Exception {
+		return sqlSessionTemplate.update(this.getNamespace() + ".editUp", users);
+	}
+	
+	/**
+	 * <pre>
+	 * 비밀번호 변경
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 20.
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer editPassword(EditPassword editPassword) throws Exception {
+		return sqlSessionTemplate.update(this.getNamespace() + ".editPassword", editPassword);
+	}
+	
+	/**
+	 * <pre>
+	 * 최근 로그인 일자 반영
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 20.
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer editLastLogin(Users users) {
+		return sqlSessionTemplate.update(this.getNamespace() + ".editLastLogin", users);
+	}
+	
+	/**
+	 * <pre>
+	 * 힐링잎 개수
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 22.
+	 * @param usersParam
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer readHealingLeafCnt(UsersParam usersParam) {
+		return sqlSessionTemplate.selectOne(this.getNamespace() + ".readHealingLeafCnt", usersParam);
+	}
+
+	/**
+	 * <pre>
+	 * 이메일 SMS 수신여부
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 22.
+	 * @param users
+	 * @return
+	 */
+	public Users readSendFlag(Users users) {
+		return sqlSessionTemplate.selectOne(this.getNamespace() + ".readSendFlag", users);
+	}
+	
+	/**
+	 * <pre>
+	 * 사용자 기본 주소 변경
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 3. 22.
+	 * @param users
+	 * @return
+	 */
+	public Integer editUserAddress(Users users) {
+		return sqlSessionTemplate.update(this.getNamespace() + ".editUserAddress", users);
+	}
+	
+	/**
+	 * <pre>
+	 * 회원통합 대상자 여부 판단
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 12.
+	 * @param users
+	 * @return
+	 */
+	public Integer readNeedForIntegration(Users users) {
+		return sqlSessionTemplate.selectOne(this.getNamespace() + ".readNeedForIntegration", users);
+	}
+	
+	/**
+	 * <pre>
+	 * 통합대상자 리스트
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 4. 13.
+	 * @param users
+	 * @return
+	 */
+	public List<Users> readIntegrationList(Users users) {
+		return sqlSessionTemplate.selectList(this.getNamespace() + ".readIntegrationList", users);
+	}
+	
+	/**
+	 * <pre>
+	 * 본인인증 유도
+	 * </pre>
+	 * @author Sorcerer.Picoo
+	 * @since 2018. 5. 8.
+	 * @param users
+	 * @return
+	 */
+	public Integer editCert(Users users) {
+		return sqlSessionTemplate.update(this.getNamespace() + ".editCert", users);
+	}
+	
+	/**
+	 * <pre>
+	 * 유니베라 페이 키 갱신
+	 * </pre>
+	 * @author jinu
+	 * @since 2018. 7. 5.
+	 * @param users
+	 * @return
+	 */
+	public Integer editWpayKey(Users users) {
+		return sqlSessionTemplate.update(this.getNamespace() + ".editWpayKey", users);
+	}
+}
