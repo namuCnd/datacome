@@ -38,7 +38,7 @@ public class CustomizedUserDetailsService implements UserDetailsService {
 	 * 로긴 처리부분
 	 * </pre>
 	 * 
-	 * @author Sorcerer.Picoo
+	 * @author jinu
 	 * @since 2015. 9. 22.
 	 * @param username
 	 * @return

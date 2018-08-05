@@ -8,7 +8,7 @@
 </script>
 <c:set var="loginFail" value="${'Bad credentials' ne exception and 'User is disabled' ne exception}" />
 	<!-- Center -->	
-	<form id="signinFrm" name="signinFrm" method="post" action="${pageContext.request.contextPath}/security/signin.do">
+	<form id="signinFrm" name="signinFrm" method="post" action="/j_spring_security_check">
 			<h2 class="blind">컨텐츠 부분</h2>
 			<div class="content">
 				<div class="location">
@@ -38,4 +38,5 @@
 				</div><!-- //section -->
 			</div><!-- //content -->
 			<input type="hidden" name="loginRedirect" value="${loginRedirect}" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>

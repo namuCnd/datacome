@@ -35,7 +35,7 @@ public class SecurityController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/security/signinForm.do")
+	@RequestMapping(value="/security/signinForm")
 	public String signinForm(HttpServletRequest request, ModelMap model, HttpSession session) throws Exception {
 		/**
 		 * 1. login후 이동페이지 정보 저장

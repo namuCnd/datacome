@@ -16,31 +16,35 @@
 
 	<!-- 검사 URL -->
     <security:http use-expressions="true">
-        <security:intercept-url pattern="/security/loginForm.do" access="permitAll" />
+        <security:intercept-url pattern="/security/signinForm.do" access="permitAll" />
         <security:intercept-url pattern="/main/main.do" access="permitAll" />
         <security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
         <security:intercept-url pattern="/**" access="hasAnyRole('USER, ADMIN')" />
         
-        <security:form-login login-page="/security/signinForm.do"
-                    default-target-url="/main/main.do"
-                    authentication-failure-url="/security/signinForm.do?error"
-                    username-parameter="id"
-                    password-parameter="password" />
+        <security:form-login 
+        	login-processing-url="/j_spring_security_check"
+        	login-page="/security/signinForm.do"
+            default-target-url="/main/main.do"
+            authentication-failure-url="/security/signinForm.do?error"
+            username-parameter="loginid"
+            password-parameter="loginpwd" />
+                    
         <security:logout logout-url="/security/logout"
                 logout-success-url="/main/main.do" />
                 
-        <security:access-denied-handler error-page="/security/accessDenied.do" />
+	    <security:access-denied-handler ref="accessDenied "/>
     </security:http>
     
+    <!-- accessDenied -->
+    <beans:bean id="accessDenied" class="com.namucnd.security.handler.CustomizedAccessDeniedHandler">
+		<beans:property name="errorPage" value="/security/accessDenied.do"></beans:property>
+    </beans:bean>
     <!--  provider  -->
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="user" password="password" authorities="ROLE_USER" />
-                <security:user name="admin" password="password" authorities="ROLE_ADMIN" />
-            </security:user-service>
-        </security:authentication-provider>
-    </security:authentication-manager>
+	    <security:authentication-provider user-service-ref="userDetailsService"/>
+	</security:authentication-manager>
+	
+	<beans:bean id="userDetailsService" class="com.namucnd.security.service.CustomizedUserDetailsService"/>
 	
 	<beans:bean id="customizedLogoutSuccessHandler"
 		class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
@@ -60,8 +64,5 @@
 	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" >
 		<beans:constructor-arg name="strength" value="11" />
 	</beans:bean>
-	
-	<!-- 로그인 (권한정보 입력)-->
-	<beans:bean id="userDetailsService" class="com.namucnd.security.service.CustomizedUserDetailsService"/>
 
 </beans:beans>
