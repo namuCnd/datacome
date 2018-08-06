@@ -15,6 +15,7 @@
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <dependent-module archiveName="base_univeramall_2018-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/base_univeramall_2018/base_univeramall_2018">
             <dependency-type>uses</dependency-type>
         </dependent-module>

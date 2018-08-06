@@ -22,42 +22,7 @@
 <body>
     <!-- BEGIN #page-container -->
     <div id="page-container" class="fade">
-        <!-- BEGIN #top-nav -->
-        <div id="top-nav" class="top-nav">
-            <!-- BEGIN container -->
-            <div class="container">
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown dropdown-hover">
-                            <a href="#" data-toggle="dropdown"><img src="assets/img/english.png" class="flag-img" alt="" /> English <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#"><img src="assets/img/english.png" class="flag-img" alt="" /> English</a></li>
-                                <li><a href="#"><img src="assets/img/german.png" class="flag-img" alt="" /> German</a></li>
-                                <li><a href="#"><img src="assets/img/spanish.png" class="flag-img" alt="" /> Spanish</a></li>
-                                <li><a href="#"><img src="assets/img/french.png" class="flag-img" alt="" /> French</a></li>
-                                <li><a href="#"><img src="assets/img/chinese.png" class="flag-img" alt="" /> Chinese</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Customer Care</a></li>
-                        <li><a href="#">Order Tracker</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Career</a></li>
-                        <li><a href="#">Our Forum</a></li>
-                        <li><a href="#">Newsletter</a></li>
-                        <li><a href="#"><i class="fa fa-facebook f-s-14"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter f-s-14"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram f-s-14"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble f-s-14"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus f-s-14"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- END container -->
-        </div>
-        <!-- END #top-nav -->
-    
-        <!-- BEGIN #header -->
+    	<!-- BEGIN #header -->
         <div id="header" class="header">
             <!-- BEGIN container -->
             <div class="container">
@@ -73,8 +38,8 @@
                         <div class="header-logo">
                             <a href="index.html">
                                 <span class="brand"></span>
-                                <span>Color</span>Admin
-                                <small>e-commerce frontend theme</small>
+                                <span>Data</span>Come
+                                <small>The Pride of Recover</small>
                             </a>
                         </div>
                     </div>
@@ -311,7 +276,7 @@
                 <div class="carousel-inner"> 
                     <!-- BEGIN item -->
                     <div class="item active">
-                        <img src="assets/img/slider-1-cover.jpg" class="bg-cover-img" alt="" />
+                        <img src="${pageContext.request.contextPath}/static/images/cover/cloud2.jpg" class="bg-cover-img" alt="" />
                         <div class="container">
                             <img src="assets/img/slider-1-product.png" class="product-img right bottom fadeInRight animated" alt="" />
                         </div>
@@ -326,10 +291,12 @@
                     </div>
                     <!-- END item -->
                     <!-- BEGIN item -->
+                    
+                    <!-- 1920 * 1080 width 40 height 60 top 50% -->
                     <div class="item">
                         <img src="assets/img/slider-2-cover.jpg" class="bg-cover-img" alt="" />
                         <div class="container">
-                            <img src="assets/img/slider-2-product.png" class="product-img left bottom fadeInLeft animated" alt="" />
+                            <img src="${pageContext.request.contextPath}/static/images/cover/cloud3.jpg" class="product-img left bottom fadeInLeft animated" alt="" />
                         </div>
                         <div class="carousel-caption carousel-caption-right">
                             <div class="container">
@@ -343,7 +310,7 @@
                     <!-- END item -->
                     <!-- BEGIN item -->
                     <div class="item">
-                        <img src="assets/img/slider-3-cover.jpg" class="bg-cover-img" alt="" />
+                        <img src="${pageContext.request.contextPath}/static/images/cover/cover.jpg" class="bg-cover-img" alt="" />
                         <div class="carousel-caption">
                             <div class="container">
                                 <h3 class="title m-b-5 fadeInDownBig animated">Macbook Air</h3> 
@@ -1149,22 +1116,7 @@
         <!-- END #footer-copyright -->
     </div>
     <!-- END #page-container -->
-    
-    <!-- begin theme-panel -->
-    <div class="theme-panel">
-        <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
-        <div class="theme-panel-content">
-            <ul class="theme-list clearfix">
-                <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
-                <li class="active"><a href="javascript:;" class="bg-green" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-red" data-theme="red" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- end theme-panel -->
-	
+
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="${pageContext.request.contextPath}/static/js/jquery-1.9.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/static/js/jquery-migrate-1.1.0.min.js"></script>
