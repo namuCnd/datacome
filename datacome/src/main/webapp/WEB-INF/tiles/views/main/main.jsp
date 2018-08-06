@@ -6,7 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
 <spring:message var="useMileage" code="use.mileage"/>
-<code:select var="GOODSINVENTSET" groupId="GOODSINVENTSET"/>
 <jsp:useBean id="now" class="java.util.Date"/>
 <fmt:formatDate value="${now}" var="nowYy" pattern="yyyy" />
 <jsp:scriptlet>
