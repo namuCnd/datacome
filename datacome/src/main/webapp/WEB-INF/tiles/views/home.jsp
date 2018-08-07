@@ -48,145 +48,24 @@
                     <div class="header-nav">
                         <div class=" collapse navbar-collapse" id="navbar-collapse">
                             <ul class="nav">
-                                <li class="active"><a href="index.html">Home</a></li>
-                                <li class="dropdown dropdown-full-width dropdown-hover">
-                                    <a href="#" data-toggle="dropdown">
-                                        Our Store 
-                                        <i class="fa fa-angle-down"></i>
-                                        <span class="arrow top"></span>
-                                    </a>
-                                    <!-- BEGIN dropdown-menu -->
-                                    <div class="dropdown-menu p-0">
-                                        <!-- BEGIN dropdown-menu-container -->
-                                        <div class="dropdown-menu-container">
-                                            <!-- BEGIN dropdown-menu-sidebar -->
-                                            <div class="dropdown-menu-sidebar">
-                                                <h4 class="title">Shop By Categories</h4>
-                                                <ul class="dropdown-menu-list">
-                                                    <li><a href="product.html">Mobile Phone <i class="fa fa-angle-right pull-right"></i></a></li>
-                                                    <li><a href="product.html">Tablet <i class="fa fa-angle-right pull-right"></i></a></li>
-                                                    <li><a href="product.html">Laptop <i class="fa fa-angle-right pull-right"></i></a></li>
-                                                    <li><a href="product.html">Desktop <i class="fa fa-angle-right pull-right"></i></a></li>
-                                                    <li><a href="product.html">TV <i class="fa fa-angle-right pull-right"></i></a></li>
-                                                    <li><a href="product.html">Speaker <i class="fa fa-angle-right pull-right"></i></a></li>
-                                                    <li><a href="product.html">Gadget <i class="fa fa-angle-right pull-right"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <!-- END dropdown-menu-sidebar -->
-                                            <!-- BEGIN dropdown-menu-content -->
-                                            <div class="dropdown-menu-content">
-                                                <h4 class="title">Shop By Popular Phone</h4>
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <ul class="dropdown-menu-list">
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> iPhone 7</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> iPhone 6s</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> iPhone 6</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> iPhone 5s</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> iPhone 5</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <ul class="dropdown-menu-list">
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Galaxy S7</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Galaxy A9</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Galaxy J3</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Galaxy Note 5</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Galaxy S7</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <ul class="dropdown-menu-list">
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Lumia 730</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Lumia 735</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Lumia 830</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Lumia 820</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Lumia Icon</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <ul class="dropdown-menu-list">
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Xperia X</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Xperia Z5</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Xperia M5</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Xperia C5</a></li>
-                                                            <li><a href="product_detail.html"><i class="fa fa-fw fa-angle-right text-muted"></i> Xperia C4</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title">Shop By Brand</h4>
-                                                <ul class="dropdown-brand-list m-b-0">
-                                                    <li><a href="product.html"><img src="assets/img/apple.png" alt="" /></a></li>
-                                                    <li><a href="product.html"><img src="assets/img/samsung.png" alt="" /></a></li>
-                                                    <li><a href="product.html"><img src="assets/img/htc.png" alt="" /></a></li>
-                                                    <li><a href="product.html"><img src="assets/img/microsoft.png" alt="" /></a></li>
-                                                    <li><a href="product.html"><img src="assets/img/nokia.png" alt="" /></a></li>
-                                                    <li><a href="product.html"><img src="assets/img/blackberry.png" alt="" /></a></li>
-                                                    <li><a href="product.html"><img src="assets/img/sony.png" alt="" /></a></li>
-                                                </ul>
-                                            </div>
-                                            <!-- END dropdown-menu-content -->
-                                        </div>
-                                        <!-- END dropdown-menu-container -->
-                                    </div>
-                                    <!-- END dropdown-menu -->
+                                <li class="active">
+                                    <a href="#" ><b>회사소개</b> </a>
                                 </li>
                                 <li class="dropdown dropdown-hover">
-                                    <a href="#" data-toggle="dropdown">
-                                        Accessories 
-                                        <i class="fa fa-angle-down"></i> 
-                                        <span class="arrow top"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="product.html">Mobile Phone</a></li>
-                                        <li><a href="product.html">Tablet</a></li>
-                                        <li><a href="product.html">TV</a></li>
-                                        <li><a href="product.html">Desktop</a></li>
-                                        <li><a href="product.html">Laptop</a></li>
-                                        <li><a href="product.html">Speaker</a></li>
-                                        <li><a href="product.html">Gadget</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="product.html">New Arrival</a></li>
-                                <li class="dropdown dropdown-hover">
-                                    <a href="#" data-toggle="dropdown">
-                                        Pages
-                                        <i class="fa fa-angle-down"></i> 
-                                        <span class="arrow top"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index.html">Home (Default)</a></li>
-                                        <li><a href="index_fixed_header.html">Home (Fixed Header)</a></li>
-                                        <li><a href="index_inverse_header.html">Home (Inverse Header)</a></li>
-                                        <li><a href="search_results.html">Search Results</a></li>
-                                        <li><a href="product.html">Product Page</a></li>
-                                        <li><a href="product_detail.html">Product Details Page</a></li>
-                                        <li><a href="checkout_cart.html">Checkout Cart</a></li>
-                                        <li><a href="checkout_info.html">Checkout Shipping</a></li>
-                                        <li><a href="checkout_payment.html">Checkout Payment</a></li>
-                                        <li><a href="checkout_complete.html">Checkout Complete</a></li>
-                                        <li><a href="my_account.html">My Account</a></li>
-                                        <li><a href="contact_us.html">Contact Us</a></li>
-                                        <li><a href="about_us.html">About Us</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
-                                    </ul>
+                                    <a href="#" >랜섬웨어 솔루션</a>
                                 </li>
                                 <li class="dropdown dropdown-hover">
-                                    <a href="#" data-toggle="dropdown">
-                                        <i class="fa fa-search search-btn"></i>
-                                        <span class="arrow top"></span>
-                                    </a>
-                                    <div class="dropdown-menu p-15">
-                                        <form action="search_results.html" method="POST" name="search_form">
-                                            <div class="input-group">
-                                                <input type="text" placeholder="Search" class="form-control bg-silver-lighter" />
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-inverse" type="submit"><i class="fa fa-search"></i></button>
-                                                </span>
-                                            </div>
-                                        </form>
-                                    </div> 
+                                    <a href="#" >데이터 복구</a>
                                 </li>
+                                <li class="dropdown dropdown-hover">
+                                    <a href="#" >서버 복구</a>
+                                </li>
+                                <li class="dropdown dropdown-hover">
+                                    <a href="#" >고객 지원</a>
+                                </li>
+                                <li class="dropdown dropdown-hover">
+                                    <a href="#" >게시판(관리자)</a>
+                                </li>                                
                             </ul>
                         </div>
                     </div>
@@ -194,68 +73,10 @@
                     <!-- BEGIN header-nav -->
                     <div class="header-nav">
                         <ul class="nav pull-right">
-                            <li class="dropdown dropdown-hover">
-                                <a href="#" class="header-cart" data-toggle="dropdown">
-                                    <i class="fa fa-shopping-bag"></i>
-                                    <span class="total">2</span>
-                                    <span class="arrow top"></span>
-                                </a>
-                    
-                                <div class="dropdown-menu dropdown-menu-cart p-0">
-                                    <div class="cart-header">
-                                        <h4 class="cart-title">Shopping Bag (1) </h4>
-                                    </div>
-                                    <div class="cart-body">
-                                        <ul class="cart-item">
-                                            <li>
-                                                <div class="cart-item-image"><img src="assets/img/ipad.jpg" alt="" /></div>
-                                                <div class="cart-item-info">
-                                                    <h4>iPad Pro Wi-Fi 128GB - Silver</h4>
-                                                    <p class="price">$699.00</p>
-                                                </div>
-                                                <div class="cart-item-close">
-                                                    <a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="cart-item-image"><img src="assets/img/imac.jpg" alt="" /></div>
-                                                <div class="cart-item-info">
-                                                    <h4>21.5-inch iMac</h4>
-                                                    <p class="price">$1299.00</p>
-                                                </div>
-                                                <div class="cart-item-close">
-                                                    <a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="cart-item-image"><img src="assets/img/iphone.png" alt="" /></div>
-                                                <div class="cart-item-info">
-                                                    <h4>iPhone 6s 16GB - Silver</h4>
-                                                    <p class="price">$649.00</p>
-                                                </div>
-                                                <div class="cart-item-close">
-                                                    <a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="cart-footer">
-                                        <div class="row row-space-10">
-                                            <div class="col-xs-6">
-                                                <a href="checkout_cart.html" class="btn btn-default btn-block">View Cart</a>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <a href="checkout_cart.html" class="btn btn-inverse btn-block">Checkout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
                             <li>
                                 <a href="my_account.html">
                                     <img src="assets/img/user-1.jpg" class="user-img" alt="" /> 
-                                    <span class="hidden-md hidden-sm hidden-xs">Login / Register</span>
+                                    <span class="hidden-md hidden-sm hidden-xs">Login</span>
                                 </a>
                             </li>
                         </ul>
@@ -285,14 +106,15 @@
                                 <h3 class="title m-b-5 fadeInLeftBig animated">iMac</h3> 
                                 <p class="m-b-15 fadeInLeftBig animated">Retina. Now in colossal and ginormous.</p>
                                 <div class="price m-b-30 fadeInLeftBig animated"><small>from</small> <span>$649.00</span></div>
-                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">Buy Now</a>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">전화 문의</a>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">온라인 문의</a>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">카카오톡</a>
                             </div>
                         </div>
                     </div>
                     <!-- END item -->
                     <!-- BEGIN item -->
                     
-                    <!-- 1920 * 1080 width 40 height 60 top 50% -->
                     <div class="item">
                         <img src="assets/img/slider-2-cover.jpg" class="bg-cover-img" alt="" />
                         <div class="container">
@@ -323,11 +145,12 @@
                     <!-- END item -->
                 </div>
                 <!-- END carousel-inner -->
-                <a class="left carousel-control" href="#main-carousel" data-slide="prev"> 
-                    <i class="fa fa-angle-left"></i> 
+                <!-- 1920 * 1080 width 40 height 60 top 50% -->
+                <a class="left carousel-control" style="width:40px; height: 50px; top: 50%;" href="#main-carousel" data-slide="prev"> 
+                    <i class="fa fa-angle-left" style="margin-top: -5px;"></i> 
                 </a>
-                <a class="right carousel-control" href="#main-carousel" data-slide="next"> 
-                    <i class="fa fa-angle-right"></i> 
+                <a class="right carousel-control" style="width:40px; height: 50px; top: 50%;"href="#main-carousel" data-slide="next"> 
+                    <i class="fa fa-angle-right" style="margin-top: -5px;"></i> 
                 </a>
             </div>
             <!-- END carousel -->
@@ -340,9 +163,9 @@
             <div class="container">
                 <!-- BEGIN section-title -->
                 <h4 class="section-title clearfix">
-                    <a href="#" class="pull-right">SHOW ALL</a>
-                    Exclusive promotions
-                    <small>from 25 September 2016 - 1 January 2017</small>
+                    <!--  <a href="#" class="pull-right">SHOW ALL</a>-->
+                    서버복구 어쩌구저꺼구
+                    <small>믿을맨 김갑동</small>
                 </h4>
                 <!-- END section-title -->
                 <!-- BEGIN row -->
@@ -355,10 +178,10 @@
                                 <img src="assets/img/iphone-se.png" alt="" />
                             </div>
                             <div class="promotion-caption promotion-caption-inverse">
-                                <h4 class="promotion-title">iPhone SE</h4>
+                                <h4 class="promotion-title">랜섬웨어 복구</h4>
                                 <div class="promotion-price"><small>from</small> $299.00</div>
                                 <p class="promotion-desc">A big step for small.<br />A beloved design. Now with more to love.</p>
-                                <a href="#" class="promotion-btn">View More</a>
+                                <a href="#" class="promotion-btn">카카오톡 연동</a>
                             </div>
                         </div>
                         <!-- END promotion -->
@@ -580,7 +403,7 @@
                 <!-- BEGIN section-title -->
                 <h4 class="section-title clearfix">
                     <a href="#" class="pull-right">SHOW ALL</a>
-                    Mobile Phones
+                    여기에 증상을 보여주기
                     <small>Shop and get your favourite phone at amazing prices!</small>
                 </h4>
                 <!-- END section-title -->
@@ -590,10 +413,10 @@
                     <div class="category-sidebar">
                         <ul class="category-list">
                             <li class="list-header">Top Categories</li>
-                            <li><a href="#">Microsoft</a></li>
-                            <li><a href="#">Samsung</a></li>
-                            <li><a href="#">Apple</a></li>
-                            <li><a href="#">Micromax</a></li>
+                            <li><a href="#">랜섬웨어 증상</a></li>
+                            <li><a href="#">메모리 메롱 증상</a></li>
+                            <li><a href="#">어쩌구 증상</a></li>
+                            <li><a href="#">램 증상</a></li>
                             <li><a href="#">Karbonn</a></li>
                             <li><a href="#">Intex</a></li>
                             <li><a href="#">Sony</a></li>
@@ -744,152 +567,13 @@
             <div class="container">
                 <!-- BEGIN section-title -->
                 <h4 class="section-title clearfix">
-                    <a href="#" class="pull-right">SHOW ALL</a>
-                    Tablet
+					여기에 지도 삽입
                     <small>Shop and get your favourite tablet at amazing prices!</small>
                 </h4>
                 <!-- END section-title -->
                 <!-- BEGIN category-container -->
                 <div class="category-container">
-                    <!-- BEGIN category-sidebar -->
-                    <div class="category-sidebar">
-                        <ul class="category-list">
-                            <li class="list-header">Top Categories</li>
-                            <li><a href="#">Apple</a></li>
-                            <li><a href="#">HP</a></li>
-                            <li><a href="#">Huawei</a></li>
-                            <li><a href="#">Samsung</a></li>
-                            <li><a href="#">Sony</a></li>
-                            <li><a href="#">All Brands</a></li>
-                        </ul>
-                    </div>
-                    <!-- END category-sidebar -->
-                    <!-- BEGIN category-detail -->
-                    <div class="category-detail">
-                        <!-- BEGIN category-item -->
-                        <a href="#" class="category-item full">
-                            <div class="item">
-                                <div class="item-cover">
-                                    <img src="assets/img/huawei-mediapad.jpg" alt="" />
-                                </div>
-                                <div class="item-info bottom">
-                                    <h4 class="item-title">Huawei MediaPad T1 7.0</h4>
-                                    <p class="item-desc">Vibrant colors. Beautifully displayed</p>
-                                    <div class="item-price">$299.00</div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- END category-item -->
-                        <!-- BEGIN category-item -->
-                        <div class="category-item list">
-                            <!-- BEGIN item-row -->
-                            <div class="item-row">
-                                <!-- BEGIN item -->
-                                <div class="item item-thumbnail">
-                                    <a href="product_detail.html" class="item-image">
-                                        <img src="assets/img/ipad-pro.png" alt="" />
-                                        <div class="discount">15% OFF</div>
-                                    </a>
-                                    <div class="item-info">
-                                        <h4 class="item-title">
-                                            <a href="product_detail.html">9.7-inch iPad Pro<br />32GB</a>
-                                        </h4>
-                                        <p class="item-desc">3D Touch. 12MP photos. 4K video.</p>
-                                        <div class="item-price">$649.00</div>
-                                        <div class="item-discount-price">$739.00</div>
-                                    </div>
-                                </div>
-                                <!-- END item -->
-                                <!-- BEGIN item -->
-                                <div class="item item-thumbnail">
-                                    <a href="product_detail.html" class="item-image">
-                                        <img src="assets/img/galaxy-tab2.png" alt="" />
-                                        <div class="discount">32% OFF</div>
-                                    </a>
-                                    <div class="item-info">
-                                        <h4 class="item-title">
-                                            <a href="product.html">Samsung Galaxy Tab S2<br />Black</a>
-                                        </h4>
-                                        <p class="item-desc">A Brilliant Screen That Adjusts to You</p>
-                                        <div class="item-price">$399.99</div>
-                                        <div class="item-discount-price">$499.00</div>
-                                    </div>
-                                </div>
-                                <!-- END item -->
-                                <!-- BEGIN item -->
-                                <div class="item item-thumbnail">
-                                    <a href="product_detail.html" class="item-image">
-                                        <img src="assets/img/galaxy-taba.png" alt="" />
-                                        <div class="discount">20% OFF</div>
-                                    </a>
-                                    <div class="item-info">
-                                        <h4 class="item-title">
-                                            <a href="product.html">Samsung Galaxy Tab A<br />9.7" 16Gb(Wi-Fi)</a>
-                                        </h4>
-                                        <p class="item-desc">Keep All Your Samsung Devices In Sync</p>
-                                        <div class="item-price">$349.99</div>
-                                        <div class="item-discount-price">$399.99</div>
-                                    </div>
-                                </div>
-                                <!-- END item -->
-                            </div>
-                            <!-- END item-row -->
-                            <!-- BEGIN item-row -->
-                            <div class="item-row">
-                                <!-- BEGIN item -->
-                                <div class="item item-thumbnail">
-                                    <a href="product_detail.html" class="item-image">
-                                        <img src="assets/img/hp-spectrex2.png" alt="" />
-                                        <div class="discount">15% OFF</div>
-                                    </a>
-                                    <div class="item-info">
-                                        <h4 class="item-title">
-                                            <a href="product_detail.html">HP Spectre x2<br />‏12-a011nr</a>
-                                        </h4>
-                                        <p class="item-desc">Our thinnest detachable separates from all others.</p>
-                                        <div class="item-price">$799.99</div>
-                                        <div class="item-discount-price">$850.00</div>
-                                    </div>
-                                </div>
-                                <!-- END item -->
-                                <!-- BEGIN item -->
-                                <div class="item item-thumbnail">
-                                    <a href="product_detail.html" class="item-image">
-                                        <img src="assets/img/xperia-z2.png" alt="" />
-                                        <div class="discount">32% OFF</div>
-                                    </a>
-                                    <div class="item-info">
-                                        <h4 class="item-title">
-                                            <a href="product.html">Sony Xperia Z2 Tablet<br />Black Color</a>
-                                        </h4>
-                                        <p class="item-desc">For unexpectedly beautiful moments</p>
-                                        <div class="item-price">$199.00</div>
-                                        <div class="item-discount-price">$259.00</div>
-                                    </div>
-                                </div>
-                                <!-- END item -->
-                                <!-- BEGIN item -->
-                                <div class="item item-thumbnail">
-                                    <a href="product_detail.html" class="item-image">
-                                        <img src="assets/img/ipad-air.png" alt="" />
-                                        <div class="discount">20% OFF</div>
-                                    </a>
-                                    <div class="item-info">
-                                        <h4 class="item-title">
-                                            <a href="product.html">iPad Air 2<br />32/64Gb</a>
-                                        </h4>
-                                        <p class="item-desc">Light. Heavyweight.</p>
-                                        <div class="item-price">$399.00</div>
-                                        <div class="item-discount-price">$459.00</div>
-                                    </div>
-                                </div>
-                                <!-- END item -->
-                            </div>
-                            <!-- END item-row -->
-                        </div>
-                        <!-- END category-item -->
-                    </div>
-                    <!-- END category-detail -->
+                	<div style="background: red; height: 400px;"></div>
                 </div>
                 <!-- END category-container -->
             </div>
@@ -897,93 +581,23 @@
         </div>
         <!-- END #tablet-list -->
     
-        <!-- BEGIN #policy -->
-        <div id="policy" class="section-container p-t-30 p-b-30">
+        <!-- BEGIN #footer -->
+        <div id="footer" class="footer">
             <!-- BEGIN container -->
             <div class="container">
                 <!-- BEGIN row -->
                 <div class="row">
-                    <!-- BEGIN col-4 -->
-                    <div class="col-md-4 col-sm-4">
-                        <!-- BEGIN policy -->
-                        <div class="policy">
-                            <div class="policy-icon"><i class="fa fa-truck"></i></div>
-                            <div class="policy-info">
-                                <h4>Free Delivery Over $100</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </div>
-                        <!-- END policy -->
+                    <div class="col-md-6">
+                        <h4 class="footer-header">(주)데이터컴</h4>
+                        <p>서울시 송파구 어디길 24 무슨 건물 몇호</p>
+                        <p>사업자 번호 111-22-33333, 대표전화 1588-1588</p>
+                        <p>카카오뱅크 3222-22111-2222 (주)데이터컴</p>
                     </div>
-                    <!-- END col-4 -->
-                    <!-- BEGIN col-4 -->
-                    <div class="col-md-4 col-sm-4">
-                        <!-- BEGIN policy -->
-                        <div class="policy">
-                            <div class="policy-icon"><i class="fa fa-shield"></i></div>
-                            <div class="policy-info">
-                                <h4>1 Year Warranty For Phones</h4>
-                                <p>Cras laoreet urna id dui malesuada gravida. <br />Duis a lobortis dui.</p>
-                            </div>
-                        </div>
-                        <!-- END policy -->
-                    </div>
-                    <!-- END col-4 -->
-                    <!-- BEGIN col-4 -->
-                    <div class="col-md-4 col-sm-4">
-                        <!-- BEGIN policy -->
-                        <div class="policy">
-                            <div class="policy-icon"><i class="fa fa-user-md"></i></div>
-                            <div class="policy-info">
-                                <h4>6 Month Warranty For Accessories</h4>
-                                <p>Fusce ut euismod orci. Morbi auctor, sapien non eleifend iaculis.</p>
-                            </div>
-                        </div>
-                        <!-- END policy -->
-                    </div>
-                    <!-- END col-4 -->
-                </div>
-                <!-- END row -->
-            </div>
-            <!-- END container -->
-        </div>
-        <!-- END #policy -->
-    
-        <!-- BEGIN #subscribe -->
-        <div id="subscribe" class="section-container bg-silver p-t-30 p-b-30">
-            <!-- BEGIN container -->
-            <div class="container">
-                <!-- BEGIN row -->
-                <div class="row">
-                    <!-- BEGIN col-6 -->
-                    <div class="col-md-6 col-sm-6">
-                        <!-- BEGIN subscription -->
-                        <div class="subscription">
-                            <div class="subscription-intro">
-                                <h4> LET'S STAY IN TOUCH</h4>
-                                <p>Get updates on sales specials and more</p>
-                            </div>
-                            <div class="subscription-form">
-                                <form name="subscription_form" action="index.html" method="POST">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="email" placeholder="Enter Email Address" />
-                                        <div class="input-group-btn">
-                                            <button type="submit" class="btn btn-inverse"><i class="fa fa-angle-right"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- END subscription -->
-                    </div>
-                    <!-- END col-6 -->
-                    <!-- BEGIN col-6 -->
-                    <div class="col-md-6 col-sm-6">
+                    
+					<div class="col-md-6">
                         <!-- BEGIN social -->
                         <div class="social">
                             <div class="social-intro">
-                                <h4>FOLLOW US</h4>
-                                <p>We want to hear from you!</p>
                             </div>
                             <div class="social-list">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -995,103 +609,7 @@
                         </div>
                         <!-- END social -->
                     </div>
-                    <!-- END col-6 -->
-                </div>
-                <!-- END row -->
-            </div>
-            <!-- END container -->
-        </div>
-        <!-- END #subscribe -->
-    
-        <!-- BEGIN #footer -->
-        <div id="footer" class="footer">
-            <!-- BEGIN container -->
-            <div class="container">
-                <!-- BEGIN row -->
-                <div class="row">
-                    <!-- BEGIN col-3 -->
-                    <div class="col-md-3">
-                        <h4 class="footer-header">ABOUT US</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec tristique dolor, ac efficitur velit. Nulla lobortis tempus convallis. Nulla aliquam lectus eu porta pulvinar. Mauris semper justo erat. 
-                        </p>
-                        <p>
-                            Vestibulum porttitor lorem et vestibulum pharetra. Phasellus sit amet mi congue, hendrerit mi ut, dignissim eros.
-                        </p>
-                    </div>
-                    <!-- END col-3 -->
-                    <!-- BEGIN col-3 -->
-                    <div class="col-md-3">
-                        <h4 class="footer-header">RELATED LINKS</h4>
-                        <ul class="fa-ul">
-                            <li><i class="fa fa-li fa-angle-right"></i> <a href="#">Shopping Help</a></li>
-                            <li><i class="fa fa-li fa-angle-right"></i> <a href="#">Terms of Use</a></li>
-                            <li><i class="fa fa-li fa-angle-right"></i> <a href="#">Contact Us</a></li>
-                            <li><i class="fa fa-li fa-angle-right"></i> <a href="#">Careers</a></li>
-                            <li><i class="fa fa-li fa-angle-right"></i> <a href="#">Payment Method</a></li>
-                            <li><i class="fa fa-li fa-angle-right"></i> <a href="#">Sales & Refund</a></li>
-                            <li><i class="fa fa-li fa-angle-right"></i> <a href="#">Sitemap</a></li>
-                            <li><i class="fa fa-li fa-angle-right"></i> <a href="#">Privacy & Policy</a></li>
-                        </ul>
-                    </div>
-                    <!-- END col-3 -->
-                    <!-- BEGIN col-3 -->
-                    <div class="col-md-3">
-                        <h4 class="footer-header">LATEST PRODUCT</h4>
-                        <ul class="list-unstyled list-product">
-                            <li>
-                                <div class="image">
-                                    <img src="assets/img/iphone-6s.jpg" alt="" />
-                                </div>
-                                <div class="info">
-                                    <h4 class="info-title">Iphone 6s</h4>
-                                    <div class="price">$1200.00</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="image">
-                                    <img src="assets/img/galaxy-s6.jpg" alt="" />
-                                </div>
-                                <div class="info">
-                                    <h4 class="info-title">Samsung Galaxy s7</h4>
-                                    <div class="price">$850.00</div>
-                                </div>
-                            </li>
-                        
-                            <li>
-                                <div class="image">
-                                    <img src="assets/img/ipad-pro.jpg" alt="" />
-                                </div>
-                                <div class="info">
-                                    <h4 class="info-title">Ipad Pro</h4>
-                                    <div class="price">$800.00</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="image">
-                                    <img src="assets/img/galaxy-note5.jpg" alt="" />
-                                </div>
-                                <div class="info">
-                                    <h4 class="info-title">Samsung Galaxy Note 5</h4>
-                                    <div class="price">$1200.00</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- END col-3 -->
-                    <!-- BEGIN col-3 -->
-                    <div class="col-md-3">
-                        <h4 class="footer-header">OUR CONTACT</h4>
-                        <address>
-                            <strong>Twitter, Inc.</strong><br />
-                            1355 Market Street, Suite 900<br />
-                            San Francisco, CA 94103<br /><br />
-                            <abbr title="Phone">Phone:</abbr> (123) 456-7890<br />
-                            <abbr title="Fax">Fax:</abbr> (123) 456-7891<br />
-                            <abbr title="Email">Email:</abbr> <a href="mailto:sales@myshop.com">sales@myshop.com</a><br />
-                            <abbr title="Skype">Skype:</abbr> <a href="skype:myshop">myshop</a>
-                        </address>
-                    </div>
+                    
                     <!-- END col-3 -->
                 </div>
                 <!-- END row -->
