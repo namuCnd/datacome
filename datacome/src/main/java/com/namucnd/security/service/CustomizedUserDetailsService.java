@@ -47,22 +47,6 @@ public class CustomizedUserDetailsService implements UserDetailsService {
 	@Override
 	public UsersDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
-		System.out.println("111111111111111111111111111");
 		// 세션에 담을 객체
 		UsersDetails usersDetails = new UsersDetails();
 		// Select 결과를 담을 객체

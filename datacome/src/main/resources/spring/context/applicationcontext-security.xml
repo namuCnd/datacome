@@ -39,12 +39,17 @@
     <beans:bean id="accessDenied" class="com.namucnd.security.handler.CustomizedAccessDeniedHandler">
 		<beans:property name="errorPage" value="/security/accessDenied.do"></beans:property>
     </beans:bean>
+    
     <!--  provider  -->
     <security:authentication-manager>
-	    <security:authentication-provider user-service-ref="userDetailsService"/>
+    	 <security:authentication-provider ref="customeAuthenticationProvider" />
+	    <security:authentication-provider user-service-ref="userDetailsService">
+			<security:password-encoder ref="bcryptPasswordEncoder"></security:password-encoder>	    
+	    </security:authentication-provider>
 	</security:authentication-manager>
 	
 	<beans:bean id="userDetailsService" class="com.namucnd.security.service.CustomizedUserDetailsService"/>
+	<beans:bean id="customeAuthenticationProvider" class="com.namucnd.security.handler.CustomAuthenticationProvider"/>
 	
 	<beans:bean id="customizedLogoutSuccessHandler"
 		class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
@@ -61,8 +66,6 @@
 		<beans:property name="defaultFailureUrl" value="/security/signinForm.do?fail=true" />
 	</beans:bean>
 	
-	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" >
-		<beans:constructor-arg name="strength" value="11" />
-	</beans:bean>
+	 <beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
 </beans:beans>
