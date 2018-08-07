@@ -2,7 +2,10 @@ package com.namucnd.security.handler;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,13 +17,13 @@ import org.springframework.stereotype.Component;
 
 import com.namucnd.security.domain.UsersDetails;
 import com.namucnd.security.service.CustomizedUserDetailsService;
-import com.namucnd.user.domain.Users;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 	
 	 @Autowired
-	 private CustomizedUserDetailsService userService;
+	 @Qualifier("customizedUserDetailsService")
+	 CustomizedUserDetailsService userService;
 
 
 	@Override
@@ -28,7 +31,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		// TODO Auto-generated method stub
 		UsernamePasswordAuthenticationToken authToken = (UsernamePasswordAuthenticationToken) authentication; //유저가 입력한 정보를 이이디비번으으로만든다.(로그인한 유저아이디비번정보를담는다)
 
-	    UsersDetails userInfo = userService.loadUserByUsername(authToken.getName()); //UserDetailsService에서 유저정보를 불러온다.
+		String user_id = (String)authentication.getPrincipal();   
+		String user_pw = (String)authentication.getCredentials();
+
+	    UsersDetails userInfo = userService.loadUserByUsername(authToken.getPrincipal().toString()); //UserDetailsService에서 유저정보를 불러온다.
 	    
 	    if (userInfo == null) {
 	      throw new UsernameNotFoundException(authToken.getName());

@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.namucnd.security.domain.UsersDetails;
 import com.namucnd.user.dao.UsersDao;
@@ -26,6 +27,7 @@ import com.namucnd.user.domain.Users;
  * @since 2015. 9. 22.
  * 
  */
+@Service("customizedUserDetailsService")
 public class CustomizedUserDetailsService implements UserDetailsService {
 
 	// log사용을 위해 선언
@@ -46,7 +48,18 @@ public class CustomizedUserDetailsService implements UserDetailsService {
 	 */
 	@Override
 	public UsersDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
+		System.out.println("11111111111111111111");
 		// 세션에 담을 객체
 		UsersDetails usersDetails = new UsersDetails();
 		// Select 결과를 담을 객체

@@ -42,10 +42,7 @@
     
     <!--  provider  -->
     <security:authentication-manager>
-    	 <security:authentication-provider ref="customeAuthenticationProvider" />
-	    <security:authentication-provider user-service-ref="userDetailsService">
-			<security:password-encoder ref="bcryptPasswordEncoder"></security:password-encoder>	    
-	    </security:authentication-provider>
+    	<security:authentication-provider ref="customeAuthenticationProvider"/>
 	</security:authentication-manager>
 	
 	<beans:bean id="userDetailsService" class="com.namucnd.security.service.CustomizedUserDetailsService"/>
