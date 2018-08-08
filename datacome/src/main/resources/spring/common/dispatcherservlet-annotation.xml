@@ -16,10 +16,8 @@
 	<context:annotation-config />
 
 	<!-- Sets Annotation Range -->
-	<context:component-scan base-package="com.namucnd">
+	<context:component-scan base-package="com.namucnd" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
 	
 	<!-- Transaction -->

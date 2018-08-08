@@ -17,30 +17,29 @@ import org.springframework.stereotype.Component;
 
 import com.namucnd.security.domain.UsersDetails;
 import com.namucnd.security.service.CustomizedUserDetailsService;
+import com.namucnd.utils.AES256Cipher;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 	
-	 @Autowired
-	 @Qualifier("customizedUserDetailsService")
-	 CustomizedUserDetailsService userService;
+	@Autowired
+	@Qualifier("userDetailsService")
+	CustomizedUserDetailsService userService;
 
-
+	@SuppressWarnings("static-access")
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		// TODO Auto-generated method stub
 		UsernamePasswordAuthenticationToken authToken = (UsernamePasswordAuthenticationToken) authentication; //유저가 입력한 정보를 이이디비번으으로만든다.(로그인한 유저아이디비번정보를담는다)
-
-		String user_id = (String)authentication.getPrincipal();   
-		String user_pw = (String)authentication.getCredentials();
-
+		AES256Cipher a256 = AES256Cipher.getInstance();
+		
 	    UsersDetails userInfo = userService.loadUserByUsername(authToken.getPrincipal().toString()); //UserDetailsService에서 유저정보를 불러온다.
 	    
 	    if (userInfo == null) {
 	      throw new UsernameNotFoundException(authToken.getName());
 	    }
 
-	    if (!matchPassword(userInfo.getPassword(), authToken.getCredentials())) {
+	    if (!matchPassword(a256.AES_Decode(userInfo.getPassword()), authToken.getCredentials().toString())) {
 	      throw new BadCredentialsException("not matching username or password");
 	    }
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -33,6 +34,7 @@ public class CustomizedUserDetailsService implements UserDetailsService {
 	// log사용을 위해 선언
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	@Autowired
 	private UsersDao usersDao;
 
 	/**

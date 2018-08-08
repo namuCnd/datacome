@@ -20,7 +20,7 @@
 							<div class="loginInput">
 								<ul>
 									<li><input type="text" id="loginid" name="loginid" placeholder="아이디를 입력해주세요." value="datacomeAdmin" /></li>
-									<li><input type="password" id="loginpwd" name="loginpwd" placeholder="비밀번호를 입력해주세요." /></li>
+									<li><input type="password" id="loginpwd" name="loginpwd" placeholder="비밀번호를 입력해주세요." value="1234" /></li>
 								</ul>
 								<c:choose>
 									<c:when test="${empty cookie.login_save or !loginFail}">
