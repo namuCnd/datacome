@@ -748,6 +748,19 @@ function reviewMore(event) {
 					</div>
 				</div><!-- //section -->
 			</div><!-- //content -->
+			<button class="btn btn-toggle" data-toggle="modal" data-target="#myModal">Show / Hide<button>
+
+			<div class="modal fade" id="myModal">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header"></div>
+			      <div class="modal-body">
+			        Hello! Webisfree.com
+			      </div>
+			      <div class="modal-footer"></div>
+			    </div>
+			  </div>
+			</div>
 			<c:if test="${not empty error}">
 			<script>
 			$(function () {

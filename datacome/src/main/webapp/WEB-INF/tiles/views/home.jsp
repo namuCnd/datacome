@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/pace.min.js"></script>
 	<!-- ================== END BASE JS ================== -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c35a103954fbcf2deaa6e2721ede1c17"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
     <!-- BEGIN #page-container -->
@@ -182,7 +183,7 @@
                                 <h4 class="promotion-title">랜섬웨어 복구</h4>
                                 <div class="promotion-price"></div>
                                 <p class="promotion-desc">현재 수십가지에 달하는 랜섬웨어<br />경험과 노하우로 복구성공률 100%<br />(복구실패시 청구하지 않습니다.)</p>
-                                <a href="#" class="promotion-btn" style="background-color: #FFEB00;color: #3C1E1E"><b>카카오톡 연동</b></a>
+                                <div id="plusfriend-chat-button"></div>
                             </div>
                         </div>
                         <!-- END promotion -->
@@ -308,39 +309,47 @@
 					문의하기
                     <small>언제든지 문의 주시면 빠른시일 안에 답변 드리겠습니다.</small>
                 </h4>
-                <div class="category-container  bg-silver p-t-20" style="border: 0px;">
-                	<div style="height: 400px;">
-                		<div>
-	                		<div class="col-md-2 col-sm-2">
-	                			<label class="control-label" style="font-weight: 600 !important;">성함</label>
-	                		</div>
-	                		
-	                		<div class="col-md-10 col-sm-10">
-	                			<input type="text" class="form-control">
-	                		</div>
-                		</div>
-                		<div class="m-t-10">
-	                		<div class="col-md-2 col-sm-2">
-	                			<label class="control-label" style="font-weight: 600 !important;">연락처</label>
-	                		</div>
-	                		
-	                		<div class="col-md-10 col-sm-10">
-	                			<input type="text" class="form-control">
-	                		</div>
-                		</div>
-                		<div class="p-t-10">
-	                		<div class="col-md-2 col-sm-2">
-	                			<label class="control-label" style="font-weight: 600 !important;">증상 </label>
-	                		</div>
-	                		
-	                		<div class="col-md-10 col-sm-10">
-	                			<textarea class="textarea form-control"  rows="12" placeholder="Enter text ..."></textarea>
-	                		</div>
-	                		
-	                		<a href="#" class="promotion-btn" style="background-color: #FFF;color: #3C1E1E"><b>문의하기</b></a>              
-                		</div>  		
-                	</div>
-               	</div>
+                
+         		<a href="#" class="promotion-btn" data-toggle="modal" data-target="#myModal"><b>문의하기</b></a>    
+				<div class="modal fade" id="myModal">
+					<div class="modal-dialog">
+				    	<div class="modal-content">
+				     		<div class="modal-header"></div>
+				      		<div class="modal-body">
+				        		<div>
+			                		<div class="col-md-2 col-sm-2">
+			                			<label class="control-label" style="font-weight: 600 !important;">성함</label>
+			                		</div>
+			                		
+			                		<div class="col-md-10 col-sm-10">
+			                			<input type="text" class="form-control">
+			                		</div>
+		                		</div>
+		                		<div class="m-t-10">
+			                		<div class="col-md-2 col-sm-2">
+			                			<label class="control-label" style="font-weight: 600 !important;">연락처</label>
+			                		</div>
+			                		
+			                		<div class="col-md-10 col-sm-10">
+			                			<input type="text" class="form-control">
+			                		</div>
+		                		</div>
+		                		<div class="p-t-10">
+			                		<div class="col-md-2 col-sm-2">
+			                			<label class="control-label" style="font-weight: 600 !important;">증상 </label>
+			                		</div>
+			                		
+			                		<div class="col-md-10 col-sm-10">
+			                			<textarea class="textarea form-control"  rows="12" placeholder="Enter text ..."></textarea>
+			                		</div>
+			                		
+			                		<a href="#" class="promotion-btn" style="background-color: #FFF;color: #3C1E1E"><b>문의하기</b></a>              
+		                		</div> 
+				      		</div>
+				      	<div class="modal-footer"></div>
+				    	</div>
+				  	</div>
+				</div>   
             </div>
         </div>
         <!-- 문의 하기 끝 -->
@@ -487,6 +496,17 @@
 	    $(document).ready(function() {
 	        App.init();
 	    });
+	</script>
+	<script>
+		//<![CDATA[
+	    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+	    Kakao.init('d06113b4d57b06468d6c56908535bb6b');
+	    // 플러스친구 1:1채팅 버튼을 생성합니다.
+	    Kakao.PlusFriend.createChatButton({
+	      container: '#plusfriend-chat-button',
+	      plusFriendId: '_zpDhj' // 플러스친구 홈 URL에 명시된 id로 설정합니다.
+	    });
+	 	 //]]>
 	</script>
 </body>
 </html>
