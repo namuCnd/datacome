@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reserv">
+
+	<update id="insertReservBoard" parameterType="com.namucnd.reservboard.domain.ReservBoard">
+		INSERT INTO RESERV_BOARD(
+			TITLE, 
+			CONTENT, 
+			PHONE
+			) VALUES (
+				#{title },
+				#{content },
+				#{phone }
+			)
+	</update>
+	
+	<select id="reservBordList"  parameterType="com.namucnd.reservboard.domain.ReservBoard" resultType="com.namucnd.reservboard.domain.ReservBoard">
+	     SELECT * 
+	     FROM RESERV_BOARD 
+	     WHERE 1 = 1 
+	     ORDER BY SEQ DESC 
+	     limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id="reservBordListCnt"  parameterType="com.namucnd.reservboard.domain.ReservBoard" resultType="INTEGER">
+	     SELECT COUNT(*) 
+	     FROM RESERV_BOARD 
+	</select>
+
+</mapper>
