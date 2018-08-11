@@ -27,7 +27,6 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public Users readOne(Users users) throws Exception {
 		System.out.println("dao");
-		users.setUser_id("jinu0425");
 		return sqlSessionTemplate.selectOne("users.readOne", users);
 	}
 }

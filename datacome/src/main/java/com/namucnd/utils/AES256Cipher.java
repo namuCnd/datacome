@@ -12,7 +12,7 @@ public class AES256Cipher {
 	private static volatile AES256Cipher INSTANCE;
 
 	final static String secretKey = "namucnd&datacome"; // 32bit
-	static String IV = "namucnd&datacom16bit"; // 16bit
+	static String IV = ""; // 16bit
 
 	public static AES256Cipher getInstance() {
 		if (INSTANCE == null) {

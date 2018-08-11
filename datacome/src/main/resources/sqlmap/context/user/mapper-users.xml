@@ -5,12 +5,12 @@
 	<!-- 회원정보 -->
 	<select id="readOne" parameterType="com.namucnd.user.domain.Users" resultType="com.namucnd.user.domain.Users">
 		SELECT
-			ID AS USER_ID
+			ID AS USER_ID,
+			PW AS USER_PW
 		FROM
-			TEST
+			USER
 		WHERE 1 = 1
 			AND	ID = #{user_id }
-			AND PW = #{user_pw }
 	</select>
 
 </mapper>
