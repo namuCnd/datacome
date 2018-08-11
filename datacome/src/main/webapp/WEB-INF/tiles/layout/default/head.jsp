@@ -7,7 +7,7 @@
 	<meta content="IE=edge">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>DataCome</title>
+	<title>datacome</title>
 	<script type="text/javascript">
 		// default global variable
 		var contextPath = "${pageContext.request.contextPath}";
@@ -29,7 +29,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iscroll.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iscroll.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iscroll.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/kakao.js"></script>
+	
 	
 	<!--[if lt IE 9]>
 		<script src="assets/crossbrowserjs/html5shiv.js"></script>

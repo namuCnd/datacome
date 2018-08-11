@@ -7,7 +7,7 @@
 <html lang="ko">
 <!--<![endif]-->
 <head>
-	<meta charset="utf-8"/>
+	<meta charset="utf-8" />
 	<title>E-Commerce Front End Theme</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
@@ -18,7 +18,6 @@
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/pace.min.js"></script>
 	<!-- ================== END BASE JS ================== -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c35a103954fbcf2deaa6e2721ede1c17"></script>
 </head>
 <body>
     <!-- BEGIN #page-container -->
@@ -53,16 +52,16 @@
                                     <a href="#" ><b>회사소개</b> </a>
                                 </li>
                                 <li class="dropdown dropdown-hover">
-                                    <a href="#" >복구 솔루션</a>
+                                    <a href="#" >랜섬웨어 솔루션</a>
                                 </li>
                                 <li class="dropdown dropdown-hover">
-                                    <a href="#" >심각한 증상</a>
+                                    <a href="#" >데이터 복구</a>
                                 </li>
                                 <li class="dropdown dropdown-hover">
-                                    <a href="#" >문의하기</a>
+                                    <a href="#" >서버 복구</a>
                                 </li>
                                 <li class="dropdown dropdown-hover">
-                                    <a href="#" >회사 위치</a>
+                                    <a href="#" >고객 지원</a>
                                 </li>
                                 <li class="dropdown dropdown-hover">
                                     <a href="#" >게시판(관리자)</a>
@@ -165,8 +164,8 @@
                 <!-- BEGIN section-title -->
                 <h4 class="section-title clearfix">
                     <!--  <a href="#" class="pull-right">SHOW ALL</a>-->
-				복구 솔루션
-                    <small>데이터컴은 고객의 신뢰를 위해 최선을 다하는 복구업체입니다.</small>
+                    서버복구 어쩌구저꺼구
+                    <small>믿을맨 김갑동</small>
                 </h4>
                 <!-- END section-title -->
                 <!-- BEGIN row -->
@@ -180,9 +179,9 @@
                             </div>
                             <div class="promotion-caption promotion-caption-inverse">
                                 <h4 class="promotion-title">랜섬웨어 복구</h4>
-                                <div class="promotion-price"></div>
-                                <p class="promotion-desc">현재 수십가지에 달하는 랜섬웨어<br />경험과 노하우로 복구성공률 100%<br />(복구실패시 청구하지 않습니다.)</p>
-                                <a href="#" class="promotion-btn" style="background-color: #FFEB00;color: #3C1E1E"><b>카카오톡 연동</b></a>
+                                <div class="promotion-price"><small>from</small> $299.00</div>
+                                <p class="promotion-desc">A big step for small.<br />A beloved design. Now with more to love.</p>
+                                <a href="#" class="promotion-btn">카카오톡 연동</a>
                             </div>
                         </div>
                         <!-- END promotion -->
@@ -196,10 +195,10 @@
                                 <img src="assets/img/apple-watch-sm.png" alt="" />
                             </div>
                             <div class="promotion-caption promotion-caption-inverse text-right">
-                                <h4 class="promotion-title">하드디스크 복구</h4>
-                                <p class="promotion-desc">논리적 작업과 물리적 작업으로 복구작업이 이루어지며 상태에 따라
-                                <br>복구율은 차이가 날 수 있습니다.</p>
-                                <a href="#" class="promotion-btn" style="background-color: #FFEB00;color: #3C1E1E"><b>카카오톡 연동</b></a>
+                                <h4 class="promotion-title">Apple Watch</h4>
+                                <div class="promotion-price"><small>from</small> $299.00</div>
+                                <p class="promotion-desc">You. At a glance.</p>
+                                <a href="#" class="promotion-btn">View More</a>
                             </div>
                         </div>
                         <!-- END promotion -->
@@ -208,10 +207,11 @@
                             <div class="promotion-image text-center promotion-image-overflow-bottom">
                                 <img src="assets/img/mac-mini.png" alt="" />
                             </div>
-                            <div class="promotion-caption text-right">
-                                <h4 class="promotion-title">메모리 복구</h4>
-                                <p class="promotion-desc">USB,SD카드,CF카드,MICRO SD카드,SSD카드 등<br>복구율이 낮기 때문에 고사양의 장비를 동원하여 작업해야 합니다.</p>
-                                <a href="#" class="promotion-btn" style="background-color: #FFEB00;color: #3C1E1E"><b>카카오톡 연동</b></a>
+                            <div class="promotion-caption text-center">
+                                <h4 class="promotion-title">Mac Mini</h4>
+                                <div class="promotion-price"><small>from</small> $199.00</div>
+                                <p class="promotion-desc">It’s mini in a massive way.</p>
+                                <a href="#" class="promotion-btn">View More</a>
                             </div>
                         </div>
                         <!-- END promotion -->
@@ -224,10 +224,11 @@
                             <div class="promotion-image promotion-image-overflow-right promotion-image-overflow-bottom text-right">
                                 <img src="assets/img/mac-accessories.png" alt="" />
                             </div>
-                            <div class="promotion-caption text-right">
-                                <h4 class="promotion-title">스마트폰 복구</h4>
-                                <p class="promotion-desc">초기화 삭제실수,고장,침수,화재 등의 원인으로 메세지, 전화번호부,사진,동영상 등의 데이터가 손실 되었을 때 데이터를 찾아드립니다.</p>
-                                <a href="#" class="promotion-btn" style="background-color: #FFEB00;color: #3C1E1E"><b>카카오톡 연동</b></a>
+                            <div class="promotion-caption text-center">
+                                <h4 class="promotion-title">Apple Accessories</h4>
+                                <div class="promotion-price"><small>from</small> $99.00</div>
+                                <p class="promotion-desc">Redesigned. Rechargeable. Remarkable.</p>
+                                <a href="#" class="promotion-btn">View More</a>
                             </div>
                         </div>
                         <!-- END promotion -->
@@ -236,10 +237,11 @@
                             <div class="promotion-image text-right">
                                 <img src="assets/img/mac-pro.png" alt="" />
                             </div>
-                            <div class="promotion-caption promotion-caption-inverse text-right">
-                                <h4 class="promotion-title">서버 복구</h4>
-                                <p class="promotion-desc">복구업계 최상의 난이도와 기술력을 필요로 합니다.레이드 구성을 파악하고 세심한 작업으로 인해 다소 시간이 소요 될 수 있습니다.바른데이터는 서버복구 전문업체 입니다.</p>
-                                <a href="#" class="promotion-btn"  style="background-color: #FFEB00;color: #3C1E1E"><b>카카오톡 연동</b></a>
+                            <div class="promotion-caption promotion-caption-inverse">
+                                <h4 class="promotion-title">Mac Pro</h4>
+                                <div class="promotion-price"><small>from</small> $1,299.00</div>
+                                <p class="promotion-desc">Built for creativity on an epic scale.</p>
+                                <a href="#" class="promotion-btn">View More</a>
                             </div>
                         </div>
                         <!-- END promotion -->
@@ -252,14 +254,157 @@
         </div>
         <!-- END #promotions -->
     
-        <!-- BEGIN #mobile-list -->
-        <div id="mobile-list" class="section-container bg-silver p-t-20">
+        <!-- BEGIN #trending-items -->
+        <div id="trending-items" class="section-container bg-silver">
             <!-- BEGIN container -->
             <div class="container">
                 <!-- BEGIN section-title -->
                 <h4 class="section-title clearfix">
-                    	심각한 증상
-                    <small>현재와 같은 증상이 보일시 저희에게 믿고 맡겨 주세요.</small>
+                    <a href="#" class="pull-right m-l-5"><i class="fa fa-angle-right f-s-18"></i></a>
+                    <a href="#" class="pull-right"><i class="fa fa-angle-left f-s-18"></i></a>
+                    Trending Items
+                    <small>Shop and get your favourite items at amazing prices!</small>
+                </h4>
+                <!-- END section-title -->
+            
+                <!-- BEGIN row -->
+                <div class="row row-space-10">
+                    <!-- BEGIN col-2 -->
+                    <div class="col-md-2 col-sm-4">
+                        <!-- BEGIN item -->
+                        <div class="item item-thumbnail">
+                            <a href="product_detail.html" class="item-image">
+                                <img src="assets/img/iphone.png" alt="" />
+                                <div class="discount">15% OFF</div>
+                            </a>
+                            <div class="item-info">
+                                <h4 class="item-title">
+                                    <a href="product_detail.html">iPhone 6s Plus<br />16GB</a>
+                                </h4>
+                                <p class="item-desc">3D Touch. 12MP photos. 4K video.</p>
+                                <div class="item-price">$649.00</div>
+                                <div class="item-discount-price">$739.00</div>
+                            </div>
+                        </div>
+                        <!-- END item -->
+                    </div>
+                    <!-- END col-2 -->
+                    <!-- BEGIN col-2 -->
+                    <div class="col-md-2 col-sm-4">
+                        <!-- BEGIN item -->
+                        <div class="item item-thumbnail">
+                            <a href="product_detail.html" class="item-image">
+                                <img src="assets/img/ipad-pro.png" alt=""  />
+                                <div class="discount">32% OFF</div>
+                            </a>
+                            <div class="item-info">
+                                <h4 class="item-title">
+                                    <a href="product.html">9.7-inch iPad Pro<br />32GB</a>
+                                </h4>
+                                <p class="item-desc">Super. Computer. Now in two sizes.</p>
+                                <div class="item-price">$599.00</div>
+                                <div class="item-discount-price">$799.00</div>
+                            </div>
+                        </div>
+                        <!-- END item -->
+                    </div>
+                    <!-- END col-2 -->
+                    <!-- BEGIN col-2 -->
+                    <div class="col-md-2 col-sm-4">
+                        <!-- BEGIN item -->
+                        <div class="item item-thumbnail">
+                            <a href="product_detail.html" class="item-image">
+                                <img src="assets/img/imac.png" alt="" />
+                                <div class="discount">20% OFF</div>
+                            </a>
+                            <div class="item-info">
+                                <h4 class="item-title">
+                                    <a href="product.html">21.5-inch iMac<br />with Retina Display</a>
+                                </h4>
+                                <p class="item-desc">Retina. Now in colossal and ginormous.</p>
+                                <div class="item-price">$1,099.00</div>
+                                <div class="item-discount-price">$1,299.00</div>
+                            </div>
+                        </div>
+                        <!-- END item -->
+                    </div>
+                    <!-- END col-2 -->
+                    <!-- BEGIN col-2 -->
+                    <div class="col-md-2 col-sm-4">
+                        <!-- BEGIN item -->
+                        <div class="item item-thumbnail">
+                            <a href="product_detail.html" class="item-image">
+                                <img src="assets/img/apple-watch.png" alt="" />
+                                <div class="discount">13% OFF</div>
+                            </a>
+                            <div class="item-info">
+                                <h4 class="item-title">
+                                    <a href="product.html">Apple Watch<br />Stainless steel cases</a>
+                                </h4>
+                                <p class="item-desc">You. At a glance.</p>
+                                <div class="item-price">$599.00</div>
+                                <div class="item-discount-price">$799.00</div>
+                            </div>
+                        </div>
+                        <!-- END item -->
+                    </div>
+                    <!-- END col-2 -->
+                    <!-- BEGIN col-2 -->
+                    <div class="col-md-2 col-sm-4">
+                        <!-- BEGIN item -->
+                        <div class="item item-thumbnail">
+                            <a href="product_detail.html" class="item-image">
+                                <img src="assets/img/macbook-pro.png" alt="" />
+                                <div class="discount">30% OFF</div>
+                            </a>
+                            <div class="item-info">
+                                <h4 class="item-title">
+                                    <a href="product.html">MacBook Pro<br />with Retina Display</a>
+                                </h4>
+                                <p class="item-desc">Stunning Retina Display</p>
+                                <div class="item-price">$1299.00</div>
+                                <div class="item-discount-price">$1499.00</div>
+                            </div>
+                        </div>
+                        <!-- END item -->
+                    </div>
+                    <!-- END col-2 -->
+                    <!-- BEGIN col-2 -->
+                    <div class="col-md-2 col-sm-4">
+                        <!-- BEGIN item -->
+                        <div class="item item-thumbnail">
+                            <a href="product_detail.html" class="item-image">
+                                <img src="assets/img/apple-tv.png" alt="" />
+                                <div class="discount">40% OFF</div>
+                            </a>
+                            <div class="item-info">
+                                <h4 class="item-title">
+                                    <a href="product.html">Apple Tv<br />32GB</a>
+                                </h4>
+                                <p class="item-desc">The future of television is here.</p>
+                                <div class="item-price">$149.00</div>
+                                <div class="item-discount-price">$249.00</div>
+                            </div>
+                        </div>
+                        <!-- END item -->
+                    </div>
+                    <!-- END col-2 -->
+                </div>
+                <!-- END row -->
+            </div>
+            <!-- END container -->
+        </div>
+        <!-- END #trending-items -->
+    
+        <!-- BEGIN #mobile-list -->
+        <div id="mobile-list" class="section-container bg-silver p-t-0">
+            <!-- BEGIN container -->
+            <div class="container">
+                <!-- BEGIN section-title -->
+                <h4 class="section-title clearfix">
+                    <a href="#" class="pull-right">SHOW ALL</a>
+                    여기에 증상을 보여주기
+                    <small>Shop and get your favourite phone at amazing prices!</small>
                 </h4>
                 <!-- END section-title -->
                 <!-- BEGIN category-container -->
@@ -269,16 +414,24 @@
                         <ul class="category-list">
                             <li class="list-header">Top Categories</li>
                             <li><a href="#">랜섬웨어 증상</a></li>
-                            <li><a href="#">하드디스크 증상</a></li>
-                            <li><a href="#">메모리 증상</a></li>
-                            <li><a href="#">서버 증상</a></li>
+                            <li><a href="#">메모리 메롱 증상</a></li>
+                            <li><a href="#">어쩌구 증상</a></li>
+                            <li><a href="#">램 증상</a></li>
+                            <li><a href="#">Karbonn</a></li>
+                            <li><a href="#">Intex</a></li>
+                            <li><a href="#">Sony</a></li>
+                            <li><a href="#">HTC</a></li>
+                            <li><a href="#">Asus</a></li>
+                            <li><a href="#">Nokia</a></li>
+                            <li><a href="#">Blackberry</a></li>
+                            <li><a href="#">All Brands</a></li>
                         </ul>
                     </div>
                     <!-- END category-sidebar -->
                     <!-- BEGIN category-detail -->
                     <div class="category-detail">
                         <!-- BEGIN category-item -->
-                        <a href="#" class="category-item full" style="width: 100%">
+                        <a href="#" class="category-item full">
                             <div class="item">
                                 <div class="item-cover">
                                     <img src="assets/img/samsung-s7-edge.jpg" alt="" />
@@ -291,6 +444,114 @@
                             </div>
                         </a>
                         <!-- END category-item -->
+                        <!-- BEGIN category-item -->
+                        <div class="category-item list">
+                            <!-- BEGIN item-row -->
+                            <div class="item-row">
+                                <!-- BEGIN item -->
+                                <div class="item item-thumbnail">
+                                    <a href="product_detail.html" class="item-image">
+                                        <img src="assets/img/iphone.png" alt="" />
+                                        <div class="discount">15% OFF</div>
+                                    </a>
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="product_detail.html">iPhone 6s Plus<br />16GB</a>
+                                        </h4>
+                                        <p class="item-desc">3D Touch. 12MP photos. 4K video.</p>
+                                        <div class="item-price">$649.00</div>
+                                        <div class="item-discount-price">$739.00</div>
+                                    </div>
+                                </div>
+                                <!-- END item -->
+                                <!-- BEGIN item -->
+                                <div class="item item-thumbnail">
+                                    <a href="product_detail.html" class="item-image">
+                                        <img src="assets/img/samsung-note5.png" alt="" />
+                                        <div class="discount">32% OFF</div>
+                                    </a>
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="product.html">Samsung Galaxy Note 5<br />Black</a>
+                                        </h4>
+                                        <p class="item-desc">Super. Computer. Now in two sizes.</p>
+                                        <div class="item-price">$599.00</div>
+                                        <div class="item-discount-price">$799.00</div>
+                                    </div>
+                                </div>
+                                <!-- END item -->
+                                <!-- BEGIN item -->
+                                <div class="item item-thumbnail">
+                                    <a href="product_detail.html" class="item-image">
+                                        <img src="assets/img/iphone-se.png" alt="" />
+                                        <div class="discount">20% OFF</div>
+                                    </a>
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="product.html">iPhone SE<br />32/64Gb</a>
+                                        </h4>
+                                        <p class="item-desc">A big step for small.</p>
+                                        <div class="item-price">$499.00</div>
+                                        <div class="item-discount-price">$599.00</div>
+                                    </div>
+                                </div>
+                                <!-- END item -->
+                            </div>
+                            <!-- END item-row -->
+                            <!-- BEGIN item-row -->
+                            <div class="item-row">
+                                <!-- BEGIN item -->
+                                <div class="item item-thumbnail">
+                                    <a href="product_detail.html" class="item-image">
+                                        <img src="assets/img/zenfone2.png" alt="" />
+                                        <div class="discount">15% OFF</div>
+                                    </a>
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="product_detail.html">Assus ZenFone 2<br />‏(ZE550ML)</a>
+                                        </h4>
+                                        <p class="item-desc">See What Others Can’t See</p>
+                                        <div class="item-price">$399.00</div>
+                                        <div class="item-discount-price">$453.00</div>
+                                    </div>
+                                </div>
+                                <!-- END item -->
+                                <!-- BEGIN item -->
+                                <div class="item item-thumbnail">
+                                    <a href="product_detail.html" class="item-image">
+                                        <img src="assets/img/xperia-z.png" alt="" />
+                                        <div class="discount">32% OFF</div>
+                                    </a>
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="product.html">Sony Xperia Z<br />Black Color</a>
+                                        </h4>
+                                        <p class="item-desc">For unexpectedly beautiful moments</p>
+                                        <div class="item-price">$599.00</div>
+                                        <div class="item-discount-price">$799.00</div>
+                                    </div>
+                                </div>
+                                <!-- END item -->
+                                <!-- BEGIN item -->
+                                <div class="item item-thumbnail">
+                                    <a href="product_detail.html" class="item-image">
+                                        <img src="assets/img/lumia-532.png" alt="" />
+                                        <div class="discount">20% OFF</div>
+                                    </a>
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="product.html">Microsoft Lumia 531<br />Smartphone Orange</a>
+                                        </h4>
+                                        <p class="item-desc">1 Year Local Manufacturer Warranty</p>
+                                        <div class="item-price">$99.00</div>
+                                        <div class="item-discount-price">$199.00</div>
+                                    </div>
+                                </div>
+                                <!-- END item -->
+                            </div>
+                            <!-- END item-row -->
+                        </div>
+                        <!-- END category-item -->
                     </div>
                     <!-- END category-detail -->
                 </div>
@@ -299,124 +560,27 @@
             <!-- END container -->
         </div>
         <!-- END #mobile-list -->
-        
-        <!-- 문의하기 스타트 -->
-        <div id="tablet-list" class="section-container bg-silver p-t-0">
-        	<div class="container">
-                <!-- BEGIN section-title -->
-                <h4 class="section-title clearfix">
-					문의하기
-                    <small>언제든지 문의 주시면 빠른시일 안에 답변 드리겠습니다.</small>
-                </h4>
-                <div class="category-container  bg-silver p-t-20" style="border: 0px;">
-                	<div style="height: 400px;">
-                		<div>
-	                		<div class="col-md-2 col-sm-2">
-	                			<label class="control-label" style="font-weight: 600 !important;">성함</label>
-	                		</div>
-	                		
-	                		<div class="col-md-10 col-sm-10">
-	                			<input type="text" class="form-control">
-	                		</div>
-                		</div>
-                		<div class="m-t-10">
-	                		<div class="col-md-2 col-sm-2">
-	                			<label class="control-label" style="font-weight: 600 !important;">연락처</label>
-	                		</div>
-	                		
-	                		<div class="col-md-10 col-sm-10">
-	                			<input type="text" class="form-control">
-	                		</div>
-                		</div>
-                		<div class="p-t-10">
-	                		<div class="col-md-2 col-sm-2">
-	                			<label class="control-label" style="font-weight: 600 !important;">증상 </label>
-	                		</div>
-	                		
-	                		<div class="col-md-10 col-sm-10">
-	                			<textarea class="textarea form-control"  rows="12" placeholder="Enter text ..."></textarea>
-	                		</div>
-	                		
-	                		<a href="#" class="promotion-btn" style="background-color: #FFF;color: #3C1E1E"><b>문의하기</b></a>              
-                		</div>  		
-                	</div>
-               	</div>
-            </div>
-        </div>
-        <!-- 문의 하기 끝 -->
     
         <!-- BEGIN #tablet-list -->
-        <div id="tablet-list" class="section-container bg-silver p-t-20">
+        <div id="tablet-list" class="section-container bg-silver p-t-0">
             <!-- BEGIN container -->
             <div class="container">
                 <!-- BEGIN section-title -->
                 <h4 class="section-title clearfix">
-					회사 위치
-                    <small>서울시 송파구 충민로66 가든파이브 7층 엘-7043호</small>
+					여기에 지도 삽입
+                    <small>Shop and get your favourite tablet at amazing prices!</small>
                 </h4>
                 <!-- END section-title -->
                 <!-- BEGIN category-container -->
                 <div class="category-container">
-                	<div id="map" style="height: 400px;"></div>
-                	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c35a103954fbcf2deaa6e2721ede1c17"></script>
-                	<script>
-						var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-						var options = { //지도를 생성할 때 필요한 기본 옵션
-							center: new daum.maps.LatLng(37.4775778, 127.12499830000002), //지도의 중심좌표.
-							level: 3 //지도의 레벨(확대, 축소 정도)
-						};
-						var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-						var marker = new daum.maps.Marker({ 
-						    // 지도 중심좌표에 마커를 생성합니다 
-						    position: map.getCenter() 
-						}); 
-						// 지도에 마커를 표시합니다
-						marker.setMap(map);
-					</script>
+                	<div style="background: red; height: 400px;"></div>
                 </div>
                 <!-- END category-container -->
             </div>
             <!-- END container -->
         </div>
         <!-- END #tablet-list -->
-		<div id="policy" class="section-container p-t-30 p-b-30">
-            <!-- BEGIN container -->
-            <div class="container">
-                <!-- BEGIN row -->
-                <div class="row">
-                    <!-- BEGIN col-4 -->
-                    <div class="col-md-6 col-sm-6">
-                        <!-- BEGIN policy -->
-                        <div class="policy">
-                            <div class="policy-icon"><i class="fa fa-cogs"></i></div>
-                            <div class="policy-info">
-                                <h4>24시간 문의</h4>
-                                <p>언제든지 증상이 있을시 연락 주세요.</p>
-                                <p><font color="red" style="font-size: 31px;font-family: unset;font-weight:bold;">1588-1588</font></p>
-                            </div>
-                        </div>
-                        <!-- END policy -->
-                    </div>
-                    <!-- END col-4 -->
-                    <!-- BEGIN col-4 -->
-                    <div class="col-md-6 col-sm-6">
-                        <!-- BEGIN policy -->
-                        <div class="policy">
-                            <div class="policy-icon"><i class="fa fa-shield"></i></div>
-                            <div class="policy-info">
-                                <h4>긴급 문의</h4>
-                                <p>증상이 있을시 연락 주세요.</p>
-                                <p><font color="red" style="font-size: 31px;font-family: unset;font-weight:bold;">010-1111-2222</font></p>
-                            </div>
-                        </div>
-                        <!-- END policy -->
-                    </div>
-                    <!-- END col-4 -->
-                </div>
-                <!-- END row -->
-            </div>
-            <!-- END container -->
-        </div>    
+    
         <!-- BEGIN #footer -->
         <div id="footer" class="footer">
             <!-- BEGIN container -->
@@ -424,11 +588,10 @@
                 <!-- BEGIN row -->
                 <div class="row">
                     <div class="col-md-6">
-                        <h4 class="footer-header">데이터컴</h4>
-                        <p>서울시 송파구 충민로 66 가든파이브 7층 엘-7043호</p>
-                        <p>사업자 번호 546-22-00717, 대표전화 1588-1588</p>
+                        <h4 class="footer-header">(주)데이터컴</h4>
+                        <p>서울시 송파구 어디길 24 무슨 건물 몇호</p>
+                        <p>사업자 번호 111-22-33333, 대표전화 1588-1588</p>
                         <p>카카오뱅크 3222-22111-2222 (주)데이터컴</p>
-                        <p><a href="#"><i class="fa fa-file-text"> 이용약관</i></a> <a href="#">&nbsp;&nbsp;<i class="fa fa-list"> 개인정보처리방침</i></a></p>
                     </div>
                     
 					<div class="col-md-6">
@@ -440,6 +603,8 @@
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
                             </div>
                         </div>
                         <!-- END social -->
@@ -461,7 +626,7 @@
                     <img src="assets/img/payment_method.png" alt="" />
                 </div>
                 <div class="copyright">
-                    Copyright &copy; 2018 DataCome. All rights reserved.
+                    Copyright &copy; 2016 SeanTheme. All rights reserved.
                 </div>
             </div>
             <!-- END container -->
