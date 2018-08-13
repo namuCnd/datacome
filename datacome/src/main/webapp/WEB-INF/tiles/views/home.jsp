@@ -115,7 +115,9 @@
                                 <h3 class="title m-b-5 fadeInDownBig animated">DataCome</h3>  
                                 <p class="m-b-15 fadeInDownBig animated">본사는 신뢰를 먹고 사는<br>최고의 전문가 들입니다.</p>
                                 <div class="price fadeInDownBig animated"><small>tel.</small> <span>1588-1588</span></div>
-                                <a href="#" class="btn btn-outline btn-lg fadeInUpBig animated">Buy Now</a>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">전화 문의</a>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">온라인 문의</a>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">카카오톡</a>
                             </div>
                         </div>
                     </div>
