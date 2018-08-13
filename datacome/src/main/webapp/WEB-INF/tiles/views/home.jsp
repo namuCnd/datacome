@@ -75,9 +75,11 @@
                         </div>
                         <div class="carousel-caption carousel-caption-left">
                             <div class="container">
-                                <h3 class="title m-b-5 fadeInLeftBig animated">iMac</h3> 
-                                <p class="m-b-15 fadeInLeftBig animated">Retina. Now in colossal and ginormous.</p>
-                                <div class="price m-b-30 fadeInLeftBig animated"><small>from</small> <span>$649.00</span></div>
+                                <!-- <h3 class="title m-b-5 fadeInLeftBig animated">iMac</h3> -->
+                                <h3 class="title m-b-5 fadeInDownBig animated">DataCome</h3>  
+                                <!-- <p class="m-b-15 fadeInLeftBig animated">Retina. Now in colossal and ginormous.</p> -->
+                                <p class="m-b-15 fadeInDownBig animated">컴퓨터 수리의 전문가들<br>전국 어디서나 연락시 즉시 출장</p>
+                                <div class="price m-b-30 fadeInLeftBig animated"><small>tel.</small> <span>1588-1588</span></div>
                                 <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">전화 문의</a>
                                 <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">온라인 문의</a>
                                 <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">카카오톡</a>
@@ -95,9 +97,9 @@
                         </div>
                         <div class="carousel-caption carousel-caption-left">
                             <div class="container">
-                                <h3 class="title m-b-5 fadeInLeftBig animated">iMac</h3> 
-                                <p class="m-b-15 fadeInLeftBig animated">Retina. Now in colossal and ginormous.</p>
-                                <div class="price m-b-30 fadeInLeftBig animated"><small>from</small> <span>$649.00</span></div>
+                                <h3 class="title m-b-5 fadeInDownBig animated">DataCome</h3> 
+                                <p class="m-b-15 fadeInLeftBig animated">데이터 복구의 상위 1%</p>
+                                <div class="price m-b-30 fadeInLeftBig animated"><small>tel.</small> <span>1588-1588</span></div>
                                 <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">전화 문의</a>
                                 <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">온라인 문의</a>
                                 <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">카카오톡</a>
@@ -110,9 +112,9 @@
                         <img src="${pageContext.request.contextPath}/static/images/cover/cover3.jpg" class="bg-cover-img" alt="" style="margin-top: -85px;" />
                         <div class="carousel-caption">
                             <div class="container">
-                                <h3 class="title m-b-5 fadeInDownBig animated">Macbook Air</h3> 
-                                <p class="m-b-15 fadeInDownBig animated">Thin.Light.Powerful.<br />And ready for anything</p>
-                                <div class="price fadeInDownBig animated"><small>from</small> <span>$999.00</span></div>
+                                <h3 class="title m-b-5 fadeInDownBig animated">DataCome</h3>  
+                                <p class="m-b-15 fadeInDownBig animated">본사는 신뢰를 먹고 사는<br>최고의 전문가 들입니다.</p>
+                                <div class="price fadeInDownBig animated"><small>tel.</small> <span>1588-1588</span></div>
                                 <a href="#" class="btn btn-outline btn-lg fadeInUpBig animated">Buy Now</a>
                             </div>
                         </div>
