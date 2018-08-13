@@ -13,8 +13,8 @@
                     <!-- BEGIN navbar-header -->
                     <div class="navbar-header">
                         <div class="header-logo">
-                            <a href="index.html">
-                                <span class="logo"><img src="datacome.png" alt="DataCome"style="width: 50%;margin-left: 30px;"></span>
+                            <a href="javascript:void(0);">
+                                <span class="logo"><img src="${pageContext.request.contextPath}/images/datacome.png" alt="DataCome"style="width: 50%;margin-left: 30px;"></span>
                                 <span>Data</span>Come
                                 <small>The Pride of Recover</small>
                             </a>
@@ -26,16 +26,16 @@
                         <div>
                             <ul class="nav">
                                 <li class="active">
-                                    <a href="#promotions" >복구 솔루션</a>
+                                    <a href="#promotions">복구 솔루션</a>
                                 </li>
                                 <li class="">
-                                    <a href="#mobile-list" >심각한 증상</a>
+                                    <a href="#mobile-list">심각한 증상</a>
                                 </li>
                                 <li class="">
-                                    <a href="#tablet-list" >문의하기</a>
+                                    <a href="#tablet-list">문의하기</a>
                                 </li>
                                 <li class="">
-                                    <a href="#tablet-list2" >회사 위치</a>
+                                    <a href="#tablet-list2">회사 위치</a>
                                 </li>
                                 <li class="">
                                     <a href="#" >게시판(관리자)</a>
