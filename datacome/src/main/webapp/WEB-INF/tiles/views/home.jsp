@@ -4,7 +4,7 @@
 <body>
     <!-- BEGIN #page-container -->
     <div id="page-container" class="fade">
-       <!-- BEGIN #header -->
+    	<!-- BEGIN #header -->
         <div id="header" class="header">
             <!-- BEGIN container -->
             <div class="container">
@@ -12,14 +12,9 @@
                 <div class="header-container">
                     <!-- BEGIN navbar-header -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
                         <div class="header-logo">
                             <a href="index.html">
-                                <span class="brand"></span>
+                                <span class="logo"><img src="datacome.png" alt="DataCome"style="width: 50%;margin-left: 30px;"></span>
                                 <span>Data</span>Come
                                 <small>The Pride of Recover</small>
                             </a>
@@ -28,7 +23,7 @@
                     <!-- END navbar-header -->
                     <!-- BEGIN header-nav -->
                     <div class="header-nav">
-                        <div class=" collapse navbar-collapse" id="navbar-collapse">
+                        <div>
                             <ul class="nav">
                                 <li class="active">
                                     <a href="#promotions" >복구 솔루션</a>
@@ -73,10 +68,10 @@
                 <!-- BEGIN carousel-inner -->
                 <div class="carousel-inner"> 
                     <!-- BEGIN item -->
-                    <div class="item active">
+                     <div class="item active">
                         <img src="${pageContext.request.contextPath}/static/images/cover/cover1.jpg" class="bg-cover-img" alt="" />
                         <div class="container">
-                            <img src="assets/img/slider-1-product.png" class="product-img right bottom fadeInRight animated" alt="" />
+                            <img src="${pageContext.request.contextPath}/assets/img/slider-1-product.png" class="product-img right bottom fadeInRight animated" alt="" />
                         </div>
                         <div class="carousel-caption carousel-caption-left">
                             <div class="container">
@@ -89,13 +84,14 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- END item -->
                     <!-- BEGIN item -->
                     
                     <div class="item">
                         <img src="${pageContext.request.contextPath}/static/images/cover/cover2.jpg" class="bg-cover-img" alt="" />
                         <div class="container">
-                            <img src="assets/img/slider-1-product.png" class="product-img right bottom fadeInRight animated" alt="" />
+                            <img src="${pageContext.request.contextPath}/assets/img/slider-1-product.png" class="product-img right bottom fadeInRight animated" alt="" />
                         </div>
                         <div class="carousel-caption carousel-caption-left">
                             <div class="container">
@@ -110,8 +106,8 @@
                     </div>
                     <!-- END item -->
                     <!-- BEGIN item -->
-                    <div class="item">
-                        <img src="${pageContext.request.contextPath}/static/images/cover/cover3.png" class="bg-cover-img" alt="" style="margin-top: -85px;" />
+                     <div class="item">
+                        <img src="${pageContext.request.contextPath}/static/images/cover/cover3.jpg" class="bg-cover-img" alt="" style="margin-top: -85px;" />
                         <div class="carousel-caption">
                             <div class="container">
                                 <h3 class="title m-b-5 fadeInDownBig animated">Macbook Air</h3> 
@@ -143,7 +139,7 @@
                 <!-- BEGIN section-title -->
                 <h4 class="section-title clearfix">
                     <!--  <a href="#" class="pull-right">SHOW ALL</a>-->
-            복구 솔루션
+				복구 솔루션
                     <small>데이터컴은 고객의 신뢰를 위해 최선을 다하는 복구업체입니다.</small>
                 </h4>
                 <!-- END section-title -->
@@ -152,9 +148,9 @@
                     <!-- BEGIN col-6 -->
                     <div class="col-md-6">
                         <!-- BEGIN promotion -->
-                        <div class="promotion promotion-lg bg-black-darker">
+                        <div class="promotion promotion-lg bg-black-darker" style="background-color:#485158 !important;">
                             <div class="promotion-image text-right promotion-image-overflow-bottom">
-                                <img src="assets/img/iphone-se.png" alt="" />
+                                <img src="${pageContext.request.contextPath}/static/images/back/bCom.jpg" alt="" style="max-width: 50%;margin-bottom: 60px;"/>
                             </div>
                             <div class="promotion-caption promotion-caption-inverse">
                                 <h4 class="promotion-title">컴퓨터 수리</h4>
@@ -169,9 +165,9 @@
                     <!-- BEGIN col-3 -->
                     <div class="col-md-3 col-sm-6">
                         <!-- BEGIN promotion -->
-                        <div class="promotion bg-blue">
-                            <div class="promotion-image promotion-image-overflow-bottom promotion-image-overflow-top">
-                                <img src="assets/img/apple-watch-sm.png" alt="" />
+                        <div class="promotion bg-blue" style="background-color:#99D6D9 !important;">
+                            <div class="promotion-image text-right promotion-image-overflow-bottom">
+                                <%-- <img src="${pageContext.request.contextPath}/static/images/back/data3.jpg" alt="" style="max-width: 50%;margin-bottom: 60px;"/> --%>
                             </div>
                             <div class="promotion-caption promotion-caption-inverse text-right">
                                 <h4 class="promotion-title">데이터 복구</h4>
@@ -183,8 +179,8 @@
                         <!-- END promotion -->
                         <!-- BEGIN promotion -->
                         <div class="promotion bg-silver">
-                            <div class="promotion-image text-center promotion-image-overflow-bottom">
-                                <img src="assets/img/mac-mini.png" alt="" />
+                            <div class="promotion-image text-right promotion-image-overflow-bottom">
+                                <%-- <img src="${pageContext.request.contextPath}/static/images/back/ransome.jpg" alt=""  style="max-width: 50%;margin-bottom: 60px;"/> --%>
                             </div>
                             <div class="promotion-caption text-right">
                                 <h4 class="promotion-title">랜섬웨어 복구</h4>
@@ -198,19 +194,21 @@
                     <!-- BEGIN col-3 -->
                     <div class="col-md-3 col-sm-6">
                         <!-- BEGIN promotion -->
-                            <div class="promotion-image promotion-image-overflow-right promotion-image-overflow-bottom text-right">
-                                <img src="assets/img/mac-accessories.png" alt="" />
+                        <div class="promotion bg-silver">    
+							<div class="promotion-image text-right promotion-image-overflow-bottom">
+                               	<%-- <img src="${pageContext.request.contextPath}/static/images/back/bcom2.jpg" alt="" style="max-width: 50%;margin-bottom: 60px;"/> --%>
                             </div>
                             <div class="promotion-caption text-right">
-                                <h4 class="promotion-title">컴퓨터 유지보수</h4>
+                            	<h4 class="promotion-title">컴퓨터 유지보수</h4>
                                 <p class="promotion-desc">중요한 자료를 보관한 오래된 컴퓨터의 경우 유지보수가 필요하며 본사의 전문 인력이 전문적으로 관리해드립니다. </p>
                                 <div id="plusfriend-chat-button"></div>
                             </div>
+						</div>
                         <!-- END promotion -->
                         <!-- BEGIN promotion -->
                         <div class="promotion bg-black">
                             <div class="promotion-image text-right">
-                                <img src="assets/img/mac-pro.png" alt="" />
+                                <%-- <img src="${pageContext.request.contextPath}/static/images/back/server.jpg" alt="" /> --%>
                             </div>
                             <div class="promotion-caption promotion-caption-inverse text-right">
                                 <h4 class="promotion-title">서버 복구</h4>
@@ -234,7 +232,7 @@
             <div class="container">
                 <!-- BEGIN section-title -->
                 <h4 class="section-title clearfix">
-                       심각한 증상
+                    	심각한 증상
                     <small>현재와 같은 증상이 보일시 저희에게 믿고 맡겨 주세요.</small>
                 </h4>
                 <!-- END section-title -->
@@ -244,28 +242,33 @@
                     <div class="category-sidebar">
                         <ul class="category-list">
                             <li class="list-header">Top Categories</li>
-                            <li><a href="#">랜섬웨어 증상</a></li>
-                            <li><a href="#">하드디스크 증상</a></li>
-                            <li><a href="#">메모리 증상</a></li>
-                            <li><a href="#">서버 증상</a></li>
+                            <li><a onclick="javascript:fn_main_rem(0);">컴퓨터 고장 증상</a></li>
+                            <li><a onclick="javascript:fn_main_rem(1);">랜섬웨어 증상</a></li>
+                            <li><a onclick="javascript:fn_main_rem(2);">서버 고장 증상</a></li>
                         </ul>
                     </div>
                     <!-- END category-sidebar -->
                     <!-- BEGIN category-detail -->
-                    <div class="category-detail">
-                        <!-- BEGIN category-item -->
-                        <a href="#" class="category-item full" style="width: 100%">
-                            <div class="item">
-                                <div class="item-cover">
-                                    <img src="assets/img/samsung-s7-edge.jpg" alt="" />
-                                </div>
-                                <div class="item-info bottom">
-                                    <h4 class="item-title">Samsung Galaxy s7 Edge + Geat 360 + Gear VR</h4>
-                                    <p class="item-desc">Redefine what a phone can do</p>
-                                    <div class="item-price">$799.00</div>
-                                </div>
-                            </div>
-                        </a>
+                    	<div class="category-detail">
+                    	 	<div class="category-detail">
+	                        <!-- BEGIN category-item -->
+								<div id="div_category_items" class="category-item full" ">
+									<div class="item">
+										<div class="item-info bottom">
+	                                       	<h4 class="item-title">컴퓨터 고장 증상</h4>
+	                                       	<p class="item-desc">1. 부팅시 엄청나게 컴퓨터가 느려집니다.</p>
+		                             		<p class="item-desc">2. 블루스크린이 뜨며 알수 없는 문자로 모니터에 표출됩니다.</p>
+		                                    <p class="item-desc">4. 부팅시 이상한 소리를 내며 컴퓨터가 켜지지 않습니다.</p>
+		                              		<a href="javascript:void(0);" class="promotion-btn setMobile" data-toggle="modal" data-target="#myModal"><b>문의하기</b></a>    
+	                                   	</div>
+										<div class="item-cover" style="text-align: center;">
+		                            		<img src="${pageContext.request.contextPath}/static/images/back/pc_error.jpg" alt="" /> 
+		                                </div>
+		                            </div>
+								</div>
+	                        <!-- END category-item -->
+		                    </div>
+                        </div>
                         <!-- END category-item -->
                     </div>
                     <!-- END category-detail -->
@@ -277,93 +280,93 @@
         <!-- END #mobile-list -->
         
         <!-- 문의하기 스타트 -->
-        <div id="tablet-list" class="section-container bg-silver p-t-0">
-           <div class="container">
-                <!-- BEGIN section-title -->
+        <!-- <div id="tablet-list" class="section-container bg-silver p-t-0">
+        	<div class="container">
+                BEGIN section-title
                 <h4 class="section-title clearfix">
-               문의하기
+					문의하기
                     <small>언제든지 문의 주시면 빠른시일 안에 답변 드리겠습니다.</small>
                 </h4>
                 
-               <a href="#" class="promotion-btn" data-toggle="modal" data-target="#myModal"><b>문의하기</b></a>    
-            <div class="modal fade" id="myModal">
-               <div class="modal-dialog">
-                   <div class="modal-content">
-                       <div class="modal-header"></div>
-                        <div class="modal-body">
-                          <div>
-                               <div class="col-md-2 col-sm-2">
-                                  <label class="control-label" style="font-weight: 600 !important;">성함</label>
-                               </div>
-                               
-                               <div class="col-md-10 col-sm-10">
-                                  <input type="text" class="form-control">
-                               </div>
-                            </div>
-                            <div class="m-t-10">
-                               <div class="col-md-2 col-sm-2">
-                                  <label class="control-label" style="font-weight: 600 !important;">연락처</label>
-                               </div>
-                               
-                               <div class="col-md-10 col-sm-10">
-                                  <input type="text" class="form-control">
-                               </div>
-                            </div>
-                            <div class="p-t-10">
-                               <div class="col-md-2 col-sm-2">
-                                  <label class="control-label" style="font-weight: 600 !important;">증상 </label>
-                               </div>
-                               
-                               <div class="col-md-10 col-sm-10">
-                                  <textarea class="textarea form-control"  rows="12" placeholder="Enter text ..."></textarea>
-                               </div>
-                               
-                               <a href="#" class="promotion-btn" style="background-color: #FFF;color: #3C1E1E"><b>문의하기</b></a>              
-                            </div> 
-                        </div>
-                     <div class="modal-footer"></div>
-                   </div>
-                 </div>
-            </div>   
+         		<a href="#" class="promotion-btn setMobile" data-toggle="modal" data-target="#myModal"><b>문의하기</b></a>    
+				<div class="modal fade setMobile" id="myModal">
+					<div class="modal-dialog">
+				    	<div class="modal-content">
+				     		<div class="modal-header"></div>
+				      		<div class="modal-body">
+				        		<div>
+			                		<div class="col-md-2 col-sm-2">
+			                			<label class="control-label" style="font-weight: 600 !important;">성함</label>
+			                		</div>
+			                		
+			                		<div class="col-md-10 col-sm-10">
+			                			<input type="text" class="form-control">
+			                		</div>
+		                		</div>
+		                		<div class="m-t-10">
+			                		<div class="col-md-2 col-sm-2">
+			                			<label class="control-label" style="font-weight: 600 !important;">연락처</label>
+			                		</div>
+			                		
+			                		<div class="col-md-10 col-sm-10">
+			                			<input type="text" class="form-control">
+			                		</div>
+		                		</div>
+		                		<div class="p-t-10">
+			                		<div class="col-md-2 col-sm-2">
+			                			<label class="control-label" style="font-weight: 600 !important;">증상 </label>
+			                		</div>
+			                		
+			                		<div class="col-md-10 col-sm-10">
+			                			<textarea class="textarea form-control"  rows="12" placeholder="Enter text ..."></textarea>
+			                		</div>
+			                		
+			                		<a href="#" class="promotion-btn" style="background-color: #FFF;color: #3C1E1E"><b>문의하기</b></a>              
+		                		</div> 
+				      		</div>
+				      	<div class="modal-footer"></div>
+				    	</div>
+				  	</div>
+				</div>   
             </div>
-        </div>
+        </div> -->
         <!-- 문의 하기 끝 -->
     
         <!-- BEGIN #tablet-list -->
-        <div id="tablet-list" class="section-container bg-silver p-t-20">
+        <div id="tablet-list2" class="section-container bg-silver p-t-20">
             <!-- BEGIN container -->
             <div class="container">
                 <!-- BEGIN section-title -->
                 <h4 class="section-title clearfix">
-               회사 위치
+					회사 위치
                     <small>서울시 송파구 충민로66 가든파이브 7층 엘-7043호</small>
                 </h4>
                 <!-- END section-title -->
                 <!-- BEGIN category-container -->
                 <div class="category-container">
-                   <div id="map" style="height: 400px;"></div>
-                   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c35a103954fbcf2deaa6e2721ede1c17"></script>
-                   <script>
-                  var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-                  var options = { //지도를 생성할 때 필요한 기본 옵션
-                     center: new daum.maps.LatLng(37.4775778, 127.12499830000002), //지도의 중심좌표.
-                     level: 3 //지도의 레벨(확대, 축소 정도)
-                  };
-                  var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-                  var marker = new daum.maps.Marker({ 
-                      // 지도 중심좌표에 마커를 생성합니다 
-                      position: map.getCenter() 
-                  }); 
-                  // 지도에 마커를 표시합니다
-                  marker.setMap(map);
-               </script>
+                	<div id="map" style="height: 400px;"></div>
+                	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c35a103954fbcf2deaa6e2721ede1c17"></script>
+                	<script>
+						var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+						var options = { //지도를 생성할 때 필요한 기본 옵션
+							center: new daum.maps.LatLng(37.4775778, 127.12499830000002), //지도의 중심좌표.
+							level: 3 //지도의 레벨(확대, 축소 정도)
+						};
+						var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+						var marker = new daum.maps.Marker({ 
+						    // 지도 중심좌표에 마커를 생성합니다 
+						    position: map.getCenter() 
+						}); 
+						// 지도에 마커를 표시합니다
+						marker.setMap(map);
+					</script>
                 </div>
                 <!-- END category-container -->
             </div>
             <!-- END container -->
         </div>
         <!-- END #tablet-list -->
-      <div id="policy" class="section-container p-t-30 p-b-30">
+		<div id="policy" class="section-container p-t-30 p-b-30">
             <!-- BEGIN container -->
             <div class="container">
                 <!-- BEGIN row -->
@@ -415,7 +418,7 @@
                         <p><a href="#"><i class="fa fa-file-text"> 이용약관</i></a> <a href="#">&nbsp;&nbsp;<i class="fa fa-list"> 개인정보처리방침</i></a></p>
                     </div>
                     
-               <div class="col-md-6">
+					<div class="col-md-6">
                         <!-- BEGIN social -->
                         <div class="social">
                             <div class="social-intro">
@@ -442,7 +445,7 @@
             <!-- BEGIN container -->
             <div class="container">
                 <div class="payment-method">
-                    <img src="assets/img/payment_method.png" alt="" />
+                    <img src="${pageContext.request.contextPath}/assets/img/payment_method.png" alt="" />
                 </div>
                 <div class="copyright">
                     Copyright &copy; 2018 DataCome. All rights reserved.
@@ -454,34 +457,34 @@
     </div>
     <!-- END #page-container -->
 
-   <!-- ================== BEGIN BASE JS ================== -->
-   <script src="${pageContext.request.contextPath}/static/js/jquery-1.9.1.min.js"></script>
-   <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-1.1.0.min.js"></script>
-   <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
-   <!--[if lt IE 9]>
-      <script src="assets/crossbrowserjs/html5shiv.js"></script>
-      <script src="assets/crossbrowserjs/respond.min.js"></script>
-      <script src="assets/crossbrowserjs/excanvas.min.js"></script>
-   <![endif]-->
-   <script src="${pageContext.request.contextPath}/static/js/jquery.cookie.js"></script>
-   <script src="${pageContext.request.contextPath}/static/js/apps.min.js"></script>
-   <!-- ================== END BASE JS ================== -->
-   
-   <script>
-       $(document).ready(function() {
-           App.init();
-       });
-   </script>
-   <script>
-      //<![CDATA[
-       // 사용할 앱의 JavaScript 키를 설정해 주세요.
-       Kakao.init('d06113b4d57b06468d6c56908535bb6b');
-       // 플러스친구 1:1채팅 버튼을 생성합니다.
-       Kakao.PlusFriend.createChatButton({
-         container: '#plusfriend-chat-button',
-         plusFriendId: '_zpDhj' // 플러스친구 홈 URL에 명시된 id로 설정합니다.
-       });
-        //]]>
-   </script>
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="${pageContext.request.contextPath}/static/js/jquery-1.9.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/jquery-migrate-1.1.0.min.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="${pageContext.request.contextPath}/static/js/jquery.cookie.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/apps.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<script>
+	    $(document).ready(function() {
+	        App.init();
+	    });
+	</script>
+	<script>
+		//<![CDATA[
+	    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+	    Kakao.init('d06113b4d57b06468d6c56908535bb6b');
+	    // 플러스친구 1:1채팅 버튼을 생성합니다.
+	    Kakao.PlusFriend.createChatButton({
+	      container: '#plusfriend-chat-button',
+	      plusFriendId: '_zpDhj' // 플러스친구 홈 URL에 명시된 id로 설정합니다.
+	    });
+	 	 //]]>
+	</script>
 </body>
 </html>
