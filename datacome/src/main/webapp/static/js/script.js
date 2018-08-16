@@ -801,7 +801,8 @@ function activateLoading(stat){
  * 로딩바 공통 처리
  */
 $.ajaxSetup({
-    beforeSend:function(){
+    beforeSend:function(xhr){
+    	xhr.setRequestHeader("X-Ajax-call", true);
         activateLoading('on');
     },
     complete:function(){

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -39,6 +40,20 @@ public class ReservBoardController {
 	    model.addAttribute("pageMaker", pageMaker);
 	     
 	    return "/reservBoard/reservBoardList.default";
+	}
+	
+	@RequestMapping(value="/insertReservBoard.do", method=RequestMethod.POST)
+	public String reservBordList(@ModelAttribute ReservBoard beservBoard, Model model) throws Exception{
+	     
+	    String resultStr = "fail";
+	     
+	    if (reservBoardService.insertReservBoard(beservBoard) > 0) {
+	    	resultStr = "complete";
+	    } 
+
+	    model.addAttribute("resultStr", resultStr);
+	     
+	    return "jsonView";
 	}
 
 }

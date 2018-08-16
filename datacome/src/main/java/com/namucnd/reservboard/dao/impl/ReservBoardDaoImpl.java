@@ -37,4 +37,12 @@ public class ReservBoardDaoImpl implements ReservBoardDao {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectOne("reserv.reservBordListCnt");
 	}
+
+	@Override
+	public int insertReservBoard(ReservBoard beservBoard) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.update("reserv.insertReservBoard");
+	}
+	
+	
 }

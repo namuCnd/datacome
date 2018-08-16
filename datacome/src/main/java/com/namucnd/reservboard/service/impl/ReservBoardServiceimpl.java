@@ -37,6 +37,12 @@ public class ReservBoardServiceimpl implements ReservBoardService {
 		// TODO Auto-generated method stub
 		return reservBoardDao.reservBordListCnt();
 	}
+
+	@Override
+	public int insertReservBoard(ReservBoard beservBoard) throws Exception {
+		// TODO Auto-generated method stub
+		return reservBoardDao.insertReservBoard(beservBoard);
+	}
 	
 	
 }

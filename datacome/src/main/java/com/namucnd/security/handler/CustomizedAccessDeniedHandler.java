@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 /**
@@ -34,10 +37,28 @@ public class CustomizedAccessDeniedHandler implements AccessDeniedHandler {
 		logger.info("Exceiption : {}", ade);
 		logger.info("LocalizedMessage : {}", ade.getLocalizedMessage());
 		logger.info("Message : {}", ade.getMessage());
-		logger.info("StackTrace : {}", ade.getStackTrace());
 
-		req.setAttribute("errMsg", ade.getMessage());
-		req.getRequestDispatcher("/WEB-INF/views/user/denied.jsp").forward(req, res);
+		String ajaxHeader = req.getHeader("X-Ajax-call");
+    	String result = "";
+    	if (ajaxHeader == null) {
+    		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    		Object principal = auth.getPrincipal();
+    		if(principal instanceof UserDetails){
+    			String username = ((UserDetails) principal).getUsername();
+    			req.setAttribute("username", username);
+    		}
+    		req.setAttribute("errormsg", ade);
+    		req.getRequestDispatcher(errorPage).forward(req, res);
+    	} else {
+    		if ("true".equals(ajaxHeader)) {
+    			result = ade.getMessage();
+    		} else {
+    			result = "Access Denied";
+    		}
+    		res.getWriter().print(result);
+    		res.getWriter().flush();
+    	}
+        res.sendRedirect(errorPage);
 	}
 	
 	public void setErrorPage(String errorPage) {

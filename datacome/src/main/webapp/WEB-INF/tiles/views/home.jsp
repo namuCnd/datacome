@@ -1,6 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$("#saveBtn").on("click", function(){
+			$.ajax({
+				url : "/insertReservBoard.json",
+				type :"POST",
+				dataType : "json",
+				data : $("#frm").serialize() , 
+				success : function(data){
+					if (data.result == 'complete') {
+						alert("문의가 완료 되었습니다\n빠른시간내에 답변드리겠습니다.");			
+					} else if (data.result == 'fail') {
+						alert("문의하기 실패.");						
+					}
+				}, error:function(request,status,error){
+					
+				}
+			});
+			
+		});
+	});
+</script>
 <body>
     <!-- BEGIN #page-container -->
     <div id="page-container" class="fade">
@@ -81,8 +104,7 @@
                                 <p class="m-b-15 fadeInDownBig animated">컴퓨터 수리의 전문가들<br>전국 어디서나 연락시 즉시 출장</p>
                                 <div class="price m-b-30 fadeInLeftBig animated"><small>tel.</small> <span>1588-1588</span></div>
                                 <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">전화 문의</a>
-                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">온라인 문의</a>
-                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">카카오톡</a>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated" data-toggle="modal" data-target="#myModal"> 온라인 문의</a>
                             </div>
                         </div>
                     </div>
@@ -101,8 +123,7 @@
                                 <p class="m-b-15 fadeInLeftBig animated">데이터 복구의 상위 1%</p>
                                 <div class="price m-b-30 fadeInLeftBig animated"><small>tel.</small> <span>1588-1588</span></div>
                                 <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">전화 문의</a>
-                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">온라인 문의</a>
-                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">카카오톡</a>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated" data-toggle="modal" data-target="#myModal">온라인 문의</a>
                             </div>
                         </div>                        
                     </div>
@@ -116,8 +137,7 @@
                                 <p class="m-b-15 fadeInDownBig animated">본사는 신뢰를 먹고 사는<br>최고의 전문가 들입니다.</p>
                                 <div class="price fadeInDownBig animated"><small>tel.</small> <span>1588-1588</span></div>
                                 <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">전화 문의</a>
-                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">온라인 문의</a>
-                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">카카오톡</a>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated" data-toggle="modal" data-target="#myModal">온라인 문의</a>
                             </div>
                         </div>
                     </div>
@@ -293,6 +313,9 @@
                 </h4>
                 
          		<a href="#" class="promotion-btn setMobile" data-toggle="modal" data-target="#myModal"><b>문의하기</b></a>    
+         		
+   		-->
+   			<form id="frm" name="frm">
 				<div class="modal fade setMobile" id="myModal">
 					<div class="modal-dialog">
 				    	<div class="modal-content">
@@ -304,7 +327,7 @@
 			                		</div>
 			                		
 			                		<div class="col-md-10 col-sm-10">
-			                			<input type="text" class="form-control">
+			                			<input type="text" id="title" name="title" class="form-control">
 			                		</div>
 		                		</div>
 		                		<div class="m-t-10">
@@ -313,7 +336,7 @@
 			                		</div>
 			                		
 			                		<div class="col-md-10 col-sm-10">
-			                			<input type="text" class="form-control">
+			                			<input type="text" id="phone" name="phone" class="form-control">
 			                		</div>
 		                		</div>
 		                		<div class="p-t-10">
@@ -322,16 +345,18 @@
 			                		</div>
 			                		
 			                		<div class="col-md-10 col-sm-10">
-			                			<textarea class="textarea form-control"  rows="12" placeholder="Enter text ..."></textarea>
+			                			<textarea id="content" name="content" class="textarea form-control"  rows="12" placeholder="증상을 간략히 적어주세요 ..."></textarea>
 			                		</div>
 			                		
-			                		<a href="#" class="promotion-btn" style="background-color: #FFF;color: #3C1E1E"><b>문의하기</b></a>              
+			                		<a href="javascript:void(0);" id="saveBtn" class="promotion-btn" style="background-color: #FFF;color: #3C1E1E"><b>문의하기</b></a>              
 		                		</div> 
 				      		</div>
 				      	<div class="modal-footer"></div>
 				    	</div>
 				  	</div>
 				</div>   
+			</form>
+           <!-- 
             </div>
         </div> -->
         <!-- 문의 하기 끝 -->
