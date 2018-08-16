@@ -27,12 +27,12 @@
 		<property name="username" value="#{datasource['datasource.dev.user']}"/>
 		<property name="password" value="#{datasource['datasource.dev.password']}"/>
 	</bean>
-	<!-- <bean id="dataSource_live" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="dataSource_live" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="#{datasource['datasource.live.driverClass']}"/>
 		<property name="url" value="#{datasource['datasource.live.jdbcUrl']}"/>
 		<property name="username" value="#{datasource['datasource.live.user']}"/>
 		<property name="password" value="#{datasource['datasource.live.password']}"/>
-	</bean> -->
+	</bean>
 
 	<!--// DataSource Configuration -->
 

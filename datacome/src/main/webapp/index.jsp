@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>유니베라</title>
+<title>datacome</title>
 <script>
 //location.href="./main/main.do";
 </script>

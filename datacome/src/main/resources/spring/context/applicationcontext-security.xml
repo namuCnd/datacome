@@ -14,12 +14,12 @@
 	
 	<security:http pattern="/static/**" security="none" />
     <security:http pattern="/favicon.ico" security="none" />
+    <security:http pattern="/main/main.do" security="none" />
 
 	<!-- 검사 URL -->
     <security:http use-expressions="true">
         <security:intercept-url pattern="/security/signinForm.do" access="permitAll" />
         <security:intercept-url pattern="/insertReservBoard.json" access="permitAll" />
-        <security:intercept-url pattern="/main/main.do" access="permitAll" />
         <security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
         <security:intercept-url pattern="/**" access="hasAnyRole('USER, ADMIN')" />
         <security:intercept-url pattern="/assets/**" access="ROLE_ANONYMOUS" />
