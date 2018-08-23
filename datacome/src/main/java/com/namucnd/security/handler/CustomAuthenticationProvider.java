@@ -12,6 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
@@ -44,7 +45,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	    }
 
 	    List<GrantedAuthority> authorities = (List<GrantedAuthority>) userInfo.getAuthorities();
-
+	    authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 	    return new UsernamePasswordAuthenticationToken(userInfo,null,authorities);
 	  }
 

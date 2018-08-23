@@ -327,7 +327,7 @@
 			                		</div>
 			                		
 			                		<div class="col-md-10 col-sm-10">
-			                			<input type="text" id="title" name="title" class="form-control">
+			                			<input type="text" id="title" name="title" class="form-control" maxlength="10">
 			                		</div>
 		                		</div>
 		                		<div class="m-t-10">
