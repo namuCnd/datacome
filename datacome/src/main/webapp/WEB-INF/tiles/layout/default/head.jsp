@@ -7,7 +7,17 @@
    <meta content="IE=edge">
    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-   <title>datacome</title>
+   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+   <meta name="naver-site-verification" content="86ba0ba5624bf5681fa6e70bffb47395658d5524"/>
+   <meta name="keywords" content="데이터컴, 컴퓨터수리, 데이터복구, 랜섬웨어, 서버복구, 컴퓨터 유지보수, datacome" />
+   <meta name="description" content="데이터컴, 컴퓨터수리, 데이터복구, 랜섬웨어, 서버복구, 컴퓨터 유지보수, datacome" />
+   <meta property="og:type" content="website">
+   <meta property="og:title" content="데이터컴">
+   <meta property="og:description" content="데이터컴, 컴퓨터수리, 데이터복구, 랜섬웨어, 서버복구, 컴퓨터 유지보수, datacome">
+   <meta property="og:image" content="http://datacome.co.kr/static/images/datacome.png">
+   <meta property="og:url" content="http://datacome.co.kr/">
+   <title>데이터컴</title>
+   <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/images/datacome.png">
    <script type="text/javascript">
       // default global variable
       var contextPath = "${pageContext.request.contextPath}";
@@ -33,7 +43,7 @@
    
 	<style>
 	
-	.category-item.full{width: 100% !important;      } 
+	.category-item.full{width: 100% !important;} 
 	.category-item.full .item{background:#79c7d4}
     .header-logo .logo{float: left; margin-right: 5px; width: 64px;}
     .header-logo .logo img{width: 100%;}
@@ -62,9 +72,6 @@
     
 		
 		$(function(){
-		
-		
-		
 		    var windowWidth = $( window ).width();
 		    if(windowWidth < 800) {
 		        $('.setMobile').addClass( "aaa" )
@@ -75,55 +82,61 @@
 		    }
 		});
 		
+		
 		function  fn_main_rem(_flg){
 			var html = "";
 			if(_flg == 0 ){
-				$("#div_category_items").css("background-colr", "#79C7D4");
-				
-				html 	+= '<div class="item">';
-				html	+= '<div class="item-cover">';
-				html	+= '<img src="${pageContext.request.contextPath}/static/images/back/pc_error.jpg" alt="" />';
-				html	+= '</div>';
+				html 	+= '<div class="item" id="div_category_child" style="background:#79C7D4 !important">';
+				//html 	+= '<div class="item" id="div_category_child">';
 				html	+= '<div class="item-info bottom">';
-				html	+= '<h4 class="item-title">컴퓨터 고장 증상</h4>';
-				html	+= '<p class="item-desc">1. 부팅시 엄청나게 컴퓨터가 느려집니다.</p>';
-				html	+= '<p class="item-desc">2. 블루스크린이 뜨며 알수 없는 문자로 모니터에 표출됩니다.</p>';
-				html	+= '<p class="item-desc">3. 부팅시 이상한 소리를 내며 컴퓨터가 켜지지 않습니다.</p>';
-				html	+= '<a href="#" class="promotion-btn setMobile" data-toggle="modal" data-target="#myModal"><b>문의하기</b></a>  ';
-				html	+= '</div>';
-				html	+= '</div>';	
+				html 	+= '<h4 class="item-title">컴퓨터 고장 증상</h4>';
+				html 	+= '<p class="item-desc">1. 부팅시 엄청나게 컴퓨터가 느려집니다.</p>';
+				html 	+= '<p class="item-desc">2. 블루스크린이 뜨며 알수 없는 문자로 모니터에 표출됩니다.</p>';
+				html 	+= '<p class="item-desc">3. 부팅시 이상한 소리를 내며 컴퓨터가 켜지지 않습니다.</p>';
+				html 	+= '<a href="javascript:void(0);" class="btn btn-inverse btn-lg" data-toggle="modal" data-target="#myModal" style="float: right"><b><i class="fa fa-pencil-square-o fa-2x pull-left"></i>문의하기</b></a>';
+				html 	+= '</div>';
+				html 	+= '<div class="item-cover" style="text-align: center;">';
+				html 	+= '<img src="${pageContext.request.contextPath}/static/images/back/pc_error.jpg" alt="" /> ';
+				html 	+= '</div>';
+				html 	+= '</div>';
+				html 	+= '</div>';
+				//$("#div_category_child").css("background", "#79C7D4");
 			}
 			else if(_flg == 1){
-				$("#div_category_items").css("background-colr", "#9BABBA");
+				//$("#div_category_child").css("background", "#9BABBA");
 				
-				html 	+= '<div class="item">';
-				html	+= '<div class="item-cover">';
-				html	+= '<img src="${pageContext.request.contextPath}/static/images/back/rasome.jpg" alt="" />';
-				html	+= '</div>';
+				html 	+= '<div class="item" id="div_category_child" style="background:#F2F2F2 !important">';
 				html	+= '<div class="item-info bottom">';
-				html	+= '<h4 class="item-title">랜섬웨어 증상</h4>';
-				html	+= '<p class="item-desc">1. 모든 키가 잠깁니다.</p>';
-				html	+= '<p class="item-desc">2. 가상계좌에 입금을 요구합니다.</p>';
-				html	+= '<p class="item-desc">3. 파일이 한개식 지워집니다..</p>';
-				html	+= '<a href="#" class="promotion-btn setMobile" data-toggle="modal" data-target="#myModal"><b>문의하기</b></a>  ';
-				html	+= '</div>';
-				html	+= '</div>';	
+				html 	+= '<h4 class="item-title">랜섬웨어 증상</h4>';
+				html 	+= '<p class="item-desc">1. 모든 키가 잠깁니다.</p>';
+				html 	+= '<p class="item-desc">2. 가상계좌에 입금을 요구합니다.</p>';
+				html 	+= '<p class="item-desc">3. 파일이 한개식 지워집니다.</p>';
+				html 	+= '<a href="javascript:void(0);" class="btn btn-inverse btn-lg" data-toggle="modal" data-target="#myModal" style="float: right"><b><i class="fa fa-pencil-square-o fa-2x pull-left"></i>문의하기</b></a>';
+				html 	+= '</div>';
+				html 	+= '<div class="item-cover" style="text-align: center;">';
+				html 	+= '<img src="${pageContext.request.contextPath}/static/images/back/rasome2.jpg" alt="" /> ';
+				html 	+= '</div>';
+				html 	+= '</div>';
+				html 	+= '</div>';
+				
 			}
 			else{
-				$("#div_category_items").css("background-colr", "#F8F8F8");
-			
-				html 	+= '<div class="item">';
-				html	+= '<div class="item-cover">';
-				html	+= '<img src="${pageContext.request.contextPath}/static/images/back/server_erorr.jpg" alt="" />';
-				html	+= '</div>';
+				//$("#div_category_child").css("background", "#F8F8F8");
+				
+				html 	+= '<div class="item" id="div_category_child" style="background:#F8F8F8 !important">';
 				html	+= '<div class="item-info bottom">';
-				html	+= '<h4 class="item-title">서버 고장 증상</h4>';
-				html	+= '<p class="item-desc">1. 외부에서 해당 서버로 접속이 되지 않습니다.</p>';
-				html	+= '<p class="item-desc">2. 외부에서 접속시 400~ 500 error를 나타냅니다.</p>';
-				html	+= '<p class="item-desc">a3. 서버 자체의 부팅이 되지 않습니다.</p>';
-				html	+= '<a href="#" class="promotion-btn setMobile" data-toggle="modal" data-target="#myModal"><b>문의하기</b></a>  ';
-				html	+= '</div>';
-				html	+= '</div>';		
+				html 	+= '<h4 class="item-title">서버 고장 증상</h4>';
+				html 	+= '<p class="item-desc">1. 외부에서 해당 서버로 접속이 되지 않습니다.</p>';
+				html 	+= '<p class="item-desc">2. 외부에서 접속시 400~ 500 error를 나타냅니다.</p>';
+				html 	+= '<p class="item-desc">3. 서버 자체의 부팅이 되지 않습니다.</p>';
+				html 	+= '<a href="javascript:void(0);" class="btn btn-inverse btn-lg" data-toggle="modal" data-target="#myModal" style="float: right"><b><i class="fa fa-pencil-square-o fa-2x pull-left"></i>문의하기</b></a>';
+				html 	+= '</div>';
+				html 	+= '<div class="item-cover" style="text-align: center;">';
+				html 	+= '<img src="${pageContext.request.contextPath}/static/images/back/server_erorr.jpg" alt="" /> ';
+				html 	+= '</div>';
+				html 	+= '</div>';
+				html 	+= '</div>';
+					
 			}
 			
 			$("#div_category_items").html(html);
