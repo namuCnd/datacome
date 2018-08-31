@@ -20,8 +20,8 @@ public class MainController {
 	// log사용을 위해 선언
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	MonitorIpService monitorIpService;
+	/*@Autowired
+	MonitorIpService monitorIpService;*/
 
 	@RequestMapping(value = "/main/main.do")
 	public String main(HttpServletRequest request, ModelMap model, HttpSession session, Users users) throws Exception {
@@ -42,7 +42,7 @@ public class MainController {
 		MonitorIp monitorIp = new MonitorIp();
 		monitorIp.setReq_ip(ip);
 		
-		monitorIpService.insertReqIp(monitorIp);
+		//monitorIpService.insertReqIp(monitorIp);
 
 		return "/home.default";
 	}

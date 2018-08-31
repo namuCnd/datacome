@@ -19,7 +19,7 @@ import com.namucnd.monitor.domain.MonitorIp;
  * 
  */
 @Repository
-public abstract class MonitorIpDaoImpl implements MonitorIpDao {
+public class MonitorIpDaoImpl implements MonitorIpDao {
 
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
